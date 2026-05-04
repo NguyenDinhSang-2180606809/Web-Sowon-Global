@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Vụ - Dịch Thuật Chuyên Nghiệp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="language-switcher.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🌏</div>
+                <span>DỊCH THUẬT</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link" data-i18n="nav.home">Trang Chủ</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav.about">Về Chúng Tôi</a></li>
+                <li><a href="services.html" class="nav-link active" data-i18n="nav.services">Dịch Vụ</a></li>
+                <li><a href="recruitment.html" class="nav-link" data-i18n="nav.recruitment">Tuyển Dụng</a></li>
+                <li><a href="contact.html"><button class="contact-btn" data-i18n="nav.contact">Liên Hệ</button></a></li>
+                
+                <!-- Language Switcher -->
+                <li class="language-switcher">
+                    <button class="lang-btn" data-lang="vi">VI</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ko">KO</button>
+                    <button class="lang-btn" data-lang="zh">中文</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-i18n="services.header.title">Dịch Vụ Của Chúng Tôi</h1>
+            <p data-i18n="services.header.subtitle">Giải pháp dịch thuật toàn diện cho mọi nhu cầu của bạn</p>
+        </div>
+    </section>
+
+    <!-- Main Services Section -->
+    <section class="section-white">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="services.main.tag">DỊCH VỤ CHÍNH</div>
+                <h2 class="section-title" data-i18n="services.main.title">Dịch Vụ Dịch Thuật Chuyên Nghiệp</h2>
+            </div>
+            
+            <!-- Document Translation -->
+            <div class="service-detail-card fade-in" id="documents">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">📄</div>
+                    <div>
+                        <h3 data-i18n="services.document.title">Dịch Tài Liệu</h3>
+                        <p class="service-detail-tagline" data-i18n="services.document.tagline">Dịch thuật chính xác, chuyên nghiệp cho mọi loại tài liệu</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <p data-i18n="services.document.desc">
+                        Chúng tôi cung cấp dịch vụ dịch thuật tài liệu chuyên nghiệp với đội ngũ dịch giả 
+                        có chứng chỉ quốc tế và kinh nghiệm dày dạn trong nhiều lĩnh vực khác nhau.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.document.feature1">Tài liệu pháp lý: Hợp đồng, thỏa thuận, giấy tờ pháp lý</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.document.feature2">Tài liệu kỹ thuật: Sổ tay, hướng dẫn sử dụng, thông số kỹ thuật</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.document.feature3">Tài liệu y tế: Bệnh án, kết quả xét nghiệm, tài liệu nghiên cứu</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.document.feature4">Tài liệu tài chính: Báo cáo tài chính, audit, prospectus</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.document.feature5">Tài liệu cá nhân: Bằng cấp, giấy khai sinh, hộ chiếu</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.document.feature6">Tài liệu marketing: Brochure, catalogue, tài liệu quảng cáo</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="pricing-label" data-i18n="services.pricing.from">Giá từ:</span>
+                        <span class="pricing-amount">150.000 VNĐ/<span data-i18n="services.pricing.page">trang</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certified Translation -->
+            <div class="service-detail-card fade-in">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">🔖</div>
+                    <div>
+                        <h3 data-i18n="services.certified.title">Dịch Thuật Công Chứng</h3>
+                        <p class="service-detail-tagline" data-i18n="services.certified.tagline">Bản dịch có giá trị pháp lý được công chứng</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <p data-i18n="services.certified.desc">
+                        Dịch vụ dịch thuật công chứng được thực hiện bởi dịch giả có chứng chỉ, 
+                        đảm bảo giá trị pháp lý cho các giao dịch quốc tế, du học, định cư.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.certified.feature1">Giấy tờ tùy thân: Hộ chiếu, CMND/CCCD, sổ hộ khẩu</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.certified.feature2">Bằng cấp học vấn: Bằng đại học, bảng điểm, chứng chỉ</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.certified.feature3">Giấy tờ pháp lý: Giấy kết hôn, khai sinh, di chúc</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.certified.feature4">Hợp đồng kinh doanh: Hợp đồng mua bán, thuê, đối tác</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.certified.feature5">Công chứng tại chỗ hoặc gửi tận nhà</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.certified.feature6">Đóng dấu Apostille cho sử dụng quốc tế</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="pricing-label" data-i18n="services.pricing.from">Giá từ:</span>
+                        <span class="pricing-amount">200.000 VNĐ/<span data-i18n="services.pricing.page">trang</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interpretation -->
+            <div class="service-detail-card fade-in" id="interpretation">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">🎤</div>
+                    <div>
+                        <h3 data-i18n="services.interpretation.title">Phiên Dịch</h3>
+                        <p class="service-detail-tagline" data-i18n="services.interpretation.tagline">Phiên dịch viên chuyên nghiệp cho mọi sự kiện</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <p data-i18n="services.interpretation.desc">
+                        Đội ngũ phiên dịch viên giàu kinh nghiệm, thành thạo nhiều ngôn ngữ, 
+                        sẵn sàng hỗ trợ bạn trong các hội nghị, sự kiện và đàm phán quan trọng.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.interpretation.feature1">Phiên dịch đồng thời (Simultaneous): Hội nghị quốc tế</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.interpretation.feature2">Phiên dịch liên tiếp (Consecutive): Đàm phán, họp báo</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.interpretation.feature3">Phiên dịch thị sát: Tham quan nhà máy, khảo sát</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.interpretation.feature4">Phiên dịch hội thảo: Seminar, workshop, training</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.interpretation.feature5">Phiên dịch y tế: Khám bệnh, tư vấn y tế</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.interpretation.feature6">Phiên dịch pháp lý: Tòa án, công chứng</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="pricing-label" data-i18n="services.pricing.from">Giá từ:</span>
+                        <span class="pricing-amount">3.000.000 VNĐ/<span data-i18n="services.pricing.day">ngày</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Localization -->
+            <div class="service-detail-card fade-in" id="localization">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">🌐</div>
+                    <div>
+                        <h3 data-i18n="services.localization.title">Bản Địa Hóa</h3>
+                        <p class="service-detail-tagline" data-i18n="services.localization.tagline">Điều chỉnh nội dung phù hợp với văn hóa địa phương</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <p data-i18n="services.localization.desc">
+                        Không chỉ dịch thuật, chúng tôi điều chỉnh nội dung để phù hợp với văn hóa, 
+                        tập quán và thói quen của thị trường mục tiêu.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.localization.feature1">Website: Nội dung, SEO, meta tags, hình ảnh</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.localization.feature2">Mobile App: UI/UX, in-app text, notifications</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.localization.feature3">Phần mềm: Interface, help files, documentation</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.localization.feature4">Game: Storyline, dialogues, subtitles</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.localization.feature5">E-learning: Khóa học trực tuyến, video, quiz</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.localization.feature6">Marketing content: Quảng cáo, social media, email</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="pricing-label" data-i18n="services.pricing.contact">Liên hệ báo giá:</span>
+                        <span class="pricing-amount">Tùy dự án</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subtitling & Transcription -->
+            <div class="service-detail-card fade-in">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">🎬</div>
+                    <div>
+                        <h3 data-i18n="services.subtitle.title">Phụ Đề & Chuyển Ngữ</h3>
+                        <p class="service-detail-tagline" data-i18n="services.subtitle.tagline">Dịch và tạo phụ đề cho video, phim, podcast</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <p data-i18n="services.subtitle.desc">
+                        Chuyển đổi nội dung audio/video sang văn bản hoặc tạo phụ đề đa ngôn ngữ 
+                        với timing chính xác và đồng bộ hoàn hảo.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.subtitle.feature1">Phụ đề video: YouTube, TikTok, Instagram Reels</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.subtitle.feature2">Phụ đề phim: Movies, TV shows, documentaries</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.subtitle.feature3">Transcription: Chuyển audio thành text chính xác</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.subtitle.feature4">Closed captions: Phụ đề cho người khiếm thính</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.subtitle.feature5">Voice-over: Lồng tiếng cho video marketing</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.subtitle.feature6">Podcast translation: Dịch và transcribe podcast</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="pricing-label" data-i18n="services.pricing.from">Giá từ:</span>
+                        <span class="pricing-amount">100.000 VNĐ/<span data-i18n="services.pricing.minute">phút</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proofreading & Editing -->
+            <div class="service-detail-card fade-in">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">✏️</div>
+                    <div>
+                        <h3 data-i18n="services.proofread.title">Biên Tập & Hiệu Đính</h3>
+                        <p class="service-detail-tagline" data-i18n="services.proofread.tagline">Chỉnh sửa và hoàn thiện bản dịch của bạn</p>
+                    </div>
+                </div>
+                <div class="service-detail-content">
+                    <p data-i18n="services.proofread.desc">
+                        Kiểm tra, sửa lỗi và cải thiện chất lượng bản dịch hiện có, 
+                        đảm bảo văn phong tự nhiên và nội dung chính xác.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.proofread.feature1">Proofreading: Kiểm tra lỗi chính tả, ngữ pháp</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.proofread.feature2">Copy editing: Cải thiện văn phong, cấu trúc câu</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.proofread.feature3">Quality check: Kiểm tra tính nhất quán thuật ngữ</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.proofread.feature4">Style guide compliance: Tuân thủ style guide</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.proofread.feature5">Fact checking: Kiểm tra độ chính xác thông tin</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <span class="feature-check">✓</span>
+                            <span data-i18n="services.proofread.feature6">Post-editing MT: Sửa bản dịch máy</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="pricing-label" data-i18n="services.pricing.from">Giá từ:</span>
+                        <span class="pricing-amount">80.000 VNĐ/<span data-i18n="services.pricing.page">trang</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Pairs Section -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="services.languages.tag">NGÔN NGỮ</div>
+                <h2 class="section-title" data-i18n="services.languages.title">Ngôn Ngữ Chúng Tôi Hỗ Trợ</h2>
+                <p class="section-description" data-i18n="services.languages.desc">
+                    Hỗ trợ hơn 20 ngôn ngữ phổ biến với chất lượng cao nhất
+                </p>
+            </div>
+            <div class="language-grid">
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇯🇵</div>
+                    <h4 data-i18n="services.languages.japanese">Tiếng Nhật</h4>
+                    <p data-i18n="services.languages.japanese.desc">Nhật ↔ Việt</p>
+                </div>
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇬🇧</div>
+                    <h4 data-i18n="services.languages.english">Tiếng Anh</h4>
+                    <p data-i18n="services.languages.english.desc">Anh ↔ Việt</p>
+                </div>
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇰🇷</div>
+                    <h4 data-i18n="services.languages.korean">Tiếng Hàn</h4>
+                    <p data-i18n="services.languages.korean.desc">Hàn ↔ Việt</p>
+                </div>
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇨🇳</div>
+                    <h4 data-i18n="services.languages.chinese">Tiếng Trung</h4>
+                    <p data-i18n="services.languages.chinese.desc">Trung ↔ Việt</p>
+                </div>
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇫🇷</div>
+                    <h4 data-i18n="services.languages.french">Tiếng Pháp</h4>
+                    <p data-i18n="services.languages.french.desc">Pháp ↔ Việt</p>
+                </div>
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇩🇪</div>
+                    <h4 data-i18n="services.languages.german">Tiếng Đức</h4>
+                    <p data-i18n="services.languages.german.desc">Đức ↔ Việt</p>
+                </div>
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇪🇸</div>
+                    <h4 data-i18n="services.languages.spanish">Tiếng Tây Ban Nha</h4>
+                    <p data-i18n="services.languages.spanish.desc">Tây Ban Nha ↔ Việt</p>
+                </div>
+                <div class="language-card fade-in">
+                    <div class="language-flag">🇹🇭</div>
+                    <h4 data-i18n="services.languages.thai">Tiếng Thái</h4>
+                    <p data-i18n="services.languages.thai.desc">Thái ↔ Việt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section-white">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="services.process.tag">QUY TRÌNH</div>
+                <h2 class="section-title" data-i18n="services.process.title">Quy Trình Làm Việc</h2>
+                <p class="section-description" data-i18n="services.process.desc">
+                    4 bước đơn giản để hoàn thành dự án của bạn
+                </p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step fade-in">
+                    <div class="process-number">1</div>
+                    <h4 data-i18n="services.process.step1.title">Liên Hệ & Báo Giá</h4>
+                    <p data-i18n="services.process.step1.desc">Gửi tài liệu và yêu cầu. Nhận báo giá miễn phí trong 2 giờ.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">2</div>
+                    <h4 data-i18n="services.process.step2.title">Phân Công Dịch Giả</h4>
+                    <p data-i18n="services.process.step2.desc">Chọn dịch giả phù hợp nhất với lĩnh vực và ngôn ngữ của bạn.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">3</div>
+                    <h4 data-i18n="services.process.step3.title">Dịch Thuật & Kiểm Tra</h4>
+                    <p data-i18n="services.process.step3.desc">Dịch thuật chuyên nghiệp với 3 lớp kiểm tra chất lượng.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">4</div>
+                    <h4 data-i18n="services.process.step4.title">Giao Hàng & Hỗ Trợ</h4>
+                    <p data-i18n="services.process.step4.desc">Nhận bản dịch hoàn chỉnh. Hỗ trợ chỉnh sửa miễn phí trong 7 ngày.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="services.pricing.tag">BẢNG GIÁ</div>
+                <h2 class="section-title" data-i18n="services.pricing.title">Bảng Giá Dịch Vụ</h2>
+                <p class="section-description" data-i18n="services.pricing.desc">
+                    Giá cả minh bạch, phù hợp với mọi ngân sách
+                </p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <h3 data-i18n="services.pricing.basic.title">Gói Cơ Bản</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">150K</span>
+                            <span class="price-unit">VNĐ/<span data-i18n="services.pricing.page">trang</span></span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="services.pricing.basic.feature1">✓ Dịch thuật chuyên nghiệp</li>
+                        <li data-i18n="services.pricing.basic.feature2">✓ Kiểm tra chất lượng cơ bản</li>
+                        <li data-i18n="services.pricing.basic.feature3">✓ Giao hàng trong 3-5 ngày</li>
+                        <li data-i18n="services.pricing.basic.feature4">✓ Hỗ trợ qua email</li>
+                        <li data-i18n="services.pricing.basic.feature5">✓ 1 lần chỉnh sửa miễn phí</li>
+                    </ul>
+                    <a href="contact.html" class="pricing-btn" data-i18n="services.pricing.choose">Chọn Gói</a>
+                </div>
+
+                <div class="pricing-card pricing-card-featured fade-in">
+                    <div class="pricing-badge" data-i18n="services.pricing.popular">Phổ Biến</div>
+                    <div class="pricing-header">
+                        <h3 data-i18n="services.pricing.professional.title">Gói Chuyên Nghiệp</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">250K</span>
+                            <span class="price-unit">VNĐ/<span data-i18n="services.pricing.page">trang</span></span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="services.pricing.professional.feature1">✓ Dịch giả cao cấp</li>
+                        <li data-i18n="services.pricing.professional.feature2">✓ Kiểm tra 3 lớp (TEP)</li>
+                        <li data-i18n="services.pricing.professional.feature3">✓ Giao hàng trong 2-3 ngày</li>
+                        <li data-i18n="services.pricing.professional.feature4">✓ Hỗ trợ 24/7</li>
+                        <li data-i18n="services.pricing.professional.feature5">✓ Chỉnh sửa không giới hạn (7 ngày)</li>
+                        <li data-i18n="services.pricing.professional.feature6">✓ Project manager riêng</li>
+                    </ul>
+                    <a href="contact.html" class="pricing-btn pricing-btn-featured" data-i18n="services.pricing.choose">Chọn Gói</a>
+                </div>
+
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <h3 data-i18n="services.pricing.enterprise.title">Gói Doanh Nghiệp</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount" data-i18n="services.pricing.custom">Tùy chỉnh</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="services.pricing.enterprise.feature1">✓ Tất cả tính năng Chuyên Nghiệp</li>
+                        <li data-i18n="services.pricing.enterprise.feature2">✓ Dịch giả chuyên ngành sâu</li>
+                        <li data-i18n="services.pricing.enterprise.feature3">✓ Giao hàng ưu tiên</li>
+                        <li data-i18n="services.pricing.enterprise.feature4">✓ Dedicated team</li>
+                        <li data-i18n="services.pricing.enterprise.feature5">✓ Glossary & style guide riêng</li>
+                        <li data-i18n="services.pricing.enterprise.feature6">✓ Giảm giá volume lớn</li>
+                        <li data-i18n="services.pricing.enterprise.feature7">✓ NDA & bảo mật cao cấp</li>
+                    </ul>
+                    <a href="contact.html" class="pricing-btn" data-i18n="services.pricing.contact">Liên Hệ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container fade-in">
+            <h2 data-i18n="cta.title">Sẵn Sàng Bắt Đầu Dự Án?</h2>
+            <p data-i18n="cta.desc">Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn miễn phí và báo giá tốt nhất</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn-primary" data-i18n="cta.btn1">Liên Hệ Ngay</a>
+                <a href="tel:0911038855" class="btn-secondary" data-i18n="cta.btn2">📞 0911.03.8855</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="footer.about.title">Về Chúng Tôi</h3>
+                <p data-i18n="footer.about.desc">Công ty dịch thuật chuyên nghiệp với đội ngũ biên phiên dịch viên giàu kinh nghiệm, phục vụ khách hàng trong nước và quốc tế.</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.links.title">Liên Kết</h3>
+                <a href="index.html" data-i18n="nav.home">Trang Chủ</a>
+                <a href="about.html" data-i18n="nav.about">Về Chúng Tôi</a>
+                <a href="services.html" data-i18n="nav.services">Dịch Vụ</a>
+                <a href="recruitment.html" data-i18n="nav.recruitment">Tuyển Dụng</a>
+                <a href="contact.html" data-i18n="nav.contact">Liên Hệ</a>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.contact.title">Liên Hệ</h3>
+                <p>📞 Hotline: 0911.03.8855</p>
+                <p>✉️ Email: contact@dichthuatvn.com</p>
+                <p>📍 Địa chỉ: Hồ Chí Minh, Việt Nam</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.hours.title">Giờ Làm Việc</h3>
+                <p data-i18n="footer.hours.weekday">Thứ Hai - Thứ Sáu: 8:00 - 18:00</p>
+                <p data-i18n="footer.hours.saturday">Thứ Bảy: 8:00 - 12:00</p>
+                <p data-i18n="footer.hours.sunday">Chủ Nhật: Nghỉ</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer.copyright">&copy; 2026 Dịch Thuật Chuyên Nghiệp. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load JavaScript files -->
+    <script src="script.js"></script>
+    <script src="i18n.js"></script>
+</body>
+</html>

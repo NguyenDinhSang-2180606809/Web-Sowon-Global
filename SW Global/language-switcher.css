@@ -1,0 +1,59 @@
+/* Language Switcher Styles */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background: var(--bg-light);
+    padding: 0.3rem;
+    border-radius: 25px;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Nunito Sans', sans-serif;
+    min-width: 45px;
+}
+
+.lang-btn:hover {
+    background: rgba(196, 30, 58, 0.1);
+    color: var(--primary-color);
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .language-switcher {
+        width: 100%;
+        justify-content: center;
+        padding: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .lang-btn {
+        flex: 1;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .lang-btn {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.75rem;
+        min-width: 40px;
+    }
+}

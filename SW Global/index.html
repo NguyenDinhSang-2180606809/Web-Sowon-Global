@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Dịch Thuật Chuyên Nghiệp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="language-switcher.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🌏</div>
+                <span>DỊCH THUẬT</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active" data-i18n="nav.home">Trang Chủ</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav.about">Về Chúng Tôi</a></li>
+                <li><a href="services.html" class="nav-link" data-i18n="nav.services">Dịch Vụ</a></li>
+                <li><a href="recruitment.html" class="nav-link" data-i18n="nav.recruitment">Tuyển Dụng</a></li>
+                <li><a href="contact.html"><button class="contact-btn" data-i18n="nav.contact">Liên Hệ</button></a></li>
+                
+                <!-- Language Switcher - Updated for 4 languages -->
+                <li class="language-switcher">
+                    <button class="lang-btn" data-lang="vi">VI</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ko">KO</button>
+                    <button class="lang-btn" data-lang="zh">中文</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">DỊCH VỤ DỊCH THUẬT CHUYÊN NGHIỆP</h1>
+            <p class="hero-description" data-i18n="hero.desc">
+                Công ty dịch thuật hàng đầu và giá hợp lý tại Việt Nam được thành lập bởi người Nhật và người Việt.
+            </p>
+            <div class="hero-buttons">
+                <a href="services.html" class="btn-primary" data-i18n="hero.btn1">Xem Dịch Vụ</a>
+                <a href="contact.html" class="btn-secondary" data-i18n="hero.btn2">Liên Hệ Ngay</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="why.tag">TẠI SAO CHỌN CHÚNG TÔI</div>
+                <h2 class="section-title" data-i18n="why.title">Ưu Điểm Vượt Trội</h2>
+                <p class="section-description" data-i18n="why.desc">
+                    Chúng tôi mang đến giải pháp dịch thuật toàn diện với chất lượng hàng đầu
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⭐</div>
+                    <h3 data-i18n="feature.quality.title">Chất Lượng Cao</h3>
+                    <p data-i18n="feature.quality.desc">Đội ngũ dịch giả chuyên nghiệp với chứng chỉ quốc tế, đảm bảo độ chính xác tuyệt đối</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💰</div>
+                    <h3 data-i18n="feature.price.title">Giá Cạnh Tranh</h3>
+                    <p data-i18n="feature.price.desc">Chi phí hợp lý, minh bạch với nhiều gói dịch vụ phù hợp với mọi ngân sách</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3 data-i18n="feature.speed.title">Giao Hàng Nhanh</h3>
+                    <p data-i18n="feature.speed.desc">Cam kết đúng tiến độ, hỗ trợ dịch vụ khẩn cấp 24/7 khi cần thiết</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔒</div>
+                    <h3 data-i18n="feature.security.title">Bảo Mật Tuyệt Đối</h3>
+                    <p data-i18n="feature.security.desc">Cam kết bảo mật thông tin khách hàng với hợp đồng NDA nghiêm ngặt</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <h3 data-i18n="feature.multilang.title">Đa Ngôn Ngữ</h3>
+                    <p data-i18n="feature.multilang.desc">Hỗ trợ hơn 20 ngôn ngữ phổ biến trên thế giới, đặc biệt là Nhật - Việt</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤝</div>
+                    <h3 data-i18n="feature.support.title">Hỗ Trợ 24/7</h3>
+                    <p data-i18n="feature.support.desc">Đội ngũ tư vấn sẵn sàng hỗ trợ bạn mọi lúc, mọi nơi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid fade-in">
+                <div class="stat-item">
+                    <div class="stat-number">1500+</div>
+                    <div class="stat-label" data-i18n="stat.projects">Dự Án Hoàn Thành</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label" data-i18n="stat.clients">Khách Hàng Hài Lòng</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label" data-i18n="stat.experience">Năm Kinh Nghiệm</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label" data-i18n="stat.translators">Dịch Giả Chuyên Nghiệp</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="section-white">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="services.tag">DỊCH VỤ</div>
+                <h2 class="section-title" data-i18n="services.title">Dịch Vụ Của Chúng Tôi</h2>
+                <p class="section-description" data-i18n="services.desc">
+                    Đa dạng các dịch vụ dịch thuật chuyên nghiệp
+                </p>
+            </div>
+            <div class="services-preview">
+                <div class="service-card fade-in">
+                    <div class="service-icon">📄</div>
+                    <h3 data-i18n="service.document.title">Dịch Tài Liệu</h3>
+                    <p data-i18n="service.document.desc">Dịch thuật tài liệu công chứng, hợp đồng, báo cáo chuyên nghiệp</p>
+                    <a href="services.html#documents" class="learn-more" data-i18n="services.learnmore">Tìm hiểu thêm →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎤</div>
+                    <h3 data-i18n="service.interpretation.title">Phiên Dịch</h3>
+                    <p data-i18n="service.interpretation.desc">Phiên dịch viên cho hội nghị, sự kiện, đàm phán kinh doanh</p>
+                    <a href="services.html#interpretation" class="learn-more" data-i18n="services.learnmore">Tìm hiểu thêm →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🌐</div>
+                    <h3 data-i18n="service.localization.title">Bản Địa Hóa</h3>
+                    <p data-i18n="service.localization.desc">Bản địa hóa website, app, phần mềm cho thị trường quốc tế</p>
+                    <a href="services.html#localization" class="learn-more" data-i18n="services.learnmore">Tìm hiểu thêm →</a>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="services.html" class="btn-primary" data-i18n="services.viewall">Xem Tất Cả Dịch Vụ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="testimonials.tag">ĐÁNH GIÁ</div>
+                <h2 class="section-title" data-i18n="testimonials.title">Khách Hàng Nói Gì Về Chúng Tôi</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text" data-i18n="testimonial1.text">"Dịch vụ chuyên nghiệp, nhanh chóng và chất lượng cao. Tôi rất hài lòng với bản dịch hợp đồng của công ty."</p>
+                    <div class="testimonial-author">
+                        <strong data-i18n="testimonial1.name">Nguyễn Văn A</strong>
+                        <span data-i18n="testimonial1.position">Giám đốc - Công ty TNHH ABC</span>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text" data-i18n="testimonial2.text">"Đội ngũ phiên dịch rất am hiểu về lĩnh vực kỹ thuật. Họ đã hỗ trợ chúng tôi trong buổi đàm phán quan trọng."</p>
+                    <div class="testimonial-author">
+                        <strong data-i18n="testimonial2.name">Trần Thị B</strong>
+                        <span data-i18n="testimonial2.position">Trưởng phòng Kinh doanh - XYZ Corp</span>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text" data-i18n="testimonial3.text">"Giá cả hợp lý, thời gian giao hàng đúng hẹn. Chắc chắn sẽ tiếp tục sử dụng dịch vụ trong tương lai."</p>
+                    <div class="testimonial-author">
+                        <strong data-i18n="testimonial3.name">Lê Văn C</strong>
+                        <span data-i18n="testimonial3.position">Chủ doanh nghiệp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container fade-in">
+            <h2 data-i18n="cta.title">Sẵn Sàng Bắt Đầu Dự Án?</h2>
+            <p data-i18n="cta.desc">Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn miễn phí và báo giá tốt nhất</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn-primary" data-i18n="cta.btn1">Liên Hệ Ngay</a>
+                <a href="tel:0911038855" class="btn-secondary" data-i18n="cta.btn2">📞 0911.03.8855</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="footer.about.title">Về Chúng Tôi</h3>
+                <p data-i18n="footer.about.desc">Công ty dịch thuật chuyên nghiệp với đội ngũ biên phiên dịch viên giàu kinh nghiệm, phục vụ khách hàng trong nước và quốc tế.</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.links.title">Liên Kết</h3>
+                <a href="index.html" data-i18n="nav.home">Trang Chủ</a>
+                <a href="about.html" data-i18n="nav.about">Về Chúng Tôi</a>
+                <a href="services.html" data-i18n="nav.services">Dịch Vụ</a>
+                <a href="recruitment.html" data-i18n="nav.recruitment">Tuyển Dụng</a>
+                <a href="contact.html" data-i18n="nav.contact">Liên Hệ</a>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.contact.title">Liên Hệ</h3>
+                <p>📞 Hotline: 0911.03.8855</p>
+                <p>✉️ Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc2c5cdc4ebcfc2c8c3dfc3decadfc8c3ded2cec5c5ccc3c2cedb85c8c4c6">[email&#160;protected]</a></p>
+                <p>📍 Địa chỉ: Hồ Chí Minh, Việt Nam</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.hours.title">Giờ Làm Việc</h3>
+                <p data-i18n="footer.hours.weekday">Thứ Hai - Thứ Sáu: 8:00 - 18:00</p>
+                <p data-i18n="footer.hours.saturday">Thứ Bảy: 8:00 - 12:00</p>
+                <p data-i18n="footer.hours.sunday">Chủ Nhật: Nghỉ</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer.copyright">&copy; 2026 Dịch Thuật Chuyên Nghiệp. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load JavaScript files -->
+    <script src="script.js"></script>
+    <script src="i18n.js"></script>
+</body>
+</html>
