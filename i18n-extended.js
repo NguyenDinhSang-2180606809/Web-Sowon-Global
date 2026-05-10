@@ -13,7 +13,7 @@ const translations = {
         
         // Home page - Hero
         'hero.title': 'DỊCH VỤ DỊCH THUẬT CHUYÊN NGHIỆP',
-        'hero.desc': 'Công ty dịch thuật hàng đầu và giá hợp lý tại Việt Nam được thành lập bởi người Nhật và người Việt.',
+        'hero.desc': 'Công ty dịch thuật hàng đầu và giá hợp lý tại Việt Nam được thành lập bởi người Hàn với 10 năm kinh nghiệm trong lĩnh vực dịch thuật.',
         'hero.btn1': 'Xem Dịch Vụ',
         'hero.btn2': 'Liên Hệ Ngay',
         

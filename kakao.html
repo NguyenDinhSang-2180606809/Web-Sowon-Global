@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KakaoTalk – Sowob Global</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: #FEE500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 40px 36px 36px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 12px 48px rgba(58,26,26,0.13);
+    }
+
+    /* Kakao icon */
+    .kakao-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      margin: 0 auto 16px;
+      display: block;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .brand-sub {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 28px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: #f0f0f0;
+      margin: 0 -36px 28px;
+    }
+
+    .qr-label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    /* QR image */
+    .qr-wrap {
+      background: #fff;
+      border: 2px solid #FEE500;
+      border-radius: 20px;
+      padding: 16px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .qr-wrap img {
+      width: 260px;
+      height: 260px;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .id-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .id-label {
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .id-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #3A1A1A;
+      background: #FFF8CC;
+      padding: 4px 14px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: 1.5px solid #FEE500;
+      transition: background 0.15s;
+    }
+    .id-value:hover { background: #FEE500; }
+
+    .copy-hint {
+      font-size: 11px;
+      color: #ccc;
+      margin-bottom: 24px;
+    }
+
+    .hint-box {
+      background: #FFFBEA;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 28px;
+    }
+
+    .hint-box p {
+      font-size: 13px;
+      color: #7a6a00;
+      line-height: 1.7;
+    }
+
+    .hint-box strong { color: #3A1A1A; }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #888;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+      transition: background 0.15s, color 0.15s;
+    }
+    .back-btn:hover { background: #f5f5f5; color: #333; }
+
+    /* Toast copy */
+    #toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #3A1A1A;
+      color: #FEE500;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 24px;
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 440px) {
+      .card { padding: 30px 20px 24px; }
+      .qr-wrap img { width: 220px; height: 220px; }
+      .divider { margin: 0 -20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- Kakao icon SVG -->
+    <svg class="kakao-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="#FEE500"/>
+      <path d="M50 18 C29 18 12 31 12 48 C12 58 18 67 28 73 L24 85 L39 76 C42 77 46 77 50 77 C71 77 88 64 88 48 C88 31 71 18 50 18 Z" fill="#3A1A1A"/>
+      <text x="50" y="56" text-anchor="middle" fill="#FEE500"
+            font-family="'Arial Black','Arial',sans-serif"
+            font-weight="900" font-size="20" letter-spacing="1">TALK</text>
+    </svg>
+
+    <div class="brand-name">Sowob Global</div>
+    <div class="brand-sub">Dịch thuật chuyên nghiệp</div>
+
+    <div class="divider"></div>
+
+    <div class="qr-label">📷 Quét mã QR bằng KakaoTalk</div>
+
+    <div class="qr-wrap">
+      <img src="kakao-qr.png" alt="QR Code KakaoTalk Sowob Global"/>
+    </div>
+
+    <div class="id-row">
+      <span class="id-label">KakaoTalk ID</span>
+      <span class="id-value" id="kakao-id" title="Nhấn để sao chép">Lsr0308</span>
+    </div>
+    <div class="copy-hint">Nhấn vào ID để sao chép</div>
+
+    <div class="hint-box">
+      <p>
+        Mở app <strong>KakaoTalk</strong> → chọn tab <strong>Bạn bè</strong><br/>
+        → nhấn biểu tượng 🔍 → chọn <strong>Tìm ID</strong><br/>
+        → nhập <strong>Lsr0308</strong> để kết nối
+      </p>
+    </div>
+
+    <a href="javascript:history.back()" class="back-btn">
+      ← Quay lại trang web
+    </a>
+
+  </div>
+
+  <div id="toast">✓ Đã sao chép ID: Lsr0308</div>
+
+  <script>
+    document.getElementById('kakao-id').addEventListener('click', function () {
+      navigator.clipboard.writeText('Lsr0308').then(function () {
+        var toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(function () { toast.classList.remove('show'); }, 2200);
+      });
+    });
+  </script>
+
+</body>
+</html>
