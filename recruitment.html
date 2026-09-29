@@ -9,6 +9,148 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="language-switcher.css">
+    <style>
+        /* Requirements table (14-language recruitment table) */
+        .requirements-table-wrapper {
+            margin-top: 2.5rem;
+            overflow-x: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(20, 30, 45, 0.08);
+            border: 1px solid #e7e2d8;
+        }
+        .requirements-table {
+            width: 100%;
+            min-width: 640px;
+            border-collapse: collapse;
+            font-family: 'Nunito Sans', sans-serif;
+            background: #fff;
+        }
+        .requirements-table thead th {
+            background: #1f3b57;
+            color: #fdfaf3;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-align: left;
+            padding: 1.1rem 1.5rem;
+        }
+        .requirements-table thead th:first-child {
+            border-top-left-radius: 14px;
+        }
+        .requirements-table thead th:last-child {
+            border-top-right-radius: 14px;
+        }
+        .requirements-table tbody td {
+            padding: 1rem 1.5rem;
+            font-size: 0.95rem;
+            color: #2c2c2c;
+            border-bottom: 1px solid #ede8db;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .requirements-table tbody tr:nth-child(even) {
+            background: #faf7ef;
+        }
+        .requirements-table tbody tr:hover {
+            background: #f2ecd9;
+            transition: background 0.2s ease;
+        }
+        .requirements-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .requirements-table tbody td:first-child {
+            font-weight: 700;
+            color: #1f3b57;
+            white-space: nowrap;
+        }
+        .requirements-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #6b6b6b;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        @media (max-width: 640px) {
+            .requirements-table thead th,
+            .requirements-table tbody td {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Application table (4-row form table) */
+        .application-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .application-table td {
+            padding: 0.6rem 0;
+            vertical-align: top;
+        }
+        .application-table .app-table-label {
+            width: 190px;
+            font-weight: 600;
+            color: #1f3b57;
+            padding-right: 1.2rem;
+            padding-top: 0.9rem;
+            white-space: nowrap;
+        }
+        .application-table input,
+        .application-table textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-hint {
+            margin-top: 0.9rem;
+            font-size: 0.82rem;
+            color: #6b6b6b;
+            line-height: 1.6;
+        }
+        .form-hint-warning {
+            margin-top: 0.5rem;
+            padding: 0.7rem 0.9rem;
+            background: #fdf3e3;
+            border: 1px solid #eddcb2;
+            border-radius: 8px;
+            color: #7a5b1e;
+        }
+        .cv-note {
+            margin: 0.3rem 0 0;
+            padding: 0.7rem 0.9rem;
+            background: #f4f7f6;
+            border: 1px dashed #c9d3d0;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #3f4a48;
+            line-height: 1.6;
+        }
+        .submit-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        @media (max-width: 640px) {
+            .submit-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+        @media (max-width: 640px) {
+            .application-table .app-table-label {
+                width: auto;
+                display: block;
+                padding-top: 0;
+                padding-bottom: 0.3rem;
+            }
+            .application-table td {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <script src="floating-contact.js"></script>
@@ -16,16 +158,17 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-icon">🌏</div>
-                <span>DỊCH THUẬT</span>
+                <div class="logo-icon">
+                    <img src="logo-white.png" alt="Sowon Global">
+                </div>
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link" data-i18n="nav.home">Trang Chủ</a></li>
                 <li><a href="about.html" class="nav-link" data-i18n="nav.about">Về Chúng Tôi</a></li>
                 <li><a href="services.html" class="nav-link" data-i18n="nav.services">Dịch Vụ</a></li>
                 <li><a href="recruitment.html" class="nav-link active" data-i18n="nav.recruitment">Tuyển Dụng</a></li>
-                <li><a href="contact.html"><button class="contact-btn" data-i18n="nav.contact">Liên Hệ</button></a></li>
-                
+                <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Liên Hệ</a></li>
+
                 <!-- Language Switcher -->
                 <li class="language-switcher">
                     <button class="lang-btn" data-lang="vi">VI</button>
@@ -41,306 +184,246 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 data-i18n="recruitment.header.title">Tuyển Dụng</h1>
-            <p data-i18n="recruitment.header.subtitle">Gia nhập đội ngũ chuyên gia dịch thuật hàng đầu</p>
+            <h1 data-i18n="recruitment.header.title">Tuyển Cộng Tác Viên Phiên Dịch - Dịch Thuật</h1>
+            <p data-i18n="recruitment.header.subtitle">Đồng hành cùng chúng tôi phục vụ khách hàng trên khắp thế giới</p>
         </div>
     </section>
 
-    <!-- Why Work With Us -->
-    <section class="section-light">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-tag" data-i18n="recruitment.why.tag">TẠI SAO LÀM VIỆC VỚI CHÚNG TÔI</div>
-                <h2 class="section-title" data-i18n="recruitment.why.title">Môi Trường Làm Việc Lý Tưởng</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">💼</div>
-                    <h3 data-i18n="recruitment.benefit1.title">Cơ Hội Phát Triển</h3>
-                    <p data-i18n="recruitment.benefit1.desc">Đào tạo chuyên sâu, cơ hội thăng tiến rõ ràng và làm việc với các dự án quốc tế</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">💰</div>
-                    <h3 data-i18n="recruitment.benefit2.title">Thu Nhập Cạnh Tranh</h3>
-                    <p data-i18n="recruitment.benefit2.desc">Lương thưởng hấp dẫn, thưởng hiệu suất theo dự án và các phúc lợi đầy đủ</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🏢</div>
-                    <h3 data-i18n="recruitment.benefit3.title">Văn Hóa Doanh Nghiệp</h3>
-                    <p data-i18n="recruitment.benefit3.desc">Môi trường chuyên nghiệp, năng động, thân thiện và tôn trọng lẫn nhau</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">⏰</div>
-                    <h3 data-i18n="recruitment.benefit4.title">Linh Hoạt Thời Gian</h3>
-                    <p data-i18n="recruitment.benefit4.desc">Hỗ trợ làm việc từ xa, thời gian linh hoạt phù hợp với dịch giả freelance</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🎓</div>
-                    <h3 data-i18n="recruitment.benefit5.title">Đào Tạo Liên Tục</h3>
-                    <p data-i18n="recruitment.benefit5.desc">Chương trình đào tạo nâng cao kỹ năng, tham gia hội thảo chuyên ngành</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🌍</div>
-                    <h3 data-i18n="recruitment.benefit6.title">Dự Án Đa Dạng</h3>
-                    <p data-i18n="recruitment.benefit6.desc">Làm việc với nhiều lĩnh vực khác nhau từ kinh doanh, kỹ thuật đến y tế, pháp lý</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Job Openings -->
+    <!-- Intro -->
     <section class="section-white">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-tag" data-i18n="recruitment.jobs.tag">VỊ TRÍ TUYỂN DỤNG</div>
-                <h2 class="section-title" data-i18n="recruitment.jobs.title">Các Vị Trí Đang Tuyển</h2>
+                <div class="section-tag" data-i18n="recruitment.intro.tag">CƠ HỘI HỢP TÁC</div>
+                <h2 class="section-title" data-i18n="recruitment.intro.title">14 Ngôn Ngữ Đang Tuyển Cộng Tác Viên</h2>
+                <p class="section-description" data-i18n="recruitment.intro.desc">Chúng tôi đang mở rộng mạng lưới cộng tác viên (CTV) phiên dịch, dịch thuật freelance trên toàn quốc và quốc tế. Nếu bạn thành thạo một trong các ngôn ngữ dưới đây, hãy ứng tuyển ngay hôm nay.</p>
             </div>
 
-            <!-- Job Listing 1 -->
-            <div class="job-listing fade-in">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title" data-i18n="job1.title">Biên Dịch Viên Nhật - Việt</h3>
-                        <div class="job-meta">
-                            <span class="job-type" data-i18n="job.fulltime">Toàn thời gian</span>
-                            <span class="job-location" data-i18n="job.location.hcm">📍 TP. Hồ Chí Minh</span>
-                            <span class="job-salary" data-i18n="job1.salary">💰 Thỏa thuận</span>
-                        </div>
-                    </div>
-                    <button class="job-apply-btn" data-i18n="job.applynow">Ứng Tuyển</button>
-                </div>
-                <div class="job-content">
-                    <div class="job-section">
-                        <h4 data-i18n="job.requirements">Yêu Cầu:</h4>
-                        <ul>
-                            <li data-i18n="job1.req1">Tốt nghiệp chuyên ngành tiếng Nhật hoặc có chứng chỉ N1/N2</li>
-                            <li data-i18n="job1.req2">Có ít nhất 2 năm kinh nghiệm dịch thuật chuyên nghiệp</li>
-                            <li data-i18n="job1.req3">Kỹ năng giao tiếp tốt, cẩn thận và có trách nhiệm</li>
-                            <li data-i18n="job1.req4">Ưu tiên có kinh nghiệm trong lĩnh vực kỹ thuật, kinh doanh</li>
-                        </ul>
-                    </div>
-                    <div class="job-section">
-                        <h4 data-i18n="job.responsibilities">Mô Tả Công Việc:</h4>
-                        <ul>
-                            <li data-i18n="job1.resp1">Dịch các tài liệu, hợp đồng, báo cáo từ tiếng Nhật sang tiếng Việt và ngược lại</li>
-                            <li data-i18n="job1.resp2">Kiểm tra, hi교u chỉnh bản dịch đảm bảo chất lượng</li>
-                            <li data-i18n="job1.resp3">Phối hợp với các phiên dịch viên trong các dự án lớn</li>
-                            <li data-i18n="job1.resp4">Nghiên cứu thuật ngữ chuyên ngành để đảm bảo độ chính xác</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job Listing 2 -->
-            <div class="job-listing fade-in">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title" data-i18n="job2.title">Phiên Dịch Viên Tiếng Anh</h3>
-                        <div class="job-meta">
-                            <span class="job-type" data-i18n="job.fulltime">Toàn thời gian</span>
-                            <span class="job-location" data-i18n="job.location.hcm">📍 TP. Hồ Chí Minh</span>
-                            <span class="job-salary" data-i18n="job2.salary">💰 15-25 triệu VNĐ</span>
-                        </div>
-                    </div>
-                    <button class="job-apply-btn" data-i18n="job.applynow">Ứng Tuyển</button>
-                </div>
-                <div class="job-content">
-                    <div class="job-section">
-                        <h4 data-i18n="job.requirements">Yêu Cầu:</h4>
-                        <ul>
-                            <li data-i18n="job2.req1">IELTS 7.5+ hoặc TOEIC 900+ hoặc tương đương</li>
-                            <li data-i18n="job2.req2">Kinh nghiệm phiên dịch tại hội nghị, sự kiện, đàm phán</li>
-                            <li data-i18n="job2.req3">Khả năng phản xạ nhanh, xử lý tình huống tốt</li>
-                            <li data-i18n="job2.req4">Ưu tiên có kinh nghiệm trong lĩnh vực y tế, pháp lý</li>
-                        </ul>
-                    </div>
-                    <div class="job-section">
-                        <h4 data-i18n="job.responsibilities">Mô Tả Công Việc:</h4>
-                        <ul>
-                            <li data-i18n="job2.resp1">Phiên dịch tại các buổi họp, hội nghị, hội thảo</li>
-                            <li data-i18n="job2.resp2">Hỗ trợ đối tác nước ngoài trong các chuyến công tác</li>
-                            <li data-i18n="job2.resp3">Phiên dịch qua điện thoại, video call khi cần</li>
-                            <li data-i18n="job2.resp4">Chuẩn bị và nghiên cứu tài liệu trước buổi phiên dịch</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job Listing 3 -->
-            <div class="job-listing fade-in">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title" data-i18n="job3.title">Biên Dịch Viên Tiếng Hàn</h3>
-                        <div class="job-meta">
-                            <span class="job-type" data-i18n="job.parttime">Bán thời gian / Freelance</span>
-                            <span class="job-location" data-i18n="job.location.remote">📍 Làm việc từ xa</span>
-                            <span class="job-salary" data-i18n="job3.salary">💰 Theo dự án</span>
-                        </div>
-                    </div>
-                    <button class="job-apply-btn" data-i18n="job.applynow">Ứng Tuyển</button>
-                </div>
-                <div class="job-content">
-                    <div class="job-section">
-                        <h4 data-i18n="job.requirements">Yêu Cầu:</h4>
-                        <ul>
-                            <li data-i18n="job3.req1">Chứng chỉ TOPIK level 5-6 hoặc tương đương</li>
-                            <li data-i18n="job3.req2">Có kinh nghiệm dịch thuật ít nhất 1 năm</li>
-                            <li data-i18n="job3.req3">Có máy tính và kết nối internet ổn định</li>
-                            <li data-i18n="job3.req4">Có thể làm việc độc lập và quản lý thời gian tốt</li>
-                        </ul>
-                    </div>
-                    <div class="job-section">
-                        <h4 data-i18n="job.responsibilities">Mô Tả Công Việc:</h4>
-                        <ul>
-                            <li data-i18n="job3.resp1">Dịch các tài liệu từ tiếng Hàn sang tiếng Việt và ngược lại</li>
-                            <li data-i18n="job3.resp2">Đảm bảo chất lượng và thời gian giao hàng theo yêu cầu</li>
-                            <li data-i18n="job3.resp3">Tham gia các buổi họp online khi cần thiết</li>
-                            <li data-i18n="job3.resp4">Cập nhật tiến độ công việc thường xuyên</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job Listing 4 -->
-            <div class="job-listing fade-in">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title" data-i18n="job4.title">Quản Lý Dự Án Dịch Thuật</h3>
-                        <div class="job-meta">
-                            <span class="job-type" data-i18n="job.fulltime">Toàn thời gian</span>
-                            <span class="job-location" data-i18n="job.location.hcm">📍 TP. Hồ Chí Minh</span>
-                            <span class="job-salary" data-i18n="job4.salary">💰 20-30 triệu VNĐ</span>
-                        </div>
-                    </div>
-                    <button class="job-apply-btn" data-i18n="job.applynow">Ứng Tuyển</button>
-                </div>
-                <div class="job-content">
-                    <div class="job-section">
-                        <h4 data-i18n="job.requirements">Yêu Cầu:</h4>
-                        <ul>
-                            <li data-i18n="job4.req1">Tốt nghiệp đại học chuyên ngành ngoại ngữ hoặc quản lý dự án</li>
-                            <li data-i18n="job4.req2">Có ít nhất 3 năm kinh nghiệm quản lý dự án dịch thuật</li>
-                            <li data-i18n="job4.req3">Thành thạo tiếng Anh, ưu tiên biết thêm tiếng Nhật/Hàn</li>
-                            <li data-i18n="job4.req4">Kỹ năng quản lý thời gian và điều phối đội nhóm tốt</li>
-                        </ul>
-                    </div>
-                    <div class="job-section">
-                        <h4 data-i18n="job.responsibilities">Mô Tả Công Việc:</h4>
-                        <ul>
-                            <li data-i18n="job4.resp1">Quản lý và điều phối các dự án dịch thuật từ A-Z</li>
-                            <li data-i18n="job4.resp2">Phân công công việc cho đội ngũ biên phiên dịch viên</li>
-                            <li data-i18n="job4.resp3">Đảm bảo chất lượng và tiến độ các dự án</li>
-                            <li data-i18n="job4.resp4">Giao tiếp với khách hàng, xử lý yêu cầu và khiếu nại</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="requirements-table-wrapper fade-in">
+                <table class="requirements-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="services.table.language">Ngôn Ngữ</th>
+                            <th data-i18n="recruitment.table.certificate">Bằng Cấp / Chứng Chỉ Ưu Tiên</th>
+                            <th data-i18n="recruitment.table.plus">Điểm Cộng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="services.languages.korean">Tiếng Hàn</td>
+                            <td data-i18n="recruitment.table.cert.korean">TOPIK 5 - 6</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.english">Tiếng Anh</td>
+                            <td data-i18n="recruitment.table.cert.english">IELTS 6.5+ / TOEIC 800+ (hoặc tương đương)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.chinese">Tiếng Trung</td>
+                            <td data-i18n="recruitment.table.cert.chinese">HSK 5 - 6</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.japanese">Tiếng Nhật</td>
+                            <td data-i18n="recruitment.table.cert.japanese">JLPT N2 - N1</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.german">Tiếng Đức</td>
+                            <td data-i18n="recruitment.table.cert.german">Goethe-Zertifikat B2 - C1</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.french">Tiếng Pháp</td>
+                            <td data-i18n="recruitment.table.cert.french">DELF/DALF B2 - C1</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.russian">Tiếng Nga</td>
+                            <td data-i18n="recruitment.table.cert.russian">TORFL (ТРКИ) cấp II - III</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.persian">Tiếng Ba Tư (Iran)</td>
+                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.arabic">Tiếng Ả Rập</td>
+                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.mongolian">Tiếng Mông Cổ</td>
+                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.thai">Tiếng Thái</td>
+                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.lao">Tiếng Lào</td>
+                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.khmer">Tiếng Campuchia (Khmer)</td>
+                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="services.languages.indonesian">Tiếng Indonesia</td>
+                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="requirements-note" data-i18n="recruitment.table.note">* Đối với các ngôn ngữ chưa có hệ quy đổi chứng chỉ chuẩn hóa phổ biến, ứng viên vui lòng nộp kèm bằng cấp, chứng chỉ ngôn ngữ hoặc minh chứng kinh nghiệm tương đương để chúng tôi xét duyệt.</p>
             </div>
         </div>
     </section>
 
-    <!-- Application Process -->
+    <!-- Why Join -->
     <section class="section-light">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-tag" data-i18n="recruitment.process.tag">QUY TRÌNH ỨNG TUYỂN</div>
-                <h2 class="section-title" data-i18n="recruitment.process.title">4 Bước Đơn Giản</h2>
+                <div class="section-tag" data-i18n="recruitment.why.tag">QUYỀN LỢI</div>
+                <h2 class="section-title" data-i18n="recruitment.why.title">Vì Sao Nên Trở Thành CTV Của Chúng Tôi</h2>
             </div>
-            <div class="process-timeline">
-                <div class="process-step fade-in">
-                    <div class="process-number">1</div>
-                    <h3 data-i18n="recruitment.step1.title">Gửi Hồ Sơ</h3>
-                    <p data-i18n="recruitment.step1.desc">Điền form ứng tuyển hoặc gửi CV qua email</p>
+            <div class="contact-info-grid">
+                <div class="contact-info-card fade-in">
+                    <div class="contact-icon">💼</div>
+                    <h3 data-i18n="recruitment.why1.title">Dự Án Đa Dạng</h3>
+                    <p data-i18n="recruitment.why1.desc">Cơ hội tiếp cận dự án dịch tài liệu, phiên dịch trực tiếp thuộc nhiều lĩnh vực khác nhau.</p>
                 </div>
-                <div class="process-step fade-in">
-                    <div class="process-number">2</div>
-                    <h3 data-i18n="recruitment.step2.title">Sàng Lọc Hồ Sơ</h3>
-                    <p data-i18n="recruitment.step2.desc">Chúng tôi sẽ xem xét và liên hệ trong vòng 3-5 ngày</p>
+                <div class="contact-info-card fade-in">
+                    <div class="contact-icon">⏰</div>
+                    <h3 data-i18n="recruitment.why2.title">Thời Gian Linh Hoạt</h3>
+                    <p data-i18n="recruitment.why2.desc">Chủ động nhận việc theo lịch trình cá nhân, làm việc từ xa hoặc tại văn phòng.</p>
                 </div>
-                <div class="process-step fade-in">
-                    <div class="process-number">3</div>
-                    <h3 data-i18n="recruitment.step3.title">Phỏng Vấn & Test</h3>
-                    <p data-i18n="recruitment.step3.desc">Phỏng vấn trực tiếp và làm bài test dịch thuật</p>
+                <div class="contact-info-card fade-in">
+                    <div class="contact-icon">💰</div>
+                    <h3 data-i18n="recruitment.why3.title">Thu Nhập Cạnh Tranh</h3>
+                    <p data-i18n="recruitment.why3.desc">Mức phí cạnh tranh theo dự án, thanh toán đúng hạn và minh bạch.</p>
                 </div>
-                <div class="process-step fade-in">
-                    <div class="process-number">4</div>
-                    <h3 data-i18n="recruitment.step4.title">Nhận Kết Quả</h3>
-                    <p data-i18n="recruitment.step4.desc">Thông báo kết quả và thỏa thuận hợp đồng</p>
+                <div class="contact-info-card fade-in">
+                    <div class="contact-icon">📈</div>
+                    <h3 data-i18n="recruitment.why4.title">Cơ Hội Phát Triển</h3>
+                    <p data-i18n="recruitment.why4.desc">Đồng hành lâu dài, ưu tiên nhận các dự án lớn khi có thành tích tốt.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Application Form -->
+    <!-- Application Form Section -->
     <section class="section-white">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title" data-i18n="recruitment.form.title">Nộp Đơn Ứng Tuyển</h2>
-                <p class="section-description" data-i18n="recruitment.form.desc">Điền thông tin bên dưới để bắt đầu hành trình sự nghiệp cùng chúng tôi</p>
+            <div class="contact-layout">
+                <div class="contact-form-wrapper fade-in">
+                    <div class="section-header">
+                        <h2 class="section-title" data-i18n="recruitment.form.title">Nộp Đơn Ứng Tuyển</h2>
+                        <p class="section-description" data-i18n="recruitment.form.desc">Điền thông tin bên dưới, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.</p>
+                    </div>
+                    <form class="contact-form application-form" id="recruitmentForm">
+                        <div class="form-group">
+                            <label data-i18n="recruitment.form.language">Ngôn Ngữ Ứng Tuyển *</label>
+                            <select name="language" id="languageSelect" required>
+                                <option value="" data-i18n="form.select">-- Chọn ngôn ngữ --</option>
+                                <option value="Tieng_Han" data-i18n="services.languages.korean">Tiếng Hàn</option>
+                                <option value="Tieng_Anh" data-i18n="services.languages.english">Tiếng Anh</option>
+                                <option value="Tieng_Trung" data-i18n="services.languages.chinese">Tiếng Trung</option>
+                                <option value="Tieng_Nhat" data-i18n="services.languages.japanese">Tiếng Nhật</option>
+                                <option value="Tieng_Duc" data-i18n="services.languages.german">Tiếng Đức</option>
+                                <option value="Tieng_Phap" data-i18n="services.languages.french">Tiếng Pháp</option>
+                                <option value="Tieng_Nga" data-i18n="services.languages.russian">Tiếng Nga</option>
+                                <option value="Tieng_Iran" data-i18n="services.languages.persian">Tiếng Ba Tư (Iran)</option>
+                                <option value="Tieng_A_Rap" data-i18n="services.languages.arabic">Tiếng Ả Rập</option>
+                                <option value="Tieng_Mong_Co" data-i18n="services.languages.mongolian">Tiếng Mông Cổ</option>
+                                <option value="Tieng_Thai" data-i18n="services.languages.thai">Tiếng Thái</option>
+                                <option value="Tieng_Lao" data-i18n="services.languages.lao">Tiếng Lào</option>
+                                <option value="Tieng_Campuchia" data-i18n="services.languages.khmer">Tiếng Campuchia</option>
+                                <option value="Tieng_Indonesia" data-i18n="services.languages.indonesian">Tiếng Indonesia</option>
+                            </select>
+                        </div>
+
+                        <table class="application-table">
+                            <tbody>
+                                <tr>
+                                    <td class="app-table-label" data-i18n="form.fullname">Họ và Tên *</td>
+                                    <td>
+                                        <input type="text" name="fullname" id="fullnameInput" required placeholder="Nguyễn Văn A">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="app-table-label" data-i18n="form.phone">Số Điện Thoại *</td>
+                                    <td>
+                                        <input type="tel" name="phone" required placeholder="0912345678">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="app-table-label" data-i18n="recruitment.form.about">Mô Tả Ngắn Gọn Về Bản Thân *</td>
+                                    <td>
+                                        <textarea name="description" rows="5" required placeholder="Kinh nghiệm, bằng cấp, lĩnh vực phiên dịch/dịch thuật thế mạnh..."></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="app-table-label" data-i18n="recruitment.form.cv">CV</td>
+                                    <td>
+                                        <p class="cv-note" data-i18n="recruitment.form.cvNote">📎 Vui lòng đính kèm file CV (.pdf, .doc, .docx) trực tiếp vào email sẽ mở ra sau khi bạn bấm "Gửi Đơn Ứng Tuyển" bên dưới. Đặt tên file theo cú pháp <strong>Họ và tên_Ngôn ngữ</strong> (VD: NguyenVanA_TiengHan.pdf) trước khi đính kèm.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" required>
+                                <span data-i18n="contact.form.terms">Tôi đồng ý với <a href="#">chính sách bảo mật</a> và <a href="#">điều khoản sử dụng</a></span>
+                            </label>
+                        </div>
+                        <div class="submit-row">
+                            <button type="submit" class="btn-primary" data-i18n="recruitment.form.submit">Gửi Đơn Ứng Tuyển</button>
+                            <button type="button" class="btn-secondary" id="copyInfoBtn" data-i18n="recruitment.form.copy">📋 Sao Chép Nội Dung</button>
+                        </div>
+                        <p class="form-hint" data-i18n="recruitment.form.hint">Nút "Gửi Đơn Ứng Tuyển" sẽ mở cửa sổ soạn thư của Gmail với nội dung điền sẵn, gửi tới sowonglobal.company@gmail.com. Nếu bạn không dùng Gmail hoặc cửa sổ không mở được, hãy bấm "Sao Chép Nội Dung" rồi dán vào email của bạn.</p>
+                        <p class="form-hint form-hint-warning" data-i18n="recruitment.form.attachReminder">⚠️ Đừng quên đính kèm file CV (đã đổi tên theo đúng cú pháp) vào email trước khi bấm gửi.</p>
+                        <p class="form-hint" id="copyStatus" style="display:none; color:#1f7a4d; font-weight:600;"></p>
+                    </form>
+                </div>
+                <div class="contact-sidebar fade-in">
+                    <div class="sidebar-card">
+                        <h3 data-i18n="recruitment.side1.title">Quy Trình Ứng Tuyển</h3>
+                        <ul class="quote-steps">
+                            <li data-i18n="recruitment.side1.step1">✓ Nộp đơn kèm CV</li>
+                            <li data-i18n="recruitment.side1.step2">✓ Xét duyệt hồ sơ trong 3-5 ngày</li>
+                            <li data-i18n="recruitment.side1.step3">✓ Phỏng vấn / kiểm tra năng lực</li>
+                            <li data-i18n="recruitment.side1.step4">✓ Ký hợp đồng CTV</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3 data-i18n="recruitment.side2.title">Lưu Ý Khi Nộp Hồ Sơ</h3>
+                        <p data-i18n="recruitment.side2.desc">Vui lòng đặt tên file CV theo cú pháp: <strong>Họ và tên_Ngôn ngữ</strong> (VD: NguyenVanA_TiengHan) để chúng tôi xử lý hồ sơ nhanh chóng hơn.</p>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3 data-i18n="contact.email.title">Email</h3>
+                        <p data-i18n="recruitment.side3.desc">Mọi thắc mắc về tuyển dụng, vui lòng liên hệ:</p>
+                        <a href="mailto:sowonglobal.company@gmail.com" class="contact-link">sowonglobal.company@gmail.com</a>
+                    </div>
+                </div>
             </div>
-            <form class="contact-form fade-in" id="applicationForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label data-i18n="form.fullname">Họ và Tên *</label>
-                        <input type="text" name="fullname" required>
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form.email">Email *</label>
-                        <input type="email" name="email" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label data-i18n="form.phone">Số Điện Thoại *</label>
-                        <input type="tel" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="recruitment.form.position">Vị Trí Ứng Tuyển *</label>
-                        <select name="position" required>
-                            <option value="" data-i18n="form.select">-- Chọn vị trí --</option>
-                            <option value="translator-jp" data-i18n="job1.title">Biên Dịch Viên Nhật - Việt</option>
-                            <option value="interpreter-en" data-i18n="job2.title">Phiên Dịch Viên Tiếng Anh</option>
-                            <option value="translator-kr" data-i18n="job3.title">Biên Dịch Viên Tiếng Hàn</option>
-                            <option value="project-manager" data-i18n="job4.title">Quản Lý Dự Án Dịch Thuật</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label data-i18n="recruitment.form.experience">Số Năm Kinh Nghiệm</label>
-                        <select name="experience">
-                            <option value="" data-i18n="form.select">-- Chọn --</option>
-                            <option value="0-1" data-i18n="recruitment.exp.01">Dưới 1 năm</option>
-                            <option value="1-3" data-i18n="recruitment.exp.13">1-3 năm</option>
-                            <option value="3-5" data-i18n="recruitment.exp.35">3-5 năm</option>
-                            <option value="5+" data-i18n="recruitment.exp.5plus">Trên 5 năm</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="recruitment.form.certificate">Chứng Chỉ Ngoại Ngữ</label>
-                        <input type="text" name="certificate" placeholder="VD: JLPT N1, IELTS 7.5, TOPIK 6">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label data-i18n="recruitment.form.cv">Link CV (Google Drive, Dropbox...) *</label>
-                    <input type="url" name="cv_link" required placeholder="https://">
-                </div>
-                <div class="form-group">
-                    <label data-i18n="recruitment.form.intro">Giới Thiệu Bản Thân</label>
-                    <textarea name="introduction" rows="5" placeholder="Hãy chia sẻ về kinh nghiệm, kỹ năng và lý do bạn muốn làm việc với chúng tôi..."></textarea>
-                </div>
-                <button type="submit" class="btn-primary" data-i18n="recruitment.form.submit">Gửi Hồ Sơ Ứng Tuyển</button>
-            </form>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container fade-in">
-            <h2 data-i18n="recruitment.cta.title">Có Câu Hỏi Về Tuyển Dụng?</h2>
-            <p data-i18n="recruitment.cta.desc">Liên hệ với phòng Nhân sự để được tư vấn chi tiết</p>
+            <h2 data-i18n="recruitment.cta.title">Sẵn Sàng Trở Thành Một Phần Của Đội Ngũ?</h2>
+            <p data-i18n="recruitment.cta.desc">Gửi hồ sơ ngay hôm nay và bắt đầu hành trình hợp tác cùng chúng tôi</p>
             <div class="hero-buttons">
-                <a href="contact.html" class="btn-primary" data-i18n="cta.btn1">Liên Hệ Ngay</a>
-                <a href="tel:0911038855" class="btn-secondary" data-i18n="cta.btn2">📞 0911.03.8855</a>
+                <a href="#recruitmentForm" class="btn-primary" data-i18n="recruitment.cta.apply">Ứng Tuyển Ngay</a>
+                <a href="contact.html" class="btn-secondary" data-i18n="recruitment.cta.contact">Liên Hệ Tư Vấn</a>
             </div>
         </div>
     </section>
@@ -381,5 +464,70 @@
     <!-- Load JavaScript files -->
     <script src="script.js"></script>
     <script src="i18n.js"></script>
+    <script>
+        function buildApplicationText() {
+            const form = document.getElementById('recruitmentForm');
+            const fullname = form.fullname.value.trim();
+            const phone = form.phone.value.trim();
+            const description = form.description.value.trim();
+            const languageSelect = document.getElementById('languageSelect');
+            const languageLabel = languageSelect.options[languageSelect.selectedIndex]
+                ? languageSelect.options[languageSelect.selectedIndex].text
+                : '';
+
+            const fileNameSuggestion = fullname.replace(/\s+/g, ' ') + '_' + languageLabel;
+            const subject = 'Ung tuyen CTV - ' + fileNameSuggestion;
+            const body =
+                'Ho va ten: ' + fullname + '\n' +
+                'So dien thoai: ' + phone + '\n' +
+                'Ngon ngu ung tuyen: ' + languageLabel + '\n' +
+                'Mo ta ban than: ' + description + '\n' +
+                '\n*** Vui long dinh kem file CV, dat ten theo cu phap "' + fileNameSuggestion + '.pdf" (hoac .doc/.docx) truoc khi gui email nay. ***';
+
+            return { fullname, languageCode: languageSelect.value, languageLabel, subject, body };
+        }
+
+        // Recruitment Form Submission -> opens a pre-filled Gmail compose window
+        // (more reliable than mailto:, which requires a default mail app to be set up).
+        document.getElementById('recruitmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const { languageCode, subject, body } = buildApplicationText();
+
+            if (!languageCode) {
+                alert('Vui lòng chọn ngôn ngữ ứng tuyển.');
+                return;
+            }
+
+            const gmailComposeUrl =
+                'https://mail.google.com/mail/?view=cm&fs=1' +
+                '&to=' + encodeURIComponent('sowonglobal.company@gmail.com') +
+                '&su=' + encodeURIComponent(subject) +
+                '&body=' + encodeURIComponent(body);
+
+            const newWindow = window.open(gmailComposeUrl, '_blank');
+            if (!newWindow) {
+                alert('Trình duyệt đã chặn cửa sổ soạn email. Vui lòng bấm "Sao Chép Nội Dung" và dán vào email của bạn để gửi thủ công.');
+            }
+        });
+
+        // Copy fallback for people without a Google account or if the popup is blocked
+        document.getElementById('copyInfoBtn').addEventListener('click', function () {
+            const { languageCode, subject, body } = buildApplicationText();
+            if (!languageCode) {
+                alert('Vui lòng chọn ngôn ngữ ứng tuyển trước khi sao chép.');
+                return;
+            }
+            const fullText = 'Gui toi: sowonglobal.company@gmail.com\nTieu de: ' + subject + '\n\n' + body;
+
+            const status = document.getElementById('copyStatus');
+            navigator.clipboard.writeText(fullText).then(function () {
+                status.textContent = '✓ Đã sao chép! Dán vào email và gửi tới sowonglobal.company@gmail.com';
+                status.style.display = 'block';
+            }).catch(function () {
+                status.textContent = 'Không thể tự sao chép, vui lòng chọn và copy nội dung thủ công.';
+                status.style.display = 'block';
+            });
+        });
+    </script>
 </body>
 </html>

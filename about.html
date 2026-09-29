@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="language-switcher.css">
+    <link rel="stylesheet" href="team-section.css">
 </head>
 <body>
     <script src="floating-contact.js"></script>
@@ -16,15 +17,16 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-icon">🌏</div>
-                <span>DỊCH THUẬT</span>
+                <div class="logo-icon">
+                    <img src="logo-white.png" alt="Sowon Global">
+                </div>
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link" data-i18n="nav.home">Trang Chủ</a></li>
                 <li><a href="about.html" class="nav-link active" data-i18n="nav.about">Về Chúng Tôi</a></li>
                 <li><a href="services.html" class="nav-link" data-i18n="nav.services">Dịch Vụ</a></li>
                 <li><a href="recruitment.html" class="nav-link" data-i18n="nav.recruitment">Tuyển Dụng</a></li>
-                <li><a href="contact.html"><button class="contact-btn" data-i18n="nav.contact">Liên Hệ</button></a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Liên Hệ</a></li>
                 
                 <!-- Language Switcher -->
                 <li class="language-switcher">
@@ -43,6 +45,197 @@
         <div class="container">
             <h1 data-i18n="about.header.title">Về Chúng Tôi</h1>
             <p data-i18n="about.header.subtitle">Đối tác tin cậy trong mọi dự án dịch thuật của bạn</p>
+        </div>
+    </section>
+
+    <!-- Team Section (moved to top) -->
+    <section class="section-white team-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag" data-i18n="about.team.tag">ĐỘI NGŨ</div>
+                <h2 class="section-title" data-i18n="about.team.title">Đội Ngũ Chuyên Gia</h2>
+                <p class="section-description" data-i18n="about.team.desc">
+                    Những con người tài năng và tận tâm đằng sau mỗi dự án thành công
+                </p>
+            </div>
+
+            <div class="ceo-card fade-in">
+                <div class="ceo-photo-wrap">
+                    <div class="ceo-photo-ring">
+                        <img src="images/ceo.jpg" alt="Nguyễn Thị Ngọc Trâm - CEO" class="ceo-photo"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="ceo-photo-fallback" style="display:none;">👩‍💼</div>
+                    </div>
+                    <span class="ceo-badge" data-i18n="about.team.ceo.badge">CEO</span>
+                </div>
+                <div class="ceo-body">
+                    <div class="ceo-role" data-i18n="about.team.ceo.role">Giám Đốc Điều Hành</div>
+                    <h3 class="team-name" data-i18n="about.team.ceo.name">Nguyễn Thị Ngọc Trâm</h3>
+                    <dl class="team-info">
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.degrees">Bằng cấp/chứng chỉ liên quan</dt>
+                            <dd data-i18n="about.team.ceo.degrees">[Bằng cấp/chứng chỉ của CEO]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.years">Số năm kinh nghiệm phiên dịch</dt>
+                            <dd data-i18n="about.team.ceo.years">[Số] năm</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.fields">Kinh nghiệm/lĩnh vực đã từng phiên dịch</dt>
+                            <dd data-i18n="about.team.ceo.fields">[Các lĩnh vực đã phiên dịch]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.projects">Một số dự án hoặc khách hàng tiêu biểu</dt>
+                            <dd data-i18n="about.team.ceo.projects">[Dự án/khách hàng tiêu biểu]</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="team-grid team-grid-5">
+                <div class="team-card fade-in">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-card-body">
+                    <h3 class="team-name" data-i18n="about.team.member2.name">[Họ và tên chuyên gia 2]</h3>
+                    <dl class="team-info">
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.degrees">Bằng cấp/chứng chỉ liên quan</dt>
+                            <dd data-i18n="about.team.member2.degrees">[Bằng cấp/chứng chỉ]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.years">Số năm kinh nghiệm phiên dịch</dt>
+                            <dd data-i18n="about.team.member2.years">[Số] năm</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.fields">Kinh nghiệm/lĩnh vực đã từng phiên dịch</dt>
+                            <dd data-i18n="about.team.member2.fields">[Lĩnh vực đã phiên dịch]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.projects">Một số dự án hoặc khách hàng tiêu biểu</dt>
+                            <dd data-i18n="about.team.member2.projects">[Dự án/khách hàng tiêu biểu]</dd>
+                        </div>
+                    </dl>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-card-body">
+                    <h3 class="team-name" data-i18n="about.team.member3.name">[Họ và tên chuyên gia 3]</h3>
+                    <dl class="team-info">
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.degrees">Bằng cấp/chứng chỉ liên quan</dt>
+                            <dd data-i18n="about.team.member3.degrees">[Bằng cấp/chứng chỉ]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.years">Số năm kinh nghiệm phiên dịch</dt>
+                            <dd data-i18n="about.team.member3.years">[Số] năm</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.fields">Kinh nghiệm/lĩnh vực đã từng phiên dịch</dt>
+                            <dd data-i18n="about.team.member3.fields">[Lĩnh vực đã phiên dịch]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.projects">Một số dự án hoặc khách hàng tiêu biểu</dt>
+                            <dd data-i18n="about.team.member3.projects">[Dự án/khách hàng tiêu biểu]</dd>
+                        </div>
+                    </dl>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-card-body">
+                    <h3 class="team-name" data-i18n="about.team.member4.name">[Họ và tên chuyên gia 4]</h3>
+                    <dl class="team-info">
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.degrees">Bằng cấp/chứng chỉ liên quan</dt>
+                            <dd data-i18n="about.team.member4.degrees">[Bằng cấp/chứng chỉ]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.years">Số năm kinh nghiệm phiên dịch</dt>
+                            <dd data-i18n="about.team.member4.years">[Số] năm</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.fields">Kinh nghiệm/lĩnh vực đã từng phiên dịch</dt>
+                            <dd data-i18n="about.team.member4.fields">[Lĩnh vực đã phiên dịch]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.projects">Một số dự án hoặc khách hàng tiêu biểu</dt>
+                            <dd data-i18n="about.team.member4.projects">[Dự án/khách hàng tiêu biểu]</dd>
+                        </div>
+                    </dl>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-card-body">
+                    <h3 class="team-name" data-i18n="about.team.member5.name">[Họ và tên chuyên gia 5]</h3>
+                    <dl class="team-info">
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.degrees">Bằng cấp/chứng chỉ liên quan</dt>
+                            <dd data-i18n="about.team.member5.degrees">[Bằng cấp/chứng chỉ]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.years">Số năm kinh nghiệm phiên dịch</dt>
+                            <dd data-i18n="about.team.member5.years">[Số] năm</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.fields">Kinh nghiệm/lĩnh vực đã từng phiên dịch</dt>
+                            <dd data-i18n="about.team.member5.fields">[Lĩnh vực đã phiên dịch]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.projects">Một số dự án hoặc khách hàng tiêu biểu</dt>
+                            <dd data-i18n="about.team.member5.projects">[Dự án/khách hàng tiêu biểu]</dd>
+                        </div>
+                    </dl>
+                    </div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-card-body">
+                    <h3 class="team-name" data-i18n="about.team.member6.name">[Họ và tên chuyên gia 6]</h3>
+                    <dl class="team-info">
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.degrees">Bằng cấp/chứng chỉ liên quan</dt>
+                            <dd data-i18n="about.team.member6.degrees">[Bằng cấp/chứng chỉ]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.years">Số năm kinh nghiệm phiên dịch</dt>
+                            <dd data-i18n="about.team.member6.years">[Số] năm</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.fields">Kinh nghiệm/lĩnh vực đã từng phiên dịch</dt>
+                            <dd data-i18n="about.team.member6.fields">[Lĩnh vực đã phiên dịch]</dd>
+                        </div>
+                        <div class="team-row">
+                            <dt data-i18n="about.team.label.projects">Một số dự án hoặc khách hàng tiêu biểu</dt>
+                            <dd data-i18n="about.team.member6.projects">[Dự án/khách hàng tiêu biểu]</dd>
+                        </div>
+                    </dl>
+                    </div>
+                </div>
+
+                <div class="team-card lang-card fade-in">
+                    <div class="team-avatar">🌐</div>
+                    <div class="team-card-body">
+                        <h3 class="team-name" data-i18n="about.team.others.title">Các Chuyên Gia Ngôn Ngữ Khác</h3>
+                        <p class="lang-desc" data-i18n="about.team.others.desc">Đội ngũ biên phiên dịch viên chuyên nghiệp cho các ngôn ngữ khác, sẵn sàng đáp ứng đa dạng nhu cầu của khách hàng:</p>
+                        <ul class="lang-chips">
+                            <li class="lang-chip"><span class="lang-flag">🇬🇧</span><span data-i18n="about.team.others.lang.en">Tiếng Anh</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇨🇳</span><span data-i18n="about.team.others.lang.zh">Tiếng Trung</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇯🇵</span><span data-i18n="about.team.others.lang.ja">Tiếng Nhật</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇰🇷</span><span data-i18n="about.team.others.lang.ko">Tiếng Hàn</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇮🇩</span><span data-i18n="about.team.others.lang.id">Tiếng Indonesia</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇱🇦</span><span data-i18n="about.team.others.lang.lo">Tiếng Lào</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇹🇭</span><span data-i18n="about.team.others.lang.th">Tiếng Thái</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇩🇪</span><span data-i18n="about.team.others.lang.de">Tiếng Đức</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇫🇷</span><span data-i18n="about.team.others.lang.fr">Tiếng Pháp</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇮🇹</span><span data-i18n="about.team.others.lang.it">Tiếng Ý</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇷🇺</span><span data-i18n="about.team.others.lang.ru">Tiếng Nga</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇮🇳</span><span data-i18n="about.team.others.lang.in">Tiếng Ấn Độ</span></li>
+                            <li class="lang-chip"><span class="lang-flag">🇰🇭</span><span data-i18n="about.team.others.lang.km">Tiếng Campuchia</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -107,61 +300,10 @@
                 <div class="mv-card fade-in">
                     <div class="mv-icon">💎</div>
                     <h3 data-i18n="about.values.title">Giá Trị Cốt Lõi</h3>
-                    <p data-i18n="about.values.desc" style="white-space: pre-line;"></p>
+                    <p data-i18n="about.values.desc" style="white-space: pre-line;">
                         Chất lượng - Uy tín - Tận tâm. Chúng tôi đặt chất lượng lên hàng đầu, 
                         xây dựng uy tín thông qua từng dự án, và phục vụ khách hàng bằng cả trái tim. 
                         Mỗi bản dịch là một cam kết về sự hoàn hảo và trách nhiệm.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="section-white">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-tag" data-i18n="about.team.tag">ĐỘI NGŨ</div>
-                <h2 class="section-title" data-i18n="about.team.title">Đội Ngũ Chuyên Gia</h2>
-                <p class="section-description" data-i18n="about.team.desc">
-                    Những con người tài năng và tận tâm đằng sau mỗi dự án thành công
-                </p>
-            </div>
-            <div class="team-grid">
-                <div class="team-card fade-in">
-                    <div class="team-avatar">👨‍💼</div>
-                    <h3 data-i18n="about.team.member1.name">Tanaka Hiroshi</h3>
-                    <p class="team-position" data-i18n="about.team.member1.position">Đồng Sáng Lập & CEO</p>
-                    <p class="team-desc" data-i18n="about.team.member1.desc">
-                        15 năm kinh nghiệm dịch thuật Nhật - Việt, chuyên gia trong lĩnh vực 
-                        kinh tế và pháp luật.
-                    </p>
-                </div>
-                <div class="team-card fade-in">
-                    <div class="team-avatar">👩‍💼</div>
-                    <h3 data-i18n="about.team.member2.name">Nguyễn Thu Hà</h3>
-                    <p class="team-position" data-i18n="about.team.member2.position">Đồng Sáng Lập & COO</p>
-                    <p class="team-desc" data-i18n="about.team.member2.desc">
-                        Thạc sĩ Ngôn ngữ học, 12 năm kinh nghiệm quản lý dự án dịch thuật 
-                        quy mô lớn.
-                    </p>
-                </div>
-                <div class="team-card fade-in">
-                    <div class="team-avatar">👨‍🏫</div>
-                    <h3 data-i18n="about.team.member3.name">Park Min-jun</h3>
-                    <p class="team-position" data-i18n="about.team.member3.position">Trưởng Phòng Dịch Thuật Hàn Quốc</p>
-                    <p class="team-desc" data-i18n="about.team.member3.desc">
-                        Chuyên gia dịch thuật Hàn - Việt với hơn 10 năm kinh nghiệm trong 
-                        ngành công nghệ và sản xuất.
-                    </p>
-                </div>
-                <div class="team-card fade-in">
-                    <div class="team-avatar">👩‍🔬</div>
-                    <h3 data-i18n="about.team.member4.name">Trần Minh Anh</h3>
-                    <p class="team-position" data-i18n="about.team.member4.position">Trưởng Bộ Phận Kiểm Soát Chất Lượng</p>
-                    <p class="team-desc" data-i18n="about.team.member4.desc">
-                        Chứng chỉ ISO 17100, chuyên gia về quy trình kiểm soát chất lượng 
-                        dịch thuật quốc tế.
                     </p>
                 </div>
             </div>
@@ -207,7 +349,7 @@
     <section class="section-white">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-tag" data-i18n="about.why.tag">LỢI THỾ</div>
+                <div class="section-tag" data-i18n="about.why.tag">LỢI THẾ</div>
                 <h2 class="section-title" data-i18n="about.why.title">Tại Sao Làm Việc Với Chúng Tôi</h2>
             </div>
             <div class="why-grid">

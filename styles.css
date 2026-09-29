@@ -6,12 +6,12 @@
 }
 
 :root {
-    --primary-color: #c41e3a;
-    --secondary-color: #1a1a2e;
-    --accent-color: #e94560;
+    --primary-color: #3370bf;
+    --secondary-color: #2b2f33;
+    --accent-color: #c9a24b;
     --text-dark: #2d2d2d;
-    --text-light: #666;
-    --bg-light: #f8f9fa;
+    --text-light: #6b6b6b;
+    --bg-light: #f4f4f1;
     --white: #ffffff;
 }
 
@@ -55,35 +55,25 @@ body {
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
 .logo-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
+    width: 80px;
+    height: 80px;
+    margin-left: 5rem;   /* đẩy logo sang phải, tăng lên 2rem nếu muốn xa hơn */
+    flex-shrink: 0;
 }
 
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
 .nav-menu {
     display: flex;
     list-style: none;
@@ -124,24 +114,45 @@ body {
 }
 
 .contact-btn {
-    background: var(--primary-color);
-    color: white;
-    padding: 0.7rem 1.8rem;
-    border-radius: 25px;
-    border: 2px solid var(--primary-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    color: var(--text-dark);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.95rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-family: 'Nunito Sans', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-.contact-btn:hover {
-    background: transparent;
+.contact-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.contact-btn:hover,
+.contact-btn.active {
+    background: none;
     color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
+    transform: none;
+    box-shadow: none;
+}
+
+.contact-btn:hover::after,
+.contact-btn.active::after {
+    width: 100%;
 }
 
 .mobile-menu-btn {
@@ -156,8 +167,8 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(196, 30, 58, 0.8)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231a1a2e" width="1200" height="600"/><g fill-opacity="0.05"><circle fill="%23fff" cx="200" cy="150" r="100"/><circle fill="%23fff" cx="800" cy="400" r="150"/><circle fill="%23fff" cx="1000" cy="200" r="80"/></g></svg>');
+    background: linear-gradient(135deg, rgba(98, 171, 245, 0.9), rgba(117, 167, 232, 0.8)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232b2f33" width="1200" height="600"/><g fill-opacity="0.05"><circle fill="%23fff" cx="200" cy="150" r="100"/><circle fill="%23fff" cx="800" cy="400" r="150"/><circle fill="%23fff" cx="1000" cy="200" r="80"/></g></svg>');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -177,7 +188,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(233, 69, 96, 0.2) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 50%, rgba(201, 162, 75, 0.2) 0%, transparent 50%);
     animation: pulse 8s ease-in-out infinite;
 }
 
@@ -246,7 +257,7 @@ body {
 .btn-primary:hover {
     background: transparent;
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(196, 30, 58, 0.4);
+    box-shadow: 0 10px 30px rgba(91, 100, 112, 0.4);
 }
 
 .btn-secondary {
