@@ -1,0 +1,208 @@
+/* ==========================================================
+   recruitment-mobile.css - Giao diện điện thoại/máy tính bảng cho recruitment.html
+   Nạp SAU khối <style> trong trang và SAU mobile.css.
+   ========================================================== */
+
+@media (max-width: 968px) {
+
+    .page-header {
+        padding: 7.5rem 1.25rem 3rem !important;
+        text-align: center;
+    }
+    .page-header h1 { font-size: 2.1rem; line-height: 1.25; }
+    .page-header p  { font-size: 1.05rem; }
+
+    /* ---------- Quyền lợi ---------- */
+    .contact-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    .contact-info-card { padding: 1.5rem 1.1rem !important; }
+    .contact-info-card h3 { font-size: 1.1rem; }
+    .contact-info-card p  { font-size: 0.92rem; line-height: 1.6; }
+
+    /* ---------- Biểu mẫu + cột bên cạnh: xếp dọc ---------- */
+    .contact-layout {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.75rem !important;
+    }
+    .contact-form-wrapper { padding: 1.5rem 1.1rem !important; }
+    .contact-sidebar { display: grid; gap: 1rem; }
+    .sidebar-card { padding: 1.4rem 1.2rem !important; }
+    .contact-link { word-break: break-all; }
+}
+
+/* ---------- Bảng yêu cầu ngôn ngữ: máy tính bảng (769 - 968px) - vẫn là bảng ---------- */
+@media (min-width: 769px) and (max-width: 968px) {
+    .requirements-table-wrapper .requirements-table thead th,
+    .requirements-table-wrapper .requirements-table tbody td {
+        padding: 0.9rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ---------- Điện thoại (<= 768px) ---------- */
+@media (max-width: 768px) {
+
+    /* ---- Bảng yêu cầu: mỗi ngôn ngữ là một thẻ ---- */
+    .requirements-table-wrapper {
+        overflow: visible;
+        margin-top: 1.5rem;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+    }
+
+    .requirements-table-wrapper .requirements-table {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        background: transparent;
+    }
+
+    /* Ẩn hàng tiêu đề nhưng vẫn giữ trong trang (lấy nhãn + trình đọc màn hình) */
+    .requirements-table-wrapper .requirements-table thead {
+        position: absolute;
+        width: 1px; height: 1px;
+        margin: -1px; padding: 0;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Máy tính bảng nhỏ: 2 thẻ/hàng; điện thoại: 1 thẻ/hàng */
+    .requirements-table-wrapper .requirements-table tbody {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 14px;
+    }
+
+    .requirements-table-wrapper .requirements-table tbody tr,
+    .requirements-table-wrapper .requirements-table tbody tr:nth-child(even),
+    .requirements-table-wrapper .requirements-table tbody tr:hover {
+        display: block;
+        background: #ffffff;
+        border: 1px solid #e4e4df;
+        border-top: 3px solid var(--primary-color);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 12px rgba(43, 47, 51, 0.06);
+    }
+
+    /* Mỗi ô: nhãn nhỏ phía trên, nội dung phía dưới (nội dung dài nên xếp dọc) */
+    .requirements-table-wrapper .requirements-table tbody td {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding: 11px 16px;
+        border-bottom: 1px dashed #e6e6e0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        text-align: left;
+        white-space: normal;
+    }
+    .requirements-table-wrapper .requirements-table tbody td::before {
+        content: attr(data-label);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        color: var(--primary-color);
+    }
+
+    /* Ô đầu tiên = tên ngôn ngữ -> làm tiêu đề thẻ */
+    .requirements-table-wrapper .requirements-table tbody td:first-child {
+        padding: 14px 16px;
+        background: var(--bg-light);
+        border-bottom: 1px solid #e4e4df;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        white-space: normal;
+    }
+    .requirements-table-wrapper .requirements-table tbody td:first-child::before { display: none; }
+
+    /* Ô cuối (Điểm cộng): chữ nhỏ hơn, màu dịu */
+    .requirements-table-wrapper .requirements-table tbody td:last-child {
+        border-bottom: none;
+        font-size: 0.88rem;
+        color: #5c5c5c;
+    }
+
+    .requirements-note { font-size: 0.82rem; margin-top: 1.1rem; padding: 0 0.25rem; }
+
+    /* ---- Biểu mẫu ứng tuyển ---- */
+    .application-form .form-group { margin-bottom: 1.1rem; }
+
+    /* font 16px để iPhone không tự phóng to khi bấm vào ô nhập */
+    .application-form input[type="text"],
+    .application-form input[type="tel"],
+    .application-form input[type="email"],
+    .application-form select,
+    .application-form textarea {
+        width: 100%;
+        font-size: 16px;
+        padding: 0.8rem 0.9rem;
+        box-sizing: border-box;
+    }
+
+    /* Bảng nhập liệu: nhãn trên, ô nhập dưới (áp dụng sớm hơn mốc 640px cũ) */
+    .application-table,
+    .application-table tbody,
+    .application-table tr {
+        display: block;
+        width: 100%;
+    }
+    .application-table td,
+    .application-table .app-table-label {
+        display: block;
+        width: 100% !important;
+    }
+    .application-table .app-table-label {
+        padding: 0.4rem 0 0.35rem !important;
+        white-space: normal;
+        font-size: 0.95rem;
+    }
+    .application-table td { padding-top: 0; padding-bottom: 0.5rem; }
+
+    .cv-note { font-size: 0.85rem; }
+
+    .checkbox-label {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .checkbox-label input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        flex-shrink: 0;
+    }
+
+    .submit-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .submit-row .btn-primary,
+    .submit-row .btn-secondary {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 0.95rem 1.25rem;
+    }
+    .form-hint { font-size: 0.8rem; }
+}
+
+@media (max-width: 600px) {
+    .page-header h1 { font-size: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+    .contact-info-grid { grid-template-columns: 1fr !important; }
+}

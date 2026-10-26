@@ -1,5 +1,5 @@
 /* ============================================================
-   floating-contact.js — Zalo + KakaoTalk floating buttons
+   floating-contact.js — Zalo + KakaoTalk + Phone floating buttons
    Đặt file này vào thư mục gốc website (cùng cấp với index.html)
    Gọi bằng: <script src="floating-contact.js"></script>
    ============================================================ */
@@ -7,6 +7,7 @@
 /* ====== CẤU HÌNH ====== */
 var FC_ZALO_PHONE  = '0986627194'; 
 var FC_KAKAO_PAGE  = 'kakao.html';        /* Trang QR KakaoTalk */
+var FC_PHONE       = '0986627194';        /* Số điện thoại hiển thị & gọi */
 /* ====================== */
 
 (function () {
@@ -67,6 +68,53 @@ var FC_KAKAO_PAGE  = 'kakao.html';        /* Trang QR KakaoTalk */
       transform: translateY(-50%) translateX(0);
     }
 
+    /* ---- Nút điện thoại (kéo dài khi hover) ---- */
+    .fc-phone {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      border-radius: 18px;
+      background: #16A34A;
+      color: #fff;
+      text-decoration: none;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(22,163,74,0.45);
+      transition: transform 0.15s ease;
+    }
+    .fc-phone:active { transform: scale(0.97); }
+    .fc-phone-icon {
+      width: 62px;
+      height: 62px;
+      flex: 0 0 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fc-phone-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+      animation: shake-zalo 5s ease-in-out infinite 1.2s;
+    }
+    .fc-phone-text {
+      max-width: 0;
+      opacity: 0;
+      padding-right: 0;
+      white-space: nowrap;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: max-width 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+    }
+    .fc-phone:hover .fc-phone-text,
+    .fc-phone:focus-visible .fc-phone-text {
+      max-width: 180px;
+      opacity: 1;
+      padding-right: 22px;
+    }
+    .fc-phone:hover .fc-phone-icon svg { animation-play-state: paused; }
+
     /* Overlay mờ để đóng popup khi click ngoài — không dùng nữa */
 
     @keyframes shake-zalo {
@@ -103,6 +151,9 @@ var FC_KAKAO_PAGE  = 'kakao.html';        /* Trang QR KakaoTalk */
       #floating-contact { bottom: 16px; left: 12px; gap: 10px; }
       .fc-btn { width: 54px; height: 54px; }
       .fc-btn svg { width: 54px; height: 54px; }
+      .fc-phone { height: 54px; }
+      .fc-phone-icon { width: 54px; height: 54px; flex-basis: 54px; }
+      .fc-phone-icon svg { width: 26px; height: 26px; }
       #fc-kakao-popup { left: 12px; min-width: 180px; }
       #fc-kakao-popup img.fc-qr { width: 140px; height: 140px; }
     }
@@ -136,6 +187,14 @@ var FC_KAKAO_PAGE  = 'kakao.html';        /* Trang QR KakaoTalk */
         </button>
         <span class="fc-tooltip">KakaoTalk</span>
       </div>
+      <div class="fc-wrap" id="wrap-phone">
+        <a class="fc-phone" id="fc-phone-link" href="tel:0986627194" aria-label="Gọi điện thoại">
+          <span class="fc-phone-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+          </span>
+          <span class="fc-phone-text" id="fc-phone-text">0986627194</span>
+        </a>
+      </div>
     </div>
   `;
 
@@ -154,4 +213,7 @@ var FC_KAKAO_PAGE  = 'kakao.html';        /* Trang QR KakaoTalk */
   document.getElementById('fc-kakao-btn').addEventListener('click', function () {
     window.open(FC_KAKAO_PAGE, '_blank', 'noopener,noreferrer');
   });
+
+  document.getElementById('fc-phone-link').href = 'tel:' + FC_PHONE;
+  document.getElementById('fc-phone-text').textContent = FC_PHONE;
 })();

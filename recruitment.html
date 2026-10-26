@@ -26,8 +26,8 @@
             background: #fff;
         }
         .requirements-table thead th {
-            background: #1f3b57;
-            color: #fdfaf3;
+            background: #c9a24b;
+            color: #2b2f33;
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             font-size: 1rem;
@@ -53,7 +53,7 @@
             background: #faf7ef;
         }
         .requirements-table tbody tr:hover {
-            background: #f2ecd9;
+            background: #f6efdc;
             transition: background 0.2s ease;
         }
         .requirements-table tbody tr:last-child td {
@@ -61,7 +61,7 @@
         }
         .requirements-table tbody td:first-child {
             font-weight: 700;
-            color: #1f3b57;
+            color: #2b2f33;
             white-space: nowrap;
         }
         .requirements-note {
@@ -92,7 +92,7 @@
         .application-table .app-table-label {
             width: 190px;
             font-weight: 600;
-            color: #1f3b57;
+            color: #2b2f33;
             padding-right: 1.2rem;
             padding-top: 0.9rem;
             white-space: nowrap;
@@ -151,6 +151,8 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="recruitment-mobile.css">
 </head>
 <body>
     <script src="floating-contact.js"></script>
@@ -159,7 +161,7 @@
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="logo-white.png" alt="Sowon Global">
+                    <img src="Images/logo-white.png" alt="Sowon Global">
                 </div>
             </div>
             <ul class="nav-menu" id="navMenu">
@@ -445,8 +447,8 @@
             </div>
             <div class="footer-section">
                 <h3 data-i18n="footer.contact.title">Liên Hệ</h3>
-                <p>📞 Hotline: 0911.03.8855</p>
-                <p>✉️ Email: <a href="mailto:info@dichthuatvn.com">info@dichthuatvn.com</a></p>
+                <p>📞 Hotline: 0986627194</p>
+                <p>✉️ Email: <a href="mailto:sowonglobal.company@gmail.com">sowonglobal.company@gmail.com</a></p>
                 <p>📍 Địa chỉ: Hồ Chí Minh, Việt Nam</p>
             </div>
             <div class="footer-section">
@@ -464,6 +466,8 @@
     <!-- Load JavaScript files -->
     <script src="script.js"></script>
     <script src="i18n.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="table-cards.js"></script>
     <script>
         function buildApplicationText() {
             const form = document.getElementById('recruitmentForm');
