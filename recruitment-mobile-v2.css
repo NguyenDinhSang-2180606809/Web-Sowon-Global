@@ -1,0 +1,112 @@
+/* ==========================================================
+   SOWON GLOBAL — Recruitment mobile v2 (thay thế recruitment-mobile.css)
+   Nạp SAU redesign.css và recruitment-v2.css.
+   Cần: table-cards.js gán data-label cho các ô <td> của bảng yêu cầu (như bản cũ).
+   ========================================================== */
+
+@media (max-width: 968px) {
+
+    /* ---------- Tiêu đề trang ---------- */
+    .page-header { padding: 124px 0 52px; }
+    .page-header h1 { font-size: clamp(2rem, 7.6vw, 2.8rem); line-height: 1.12; }
+    .page-header h1::before { width: 44px; margin-bottom: 20px; }
+    .page-header p { margin-top: 16px; font-size: 1.02rem; line-height: 1.65; }
+
+    /* ---------- Quyền lợi ---------- */
+    .contact-info-grid { gap: 14px; }
+    .contact-info-card { padding: 26px 22px 28px; border-radius: var(--radius-md); }
+    .contact-icon { width: 48px; height: 48px; margin-bottom: 20px; border-radius: 14px; }
+    .contact-info-card h3 { font-size: 1.35rem; }
+    .contact-info-card p { font-size: .92rem; line-height: 1.65; }
+
+    /* ---------- Biểu mẫu + cột bên cạnh ---------- */
+    .contact-layout { gap: 20px; }
+    .contact-form-wrapper { padding: 26px 20px; border-radius: var(--radius-md); }
+    .contact-sidebar { gap: 14px; }
+    .sidebar-card { padding: 24px 22px; border-radius: var(--radius-md); }
+}
+
+/* ---------- Bảng yêu cầu: máy tính bảng (769–968px) — vẫn là bảng, cuộn ngang ---------- */
+@media (min-width: 769px) and (max-width: 968px) {
+    .req-card .requirements-table thead th,
+    .req-card .requirements-table tbody td { padding: 14px 18px; font-size: .9rem; }
+}
+
+/* ---------- Điện thoại (≤768px) ---------- */
+@media (max-width: 768px) {
+
+    /* ---- Bảng yêu cầu: mỗi ngôn ngữ là một thẻ ---- */
+    .req-card { background: none; border: 0; border-radius: 0; box-shadow: none; overflow: visible; }
+    .req-card .req-scroll { overflow: visible; }
+    .req-card .requirements-table { display: block; width: 100%; min-width: 0; background: transparent; }
+
+    /* Ẩn hàng tiêu đề nhưng vẫn giữ cho trình đọc màn hình */
+    .req-card .requirements-table thead {
+        position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+        overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    /* 2 thẻ/hàng trên máy tính bảng nhỏ, 1 thẻ/hàng trên điện thoại */
+    .req-card .requirements-table tbody {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px;
+    }
+    .req-card .requirements-table tbody tr,
+    .req-card .requirements-table tbody tr:nth-child(even),
+    .req-card .requirements-table tbody tr:hover {
+        display: block; overflow: hidden;
+        background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--brass);
+        border-radius: var(--radius-md);
+        box-shadow: 0 22px 36px -30px rgba(91, 100, 112, .55);
+    }
+
+    /* Mỗi ô: nhãn nhỏ phía trên, nội dung phía dưới (nội dung dài nên xếp dọc) */
+    .req-card .requirements-table tbody td {
+        display: flex; flex-direction: column; gap: 3px;
+        padding: 12px 18px; border-bottom: 1px dashed var(--line);
+        font-size: .94rem; line-height: 1.5; text-align: left; white-space: normal; color: var(--steel);
+    }
+    .req-card .requirements-table tbody td::before {
+        content: attr(data-label);
+        font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brass-deep);
+    }
+
+    /* Ô đầu = tên ngôn ngữ → tiêu đề thẻ */
+    .req-card .requirements-table tbody td:first-child {
+        padding: 16px 18px; background: var(--paper); border-bottom: 1px solid var(--line);
+        font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; line-height: 1.1; color: var(--ink-2);
+    }
+    .req-card .requirements-table tbody td:first-child::before { display: none; }
+
+    /* Ô cuối (Điểm cộng): chữ nhỏ hơn, màu dịu */
+    .req-card .requirements-table tbody td:last-child { border-bottom: 0; font-size: .87rem; color: var(--steel-3); }
+
+    .requirements-note { margin-top: 18px; padding: 0 4px; font-size: .82rem; }
+
+    /* ---- Biểu mẫu ứng tuyển ---- */
+    .application-form .form-group { margin-bottom: 18px; }
+
+    /* font 16px để iPhone không tự phóng to khi bấm vào ô nhập */
+    .application-form input[type="text"],
+    .application-form input[type="tel"],
+    .application-form input[type="email"],
+    .application-form select,
+    .application-form textarea { font-size: 16px; padding: 13px 16px; }
+
+    /* Bảng nhập liệu: nhãn trên, ô nhập dưới */
+    .application-table, .application-table tbody, .application-table tr { display: block; width: 100%; }
+    .application-table td, .application-table .app-table-label { display: block; width: 100%; }
+    .application-table .app-table-label { padding: 0 0 8px; white-space: normal; font-size: .9rem; }
+    .application-table td { padding-bottom: 6px; }
+    .application-table tr { margin-bottom: 12px; }
+    .application-table tr:last-child { margin-bottom: 0; }
+    .cv-note { font-size: .85rem; }
+
+    .submit-row { flex-direction: column; align-items: stretch; }
+    .submit-row .btn-primary, .submit-row .btn-secondary { width: 100%; justify-content: center; text-align: center; }
+    .form-hint { font-size: .8rem; }
+}
+
+@media (max-width: 480px) {
+    .contact-info-grid { grid-template-columns: 1fr; }
+    .req-card .requirements-table tbody { grid-template-columns: 1fr; }
+}

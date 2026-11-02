@@ -3,32 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f4f1">
     <title>Trang Chủ - Dịch Thuật Chuyên Nghiệp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="language-switcher.css">
-    <link rel="stylesheet" href="mobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="redesign.css">
+    <link rel="stylesheet" href="footer-v2.css">
 </head>
 <body>
+    <!-- Icon sprite -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-quality" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.5 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+        <symbol id="i-price" viewBox="0 0 24 24"><path d="M12 2.5v19M16.8 6.8c0-1.8-2.1-3-4.8-3s-4.8 1.2-4.8 3.1 2 2.7 4.8 3.4 4.8 1.5 4.8 3.4-2.1 3.1-4.8 3.1-4.8-1.2-4.8-3"/></symbol>
+        <symbol id="i-speed" viewBox="0 0 24 24"><path d="M13 2.5L4.5 14H11l-1 7.5L19.5 10H13z"/></symbol>
+        <symbol id="i-security" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></symbol>
+        <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
+        <symbol id="i-support" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><path d="M4 14h3v5H5.5A1.5 1.5 0 014 17.5zM20 14h-3v5h1.5a1.5 1.5 0 001.5-1.5z"/><path d="M18 19c0 1.7-2.7 2.5-6 2.5"/></symbol>
+        <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+        <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21M9 21h6"/></symbol>
+        <symbol id="i-seal" viewBox="0 0 24 24"><circle cx="12" cy="10" r="6.5"/><path d="M9.2 10l2 2 3.6-3.8M8.5 15.3L7 21l5-2.5 5 2.5-1.5-5.7"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.7 6.1 20.8l1.2-6.5L2.5 9.7l6.6-.9z"/></symbol>
+            <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 10h5a1 1 0 011 1v10M3 21h18M8 8h2M8 12h2M8 16h2"/></symbol>
+    </svg>
+
     <script src="floating-contact.js"></script>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar site-nav" id="navbar">
         <div class="nav-container">
-            <div class="logo">
+            <a class="logo" href="index.html" aria-label="Sowon Global">
                 <div class="logo-icon">
                     <img src="Images/logo-white.png" alt="Sowon Global">
                 </div>
-            </div>
+            </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link active" data-i18n="nav.home">Trang Chủ</a></li>
                 <li><a href="about.html" class="nav-link" data-i18n="nav.about">Về Chúng Tôi</a></li>
                 <li><a href="services.html" class="nav-link" data-i18n="nav.services">Dịch Vụ</a></li>
                 <li><a href="recruitment.html" class="nav-link" data-i18n="nav.recruitment">Tuyển Dụng</a></li>
                 <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Liên Hệ</a></li>
-                
-                <!-- Language Switcher - Updated for 4 languages -->
+
+                <!-- Language Switcher - 4 languages -->
                 <li class="language-switcher">
                     <button class="lang-btn" data-lang="vi">VI</button>
                     <button class="lang-btn" data-lang="en">EN</button>
@@ -36,31 +55,57 @@
                     <button class="lang-btn" data-lang="zh">中文</button>
                 </li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 data-i18n="hero.title">DỊCH VỤ DỊCH THUẬT CHUYÊN NGHIỆP</h1>
-            <p class="hero-description" data-i18n="hero.desc">
-                Công ty dịch thuật hàng đầu và giá hợp lý tại Việt Nam được thành lập bởi người Nhật và người Việt.
-            </p>
-            <div class="hero-buttons">
-                <a href="services.html" class="btn-primary" data-i18n="hero.btn1">Xem Dịch Vụ</a>
-                <a href="contact.html" class="btn-secondary" data-i18n="hero.btn2">Liên Hệ Ngay</a>
+    <header class="hero">
+        <div class="wrap hero-inner">
+            <div class="hero-content">
+                <div class="hero-kicker"><i></i>Sowon Global</div>
+                <h1 data-i18n="hero.title">DỊCH VỤ DỊCH THUẬT CHUYÊN NGHIỆP</h1>
+                <p class="hero-description" data-i18n="hero.desc">
+                    Công ty dịch thuật hàng đầu và giá hợp lý tại Việt Nam được thành lập bởi người Nhật và người Việt.
+                </p>
+                <div class="hero-buttons btn-row">
+                    <a href="services.html" class="btn-primary" data-i18n="hero.btn1">Xem Dịch Vụ</a>
+                    <a href="contact.html" class="btn-secondary" data-i18n="hero.btn2">Liên Hệ Ngay</a>
+                </div>
+            </div>
+
+            <!-- Trang trí: lời chào bằng nhiều ngôn ngữ -->
+            <div class="lang-stack" aria-hidden="true">
+                <div class="lang-card" style="--i:0;--x:0%"><span class="greet">Xin chào</span><span class="code">VI</span></div>
+                <div class="lang-card" style="--i:1;--x:24%"><span class="greet">Hello</span><span class="code">EN</span></div>
+                <div class="lang-card is-hot" style="--i:2;--x:6%"><span class="greet">こんにちは</span><span class="code">JA</span></div>
+                <div class="lang-card" style="--i:3;--x:26%"><span class="greet">안녕하세요</span><span class="code">KO</span></div>
+                <div class="lang-card" style="--i:4;--x:10%"><span class="greet">你好</span><span class="code">ZH</span></div>
+                <div class="hero-badge">JP × VN</div>
             </div>
         </div>
         <div class="scroll-indicator">
             <span></span>
         </div>
-    </section>
+    </header>
 
+    <!-- Dải ngôn ngữ phục vụ (13 ngôn ngữ) -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-set">
+                <span>English</span><b></b><span>中文</span><b></b><span>日本語</span><b></b><span>한국어</span><b></b><span>Bahasa Indonesia</span><b></b><span>ພາສາລາວ</span><b></b><span>ไทย</span><b></b><span>Deutsch</span><b></b><span>Français</span><b></b><span>Italiano</span><b></b><span>Русский</span><b></b><span>हिन्दी</span><b></b><span>ខ្មែរ</span><b></b>
+            </div>
+            <div class="marquee-set">
+                <span>English</span><b></b><span>中文</span><b></b><span>日本語</span><b></b><span>한국어</span><b></b><span>Bahasa Indonesia</span><b></b><span>ພາສາລາວ</span><b></b><span>ไทย</span><b></b><span>Deutsch</span><b></b><span>Français</span><b></b><span>Italiano</span><b></b><span>Русский</span><b></b><span>हिन्दी</span><b></b><span>ខ្មែរ</span><b></b>
+            </div>
+        </div>
+    </div>
+
+    <main>
     <!-- Why Choose Us Section -->
-    <section class="section-light">
-        <div class="container">
-            <div class="section-header fade-in">
+    <section class="section section-light">
+        <div class="wrap">
+            <div class="section-header reveal">
                 <div class="section-tag" data-i18n="why.tag">TẠI SAO CHỌN CHÚNG TÔI</div>
                 <h2 class="section-title" data-i18n="why.title">Ưu Điểm Vượt Trội</h2>
                 <p class="section-description" data-i18n="why.desc">
@@ -68,33 +113,33 @@
                 </p>
             </div>
             <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">⭐</div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><svg class="ico"><use href="#i-quality"/></svg></div>
                     <h3 data-i18n="feature.quality.title">Chất Lượng Cao</h3>
                     <p data-i18n="feature.quality.desc">Đội ngũ dịch giả chuyên nghiệp với chứng chỉ quốc tế, đảm bảo độ chính xác tuyệt đối</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">💰</div>
+                <div class="feature-card reveal" style="--d:.08s">
+                    <div class="feature-icon"><svg class="ico"><use href="#i-price"/></svg></div>
                     <h3 data-i18n="feature.price.title">Giá Cạnh Tranh</h3>
                     <p data-i18n="feature.price.desc">Chi phí hợp lý, minh bạch với nhiều gói dịch vụ phù hợp với mọi ngân sách</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">⚡</div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><svg class="ico"><use href="#i-speed"/></svg></div>
                     <h3 data-i18n="feature.speed.title">Giao Hàng Nhanh</h3>
                     <p data-i18n="feature.speed.desc">Cam kết đúng tiến độ, hỗ trợ dịch vụ khẩn cấp 24/7 khi cần thiết</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🔒</div>
+                <div class="feature-card reveal" style="--d:.08s">
+                    <div class="feature-icon"><svg class="ico"><use href="#i-security"/></svg></div>
                     <h3 data-i18n="feature.security.title">Bảo Mật Tuyệt Đối</h3>
                     <p data-i18n="feature.security.desc">Cam kết bảo mật thông tin khách hàng với hợp đồng NDA nghiêm ngặt</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🌐</div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><svg class="ico"><use href="#i-globe"/></svg></div>
                     <h3 data-i18n="feature.multilang.title">Đa Ngôn Ngữ</h3>
                     <p data-i18n="feature.multilang.desc">Hỗ trợ hơn 20 ngôn ngữ phổ biến trên thế giới, đặc biệt là Nhật - Việt</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🤝</div>
+                <div class="feature-card reveal" style="--d:.08s">
+                    <div class="feature-icon"><svg class="ico"><use href="#i-support"/></svg></div>
                     <h3 data-i18n="feature.support.title">Hỗ Trợ 24/7</h3>
                     <p data-i18n="feature.support.desc">Đội ngũ tư vấn sẵn sàng hỗ trợ bạn mọi lúc, mọi nơi</p>
                 </div>
@@ -104,22 +149,22 @@
 
     <!-- Stats Section -->
     <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid fade-in">
+        <div class="wrap">
+            <div class="stats-grid reveal">
                 <div class="stat-item">
-                    <div class="stat-number">1500+</div>
+                    <div class="stat-number" data-count="1500" data-suffix="+">1500+</div>
                     <div class="stat-label" data-i18n="stat.projects">Dự Án Hoàn Thành</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">500+</div>
+                    <div class="stat-number" data-count="500" data-suffix="+">500+</div>
                     <div class="stat-label" data-i18n="stat.clients">Khách Hàng Hài Lòng</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">10+</div>
+                    <div class="stat-number" data-count="10" data-suffix="+">10+</div>
                     <div class="stat-label" data-i18n="stat.experience">Năm Kinh Nghiệm</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">50+</div>
+                    <div class="stat-number" data-count="50" data-suffix="+">50+</div>
                     <div class="stat-label" data-i18n="stat.translators">Dịch Giả Chuyên Nghiệp</div>
                 </div>
             </div>
@@ -127,9 +172,9 @@
     </section>
 
     <!-- Services Preview -->
-    <section class="section-white">
-        <div class="container">
-            <div class="section-header fade-in">
+    <section class="section section-white">
+        <div class="wrap">
+            <div class="section-header reveal">
                 <div class="section-tag" data-i18n="services.tag">DỊCH VỤ</div>
                 <h2 class="section-title" data-i18n="services.title">Dịch Vụ Của Chúng Tôi</h2>
                 <p class="section-description" data-i18n="services.desc">
@@ -137,57 +182,57 @@
                 </p>
             </div>
             <div class="services-preview">
-                <div class="service-card fade-in">
-                    <div class="service-icon">📄</div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><svg class="ico"><use href="#i-doc"/></svg></div>
                     <h3 data-i18n="service.document.title">Dịch Tài Liệu</h3>
                     <p data-i18n="service.document.desc">Dịch thuật tài liệu công chứng, hợp đồng, báo cáo chuyên nghiệp</p>
                     <a href="services.html#documents" class="learn-more" data-i18n="services.learnmore">Tìm hiểu thêm →</a>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🎤</div>
+                <div class="service-card reveal" style="--d:.1s">
+                    <div class="service-icon"><svg class="ico"><use href="#i-mic"/></svg></div>
                     <h3 data-i18n="service.interpretation.title">Phiên Dịch</h3>
                     <p data-i18n="service.interpretation.desc">Phiên dịch viên cho hội nghị, sự kiện, đàm phán kinh doanh</p>
                     <a href="services.html#interpretation" class="learn-more" data-i18n="services.learnmore">Tìm hiểu thêm →</a>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🌐</div>
-                    <h3 data-i18n="service.localization.title">Dịch thuật công chứng</h3>
-                    <p data-i18n="service.localization.desc">Bản dịch có giá trị pháp lý được công chứng</p>
+                <div class="service-card reveal" style="--d:.2s">
+                    <div class="service-icon"><svg class="ico"><use href="#i-seal"/></svg></div>
+                    <h3 data-i18n="service.localization.title">Đào tạo tiếng Trung HSK 1-6</h3>
+                    <p data-i18n="service.localization.desc">Khóa học đào tạo tiếng Trung với các cấp độ từ cơ bản đến nâng cao</p>
                     <a href="services.html#localization" class="learn-more" data-i18n="services.learnmore">Tìm hiểu thêm →</a>
                 </div>
             </div>
-            <div class="text-center" style="margin-top: 3rem;">
+            <div class="services-more reveal">
                 <a href="services.html" class="btn-primary" data-i18n="services.viewall">Xem Tất Cả Dịch Vụ</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section-light">
-        <div class="container">
-            <div class="section-header fade-in">
+    <section class="section section-light">
+        <div class="wrap">
+            <div class="section-header is-single reveal">
                 <div class="section-tag" data-i18n="testimonials.tag">ĐÁNH GIÁ</div>
                 <h2 class="section-title" data-i18n="testimonials.title">Khách Hàng Nói Gì Về Chúng Tôi</h2>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-rating" aria-label="5/5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
                     <p class="testimonial-text" data-i18n="testimonial1.text">"Dịch vụ chuyên nghiệp, nhanh chóng và chất lượng cao. Tôi rất hài lòng với bản dịch hợp đồng của công ty."</p>
                     <div class="testimonial-author">
                         <strong data-i18n="testimonial1.name">Nguyễn Văn A</strong>
                         <span data-i18n="testimonial1.position">Giám đốc - Công ty TNHH ABC</span>
                     </div>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                <div class="testimonial-card reveal" style="--d:.1s">
+                    <div class="testimonial-rating" aria-label="5/5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
                     <p class="testimonial-text" data-i18n="testimonial2.text">"Đội ngũ phiên dịch rất am hiểu về lĩnh vực kỹ thuật. Họ đã hỗ trợ chúng tôi trong buổi đàm phán quan trọng."</p>
                     <div class="testimonial-author">
                         <strong data-i18n="testimonial2.name">Trần Thị B</strong>
                         <span data-i18n="testimonial2.position">Trưởng phòng Kinh doanh - XYZ Corp</span>
                     </div>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                <div class="testimonial-card reveal" style="--d:.2s">
+                    <div class="testimonial-rating" aria-label="5/5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
                     <p class="testimonial-text" data-i18n="testimonial3.text">"Giá cả hợp lý, thời gian giao hàng đúng hẹn. Chắc chắn sẽ tiếp tục sử dụng dịch vụ trong tương lai."</p>
                     <div class="testimonial-author">
                         <strong data-i18n="testimonial3.name">Lê Văn C</strong>
@@ -200,15 +245,18 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container fade-in">
-            <h2 data-i18n="cta.title">Sẵn Sàng Bắt Đầu Dự Án?</h2>
-            <p data-i18n="cta.desc">Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn miễn phí và báo giá tốt nhất</p>
-            <div class="hero-buttons">
-                <a href="contact.html" class="btn-primary" data-i18n="cta.btn1">Liên Hệ Ngay</a>
-                <a href="tel:0986627194" class="btn-secondary" data-i18n="cta.btn2">📞 0986627194</a>
+        <div class="wrap">
+            <div class="cta-panel reveal">
+                <h2 data-i18n="cta.title">Sẵn Sàng Bắt Đầu Dự Án?</h2>
+                <p data-i18n="cta.desc">Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn miễn phí và báo giá tốt nhất</p>
+                <div class="hero-buttons btn-row">
+                    <a href="contact.html" class="btn-primary" data-i18n="cta.btn1">Liên Hệ Ngay</a>
+                    <a href="tel:0986627194" class="btn-secondary" data-i18n="cta.btn2">📞 0986627194</a>
+                </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -227,25 +275,27 @@
             </div>
             <div class="footer-section">
                 <h3 data-i18n="footer.contact.title">Liên Hệ</h3>
-                <p>📞 Hotline: 0986627194</p>
-                <p>✉️ Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc2c5cdc4ebcfc2c8c3dfc3decadfc8c3ded2cec5c5ccc3c2cedb85c8c4c6">sowonglobal.company@gmail.com</a></p>
-                <p>📍 Địa chỉ: Hồ Chí Minh, Việt Nam</p>
+                <div class="fc-row"><svg class="ico"><use href="#i-building"/></svg><span data-i18n="footer.contact.company">CÔNG TY TNHH SOWON GLOBAL</span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-doc"/></svg><span><span data-i18n="footer.contact.tax">MST:</span> 0319334430</span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-phone"/></svg><span><span data-i18n="footer.contact.hotline">Hotline:</span> <a href="tel:0986627194">0986627194</a></span></div>
+                <div class="fc-row fc-email"><svg class="ico"><use href="#i-mail"/></svg><span><span data-i18n="footer.contact.email">Email:</span> <a href="mailto:sowonglobal.company@gmail.com">sowonglobal.company@gmail.com</a></span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-pin"/></svg><span data-i18n="footer.contact.address">Địa chỉ: Tầng 2, Tòa nhà Saigon Paragon, Số 3 Nguyễn Lương Bằng, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam</span></div>
             </div>
             <div class="footer-section">
                 <h3 data-i18n="footer.hours.title">Giờ Làm Việc</h3>
-                <p data-i18n="footer.hours.weekday">Thứ Hai - Thứ Sáu: 8:00 - 18:00</p>
-                <p data-i18n="footer.hours.saturday">Thứ Bảy: 8:00 - 12:00</p>
-                <p data-i18n="footer.hours.sunday">Chủ Nhật: Nghỉ</p>
+                <p data-i18n="footer.hours.weekday">Thứ Hai - Chủ nhật: 8:00 - 18:00</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-i18n="footer.copyright">&copy; 2026 Dịch Thuật Chuyên Nghiệp. All rights reserved.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 Công ty TNHH Sowon Global. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Load JavaScript files -->
     <script src="script.js"></script>
     <script src="i18n.js"></script>
+    <script src="footer-i18n.js"></script>
     <script src="mobile-menu.js"></script>
+    <script src="home-v2.js"></script>
 </body>
 </html>

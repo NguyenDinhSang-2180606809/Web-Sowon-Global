@@ -1,0 +1,27 @@
+/* ==========================================================
+   SOWON GLOBAL — Footer fix (nạp SAU redesign.css, dùng cho mọi trang)
+   - Nới cột "Liên Hệ" để email nằm gọn trên một hàng.
+   - Mobile: giữ nguyên cỡ chữ như các dòng khác; ẩn nhãn "Email:"
+     (đã có icon phong bì) để email có đủ chỗ nằm 1 dòng.
+   Có thể dán thẳng vào cuối redesign.css rồi bỏ link file này.
+   ========================================================== */
+.footer-content { grid-template-columns: 1.1fr .7fr 1.9fr .9fr; gap: 36px; }
+.footer-section .fc-row.fc-email span { white-space: nowrap; }
+
+@media (max-width: 1040px) {
+    .footer-content { grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+}
+@media (max-width: 640px) {
+    .footer-content { grid-template-columns: 1fr; gap: 36px; }
+
+    /* Email 1 dòng, cỡ chữ kế thừa giống các dòng khác */
+    .footer-section .fc-row.fc-email span,
+    .footer-section .fc-row.fc-email a {
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-break: normal;
+        font-size: inherit;
+    }
+    /* Ẩn nhãn "Email:" để nhường chỗ (icon đã thể hiện rõ) */
+    .footer-section .fc-row.fc-email span > span { display: none; }
+}

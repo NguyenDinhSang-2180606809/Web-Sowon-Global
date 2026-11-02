@@ -1,0 +1,141 @@
+/* ==========================================================
+   SOWON GLOBAL — Trang "Về Chúng Tôi" (nạp sau redesign.css)
+   Thay thế team-section.css + about-mobile.css
+   ========================================================== */
+
+/* ---------- Đội ngũ ---------- */
+.team-info { margin: 0; display: grid; gap: 12px; }
+.team-row { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--line); }
+.team-row dt { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--steel-2); }
+.team-row dd { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--charcoal); }
+.team-name { font-family: var(--font-display); font-weight: 600; line-height: 1.1; color: var(--ink-2); }
+
+/* CEO */
+.ceo-card {
+    display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: center;
+    margin-bottom: 24px; padding: 52px 56px; border-radius: 36px; color: #fff;
+    background:
+        radial-gradient(55% 110% at 100% 0%, rgba(243, 227, 176, .38), transparent 65%),
+        linear-gradient(150deg, #7a8491, var(--steel));
+    box-shadow: 0 40px 70px -44px rgba(91, 100, 112, .9);
+}
+.ceo-photo-wrap { position: relative; display: flex; justify-content: center; padding-bottom: 14px; }
+.ceo-photo-ring {
+    width: 280px; height: 280px; padding: 8px; border-radius: 50%;
+    background: linear-gradient(145deg, var(--brass-3), var(--brass));
+    box-shadow: 0 30px 50px -26px rgba(43, 47, 51, .55);
+}
+.ceo-photo, .ceo-photo-fallback { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: top; background: var(--silver); }
+.ceo-photo-fallback { align-items: center; justify-content: center; font-size: 5rem; }
+.ceo-badge {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    padding: 9px 24px; border-radius: 999px; background: #fff; color: var(--ink);
+    font: 700 .78rem/1 var(--font-body); letter-spacing: .22em; box-shadow: 0 14px 28px -12px rgba(43, 47, 51, .55);
+}
+.ceo-role { margin-bottom: 10px; font-size: .74rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--brass-3); }
+.ceo-card .team-name { margin-bottom: 28px; font-size: clamp(2.2rem, 4vw, 3.2rem); color: #fff; }
+.ceo-card .team-row { grid-template-columns: 210px 1fr; gap: 20px; border-top-color: rgba(255, 255, 255, .24); }
+.ceo-card .team-row dt { color: var(--brass-3); }
+.ceo-card .team-row dd { color: rgba(255, 255, 255, .92); }
+
+/* Lưới chuyên gia */
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.team-card {
+    display: flex; flex-direction: column; padding: 20px 20px 26px;
+    border-radius: var(--radius-lg); background: var(--paper); border: 1px solid var(--line);
+    transition: transform .4s var(--ease), border-color .4s, box-shadow .4s, background .4s;
+}
+.team-card:hover { transform: translateY(-5px); border-color: var(--brass); background: #fff; box-shadow: 0 30px 50px -32px rgba(91, 100, 112, .55); }
+.team-avatar {
+    display: grid; place-items: center; aspect-ratio: 1 / 1; margin-bottom: 22px; overflow: hidden;
+    border-radius: 20px; font-size: 3.4rem; color: var(--brass-deep);
+    background: linear-gradient(145deg, #f8edc6, #e3e7eb);
+}
+.team-avatar-img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.team-avatar-fallback { align-items: center; justify-content: center; width: 100%; height: 100%; }
+.team-card-body { padding: 0 8px; }
+.team-card .team-name { margin-bottom: 18px; font-size: 1.65rem; }
+
+/* Thẻ "ngôn ngữ khác" */
+.team-card--langs { background: linear-gradient(150deg, #fff, var(--silver)); }
+.team-card--langs .team-avatar { aspect-ratio: auto; height: 120px; }
+.team-card--langs .team-avatar .ico { width: 54px; height: 54px; stroke-width: 1.3; }
+.lang-desc { margin-bottom: 18px; font-size: .92rem; line-height: 1.65; color: var(--steel); }
+.lang-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.lang-chip { display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px 6px 10px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: .82rem; font-weight: 500; color: var(--charcoal); }
+.lang-flag { font-size: 1.05rem; line-height: 1; }
+
+/* ---------- Câu chuyện ---------- */
+.story-content { display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; align-items: center; }
+.story-text p { margin-bottom: 20px; font-size: 1.04rem; line-height: 1.85; color: var(--steel); }
+.story-text p:first-child { font-family: var(--font-display); font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 500; line-height: 1.4; color: var(--ink-2); }
+.story-image { padding: 38px; }
+.story-image-placeholder {
+    position: relative; display: grid; place-items: center; aspect-ratio: 1 / 1; padding: 14%; text-align: center; border-radius: 50%;
+    background: radial-gradient(circle at 50% 30%, #fffaf0, #ecd58a 78%);
+    box-shadow: 0 0 0 14px rgba(201, 162, 75, .2), 0 0 0 36px rgba(201, 162, 75, .09), 0 46px 60px -34px rgba(148, 116, 42, .7);
+}
+.story-image-placeholder p { font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 600; line-height: 1.2; color: var(--ink-2); }
+.story-image-placeholder p::before { content: ""; display: block; width: 44px; height: 2px; margin: 0 auto 18px; background: var(--brass-deep); }
+
+/* ---------- Sứ mệnh / tầm nhìn / giá trị ---------- */
+.mission-vision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.mv-card {
+    padding: 44px 38px 46px; border-radius: var(--radius-lg); background: var(--paper); border: 1px solid var(--line);
+    transition: transform .4s var(--ease), box-shadow .4s;
+}
+.mv-card:hover { transform: translateY(-5px); box-shadow: 0 34px 50px -32px rgba(91, 100, 112, .6); }
+.mv-icon { display: grid; place-items: center; width: 60px; height: 60px; margin-bottom: 34px; border-radius: 20px; background: linear-gradient(145deg, #f8edc6, #ecd58a); color: var(--ink); }
+.mv-icon .ico { width: 28px; height: 28px; }
+.mv-card h3 { margin-bottom: 14px; font-family: var(--font-display); font-size: 2rem; font-weight: 600; line-height: 1.1; color: var(--ink-2); }
+.mv-card p { font-size: .98rem; line-height: 1.75; color: var(--steel); }
+.mv-card:nth-child(1) { background: linear-gradient(150deg, #7a8491, var(--steel)); border-color: transparent; }
+.mv-card:nth-child(1) h3 { color: #fff; }
+.mv-card:nth-child(1) p { color: rgba(255, 255, 255, .88); }
+.mv-card:nth-child(1) .mv-icon { background: rgba(255, 255, 255, .2); color: #fff; }
+.mv-card:nth-child(3) { background: linear-gradient(135deg, #f3e3b0, var(--brass)); border-color: transparent; }
+.mv-card:nth-child(3) .mv-icon { background: rgba(255, 255, 255, .6); }
+.mv-card:nth-child(3) p { color: rgba(43, 47, 51, .85); }
+
+/* ---------- Chứng nhận ---------- */
+.cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cert-card {
+    padding: 34px 28px 36px; border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line);
+    transition: transform .4s var(--ease), border-color .4s, box-shadow .4s;
+}
+.cert-card:hover { transform: translateY(-5px); border-color: var(--brass); box-shadow: 0 30px 46px -32px rgba(91, 100, 112, .55); }
+.cert-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(145deg, #f8edc6, #ecd58a); color: var(--ink); }
+.cert-card h4 { margin: 24px 0 8px; font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; line-height: 1.2; color: var(--ink-2); }
+.cert-card p { font-size: .92rem; line-height: 1.65; color: var(--steel); }
+
+/* ---------- Lợi thế ---------- */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 44px; }
+.why-item { padding-top: 28px; border-top: 1px solid var(--line); transition: border-color .4s; }
+.why-item:hover { border-top-color: var(--brass); }
+.why-number {
+    margin-bottom: 18px; font-family: var(--font-display); font-size: 3.6rem; font-weight: 600; line-height: 1; font-variant-numeric: lining-nums;
+    background: linear-gradient(180deg, var(--brass-2), var(--brass-deep)); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.why-item h3 { margin-bottom: 10px; font-family: var(--font-display); font-size: 1.65rem; font-weight: 600; line-height: 1.15; color: var(--ink-2); }
+.why-item p { font-size: .96rem; line-height: 1.75; color: var(--steel); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1040px) {
+    .ceo-card { grid-template-columns: 1fr; gap: 36px; padding: 40px 32px; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .story-content { grid-template-columns: 1fr; gap: 48px; }
+    .story-image { max-width: 420px; margin-inline: auto; width: 100%; }
+    .mission-vision-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+    .page-header { padding: 132px 0 56px; }
+    .ceo-card { padding: 32px 22px 36px; border-radius: 28px; }
+    .ceo-photo-ring { width: 230px; height: 230px; }
+    .ceo-card .team-row { grid-template-columns: 1fr; gap: 2px; }
+    .team-grid, .cert-grid, .why-grid { grid-template-columns: 1fr; }
+    .why-grid { gap: 40px; }
+    .story-image { padding: 28px; }
+}

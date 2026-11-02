@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f4f1">
     <title>Dịch Vụ - Dịch Thuật Chuyên Nghiệp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="language-switcher.css">
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="services-mobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="redesign.css">
+    <link rel="stylesheet" href="services-v2.css">
+    <link rel="stylesheet" href="services-mobile-v2.css">
+    <link rel="stylesheet" href="footer-v2.css">
 </head>
 <body>
     <script src="floating-contact.js"></script>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar site-nav" id="navbar">
         <div class="nav-container">
-            <div class="logo">
+            <a class="logo" href="index.html" aria-label="Sowon Global">
                 <div class="logo-icon">
                     <img src="Images/logo-white.png" alt="Sowon Global">
                 </div>
-            </div>
+            </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link" data-i18n="nav.home"></a></li>
-                <li><a href="about.html" class="nav-link" data-i18n="nav.about"></a></li>
-                <li><a href="services.html" class="nav-link active" data-i18n="nav.services"></a></li>
-                <li><a href="recruitment.html" class="nav-link" data-i18n="nav.recruitment"></a></li>
-                <li><a href="contact.html" class="nav-link" data-i18n="nav.contact"></a></li>
+                <li><a href="index.html" class="nav-link" data-i18n="nav.home">Trang Chủ</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav.about">Về Chúng Tôi</a></li>
+                <li><a href="services.html" class="nav-link active" data-i18n="nav.services">Dịch Vụ</a></li>
+                <li><a href="recruitment.html" class="nav-link" data-i18n="nav.recruitment">Tuyển Dụng</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Liên Hệ</a></li>
 
                 <!-- Language Switcher -->
                 <li class="language-switcher">
@@ -37,223 +39,162 @@
                     <button class="lang-btn" data-lang="zh">中文</button>
                 </li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">☰</button>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
+    <header class="page-header">
+        <div class="wrap">
             <h1 data-i18n="services.header.title"></h1>
             <p data-i18n="services.header.subtitle"></p>
         </div>
-    </section>
+    </header>
 
-    <!-- Language Pairs & Pricing Table Section -->
-    <section class="section-light">
-        <div class="container">
-            <div class="section-header fade-in">
+    <main>
+    <!-- Language Pairs & Pricing Table -->
+    <section class="section section-light">
+        <div class="wrap">
+            <div class="section-header reveal">
                 <div class="section-tag" data-i18n="services.languages.tag"></div>
                 <h2 class="section-title" data-i18n="services.languages.title"></h2>
                 <p class="section-description" data-i18n="services.languages.desc"></p>
             </div>
 
-            <div class="lang-price-table-wrapper fade-in">
-                <table class="lang-price-table">
-                    <thead>
+            <div class="price-card reveal">
+                <div class="price-scroll">
+                    <table class="lang-price-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="services.table.language"></th>
+                                <th data-i18n="services.table.interpretation"></th>
+                                <th data-i18n="services.table.translation"></th>
+                                <th data-i18n="services.table.note"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <tr>
-                            <th data-i18n="services.table.language"></th>
-                            <th data-i18n="services.table.interpretation"></th>
-                            <th data-i18n="services.table.translation"></th>
-                            <th data-i18n="services.table.note"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇬🇧</span> <span data-i18n="services.languages.english"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇬🇧</span><span data-i18n="services.languages.english"></span></td>
                             <td data-i18n="services.table.English"></td>
                             <td data-i18n="services.table.English2"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇨🇳</span> <span data-i18n="services.languages.chinese"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇨🇳</span><span data-i18n="services.languages.chinese"></span></td>
                             <td data-i18n="services.table.Chinese"></td>
                             <td data-i18n="services.table.Korean+Japanese+Chinese"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇰🇷</span> <span data-i18n="services.languages.korean"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇰🇷</span><span data-i18n="services.languages.korean"></span></td>
                             <td data-i18n="services.table.Korean"></td>
                             <td data-i18n="services.table.Korean+Japanese+Chinese"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇯🇵</span> <span data-i18n="services.languages.japanese"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇯🇵</span><span data-i18n="services.languages.japanese"></span></td>
                             <td data-i18n="services.table.Japanese"></td>
                             <td data-i18n="services.table.Korean+Japanese+Chinese"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇮🇩</span> <span data-i18n="services.languages.indonesian"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇮🇩</span><span data-i18n="services.languages.indonesian"></span></td>
                             <td data-i18n="services.table.price5"></td>
                             <td data-i18n="services.table.Indo+Lao+Thai+Cam"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇱🇦</span> <span data-i18n="services.languages.lao"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇱🇦</span><span data-i18n="services.languages.lao"></span></td>
                             <td data-i18n="services.table.price5"></td>
                             <td data-i18n="services.table.Indo+Lao+Thai+Cam"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇹🇭</span> <span data-i18n="services.languages.thai"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇹🇭</span><span data-i18n="services.languages.thai"></span></td>
                             <td data-i18n="services.table.price5"></td>
                             <td data-i18n="services.table.Indo+Lao+Thai+Cam"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇩🇪</span> <span data-i18n="services.languages.german"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇩🇪</span><span data-i18n="services.languages.german"></span></td>
                             <td data-i18n="services.table.price6"></td>
                             <td data-i18n="services.table.Russian+German+French+Italian"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇫🇷</span> <span data-i18n="services.languages.french"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇫🇷</span><span data-i18n="services.languages.french"></span></td>
                             <td data-i18n="services.table.price6"></td>
                             <td data-i18n="services.table.Russian+German+French+Italian"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇮🇹</span> <span data-i18n="services.languages.italian"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇮🇹</span><span data-i18n="services.languages.italian"></span></td>
                             <td data-i18n="services.table.price6"></td>
                             <td data-i18n="services.table.Russian+German+French+Italian"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇷🇺</span> <span data-i18n="services.languages.russian"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇷🇺</span><span data-i18n="services.languages.russian"></span></td>
                             <td data-i18n="services.table.price6"></td>
                             <td data-i18n="services.table.Russian+German+French+Italian"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇮🇳</span> <span data-i18n="services.languages.hindi"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇮🇳</span><span data-i18n="services.languages.hindi"></span></td>
                             <td data-i18n="services.table.priceDefault"></td>
                             <td data-i18n="services.table.Arabic+Iran+India"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇰🇭</span> <span data-i18n="services.languages.khmer"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇰🇭</span><span data-i18n="services.languages.khmer"></span></td>
                             <td data-i18n="services.table.priceDefault"></td>
                             <td data-i18n="services.table.Indo+Lao+Thai+Cam"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇰🇭</span> <span data-i18n="services.languages.arap"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇸🇦</span><span data-i18n="services.languages.arap"></span></td>
                             <td data-i18n="services.table.priceDefault"></td>
                             <td data-i18n="services.table.Arabic+Iran+India"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
                         <tr>
-                            <td class="lang-name-cell"><span class="lang-flag">🇰🇭</span> <span data-i18n="services.languages.iran"></span></td>
+                            <td class="lang-name-cell"><span class="lang-flag">🇮🇷</span><span data-i18n="services.languages.iran"></span></td>
                             <td data-i18n="services.table.priceDefault"></td>
                             <td data-i18n="services.table.Arabic+Iran+India"></td>
                             <td data-i18n="services.table.noteDefault"></td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
         </div>
     </section>
 
-    <style>
-        .lang-price-table-wrapper {
-            overflow-x: auto;
-            margin-top: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        }
-        .lang-price-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #ffffff;
-            min-width: 640px;
-        }
-        .lang-price-table thead th {
-            text-align: left;
-            padding: 16px 20px;
-            background: #c9a24b;
-            color: #2b2f33;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-        }
-        .lang-price-table tbody td {
-            padding: 14px 20px;
-            border-bottom: 1px solid #eaeaea;
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 0.95rem;
-            color: #333;
-        }
-        .lang-price-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-        .lang-price-table tbody tr:nth-child(even) {
-            background: #f7f6f1;
-        }
-        .lang-price-table tbody tr:hover {
-            background: #f6efdc;
-        }
-        .lang-name-cell {
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .lang-flag {
-            margin-right: 8px;
-        }
-        .lang-price-note {
-            margin-top: 1.25rem;
-            text-align: center;
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 0.95rem;
-            color: #666;
-            font-style: italic;
-        }
-        @media (max-width: 640px) {
-            .lang-price-table thead th,
-            .lang-price-table tbody td {
-                padding: 10px 12px;
-                font-size: 0.85rem;
-            }
-        }
-    </style>
-
-    <!-- Process Section -->
-    <section class="section-white">
-        <div class="container">
-            <div class="section-header fade-in">
+    <!-- Process -->
+    <section class="section section-white">
+        <div class="wrap">
+            <div class="section-header reveal">
                 <div class="section-tag" data-i18n="services.process.tag"></div>
                 <h2 class="section-title" data-i18n="services.process.title"></h2>
                 <p class="section-description" data-i18n="services.process.desc"></p>
             </div>
             <div class="process-timeline">
-                <div class="process-step fade-in">
+                <div class="process-step reveal">
                     <div class="process-number">1</div>
                     <h4 data-i18n="services.process.step1.title"></h4>
                     <p data-i18n="services.process.step1.desc"></p>
                 </div>
-                <div class="process-step fade-in">
+                <div class="process-step reveal" style="--d:0.08s">
                     <div class="process-number">2</div>
                     <h4 data-i18n="services.process.step2.title"></h4>
                     <p data-i18n="services.process.step2.desc"></p>
                 </div>
-                <div class="process-step fade-in">
+                <div class="process-step reveal" style="--d:0.16s">
                     <div class="process-number">3</div>
                     <h4 data-i18n="services.process.step3.title"></h4>
                     <p data-i18n="services.process.step3.desc"></p>
                 </div>
-                <div class="process-step fade-in">
+                <div class="process-step reveal" style="--d:0.24s">
                     <div class="process-number">4</div>
                     <h4 data-i18n="services.process.step4.title"></h4>
                     <p data-i18n="services.process.step4.desc"></p>
@@ -262,107 +203,76 @@
         </div>
     </section>
 
-    <!-- Other Services Section -->
-    <section class="section-white">
-        <div class="container">
-            <div class="section-header fade-in">
+    <!-- Other Services -->
+    <section class="section section-light">
+        <div class="wrap">
+            <div class="section-header reveal">
                 <div class="section-tag" data-i18n="services.other.tag"></div>
                 <h2 class="section-title" data-i18n="services.other.title"></h2>
                 <p class="section-description" data-i18n="services.other.desc"></p>
             </div>
 
-            <div class="other-services-grid fade-in">
-                <div class="other-service-item">
-                    <span class="other-service-icon">🔖</span>
+            <div class="other-services-grid">
+                <div class="other-service-item reveal" style="--d:0.00s">
+                    <span class="other-service-icon" aria-hidden="true">🎧</span>
+                    <span class="other-service-name" data-i18n="services.other.itemCabin"></span>
+                </div>
+                <div class="other-service-item reveal" style="--d:0.06s">
+                    <span class="other-service-icon" aria-hidden="true">⚖️</span>
+                    <span class="other-service-name" data-i18n="services.other.itemLaw"></span>
+                </div>
+                <div class="other-service-item reveal" style="--d:0.12s">
+                    <span class="other-service-icon" aria-hidden="true">🏛️</span>
+                    <span class="other-service-name" data-i18n="services.other.itemCriminal"></span>
+                </div>
+                <div class="other-service-item reveal" style="--d:0.18s">
+                    <span class="other-service-icon" aria-hidden="true">🔖</span>
                     <span class="other-service-name" data-i18n="services.other.item1"></span>
                 </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">🌐</span>
+                <div class="other-service-item reveal" style="--d:0.00s">
+                    <span class="other-service-icon" aria-hidden="true">🌐</span>
                     <span class="other-service-name" data-i18n="services.other.item2"></span>
                 </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">🎬</span>
-                    <span class="other-service-name" data-i18n="services.other.item3"></span>
-                </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">🎙️</span>
-                    <span class="other-service-name" data-i18n="services.other.item4"></span>
-                </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">✏️</span>
+                <div class="other-service-item reveal" style="--d:0.06s">
+                    <span class="other-service-icon" aria-hidden="true">✏️</span>
                     <span class="other-service-name" data-i18n="services.other.item5"></span>
                 </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">📋</span>
+                <div class="other-service-item reveal" style="--d:0.12s">
+                    <span class="other-service-icon" aria-hidden="true">📋</span>
                     <span class="other-service-name" data-i18n="services.other.item6"></span>
                 </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">🏭</span>
+                <div class="other-service-item reveal" style="--d:0.18s">
+                    <span class="other-service-icon" aria-hidden="true">🏭</span>
                     <span class="other-service-name" data-i18n="services.other.item7"></span>
                 </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">🩺</span>
+                <div class="other-service-item reveal" style="--d:0.00s">
+                    <span class="other-service-icon" aria-hidden="true">🩺</span>
                     <span class="other-service-name" data-i18n="services.other.item8"></span>
                 </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">🎓</span>
-                    <span class="other-service-name" data-i18n="services.other.item9"></span>
-                </div>
-                <div class="other-service-item">
-                    <span class="other-service-icon">⚡</span>
+                <div class="other-service-item reveal" style="--d:0.06s">
+                    <span class="other-service-icon" aria-hidden="true">⚡</span>
                     <span class="other-service-name" data-i18n="services.other.item10"></span>
                 </div>
             </div>
 
-            <p class="lang-price-note" data-i18n="services.table.othernote"></p>
+            <p class="lang-price-note reveal" data-i18n="services.table.othernote"></p>
         </div>
     </section>
-
-    <style>
-        .other-services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 2rem;
-        }
-        .other-service-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 20px;
-            background: #f7f6f1;
-            border: 1px solid #eaeaea;
-            border-radius: 10px;
-            transition: all 0.2s ease;
-        }
-        .other-service-item:hover {
-            background: #f6efdc;
-            border-color: #c9a24b;
-            transform: translateY(-2px);
-        }
-        .other-service-icon {
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-        .other-service-name {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #333;
-        }
-    </style>
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container fade-in">
-            <h2 data-i18n="cta.title"></h2>
-            <p data-i18n="cta.desc"></p>
-            <div class="hero-buttons">
-                <a href="contact.html" class="btn-primary" data-i18n="cta.btn1"></a>
-                <a href="tel:0986627194" class="btn-secondary" data-i18n="cta.btn2"></a>
+        <div class="wrap">
+            <div class="cta-panel reveal">
+                <h2 data-i18n="cta.title"></h2>
+                <p data-i18n="cta.desc"></p>
+                <div class="hero-buttons btn-row">
+                    <a href="contact.html" class="btn-primary" data-i18n="cta.btn1"></a>
+                    <a href="tel:0986627194" class="btn-secondary" data-i18n="cta.btn2"></a>
+                </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -380,25 +290,38 @@
                 <a href="contact.html" data-i18n="nav.contact"></a>
             </div>
             <div class="footer-section">
-                <h3 data-i18n="footer.contact.title"></h3>
-                <p>📞 Hotline: 0986627194</p>
-                <p>✉️ Email: <a href="mailto:sowonglobal.company@gmail.com">sowonglobal.company@gmail.com</a></p>
-                <p>📍 Địa chỉ: Hồ Chí Minh, Việt Nam</p>
+                <h3 data-i18n="footer.contact.title">Liên Hệ</h3>
+                <div class="fc-row"><svg class="ico"><use href="#i-building"/>        <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 10h5a1 1 0 011 1v10M3 21h18M8 8h2M8 12h2M8 16h2"/></symbol>
+            <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+    </svg><span data-i18n="footer.contact.company">CÔNG TY TNHH SOWON GLOBAL</span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-doc"/></svg><span><span data-i18n="footer.contact.tax">MST:</span> 0319334430</span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-phone"/></svg><span><span data-i18n="footer.contact.hotline">Hotline:</span> <a href="tel:0986627194">0986627194</a></span></div>
+                <div class="fc-row fc-email"><svg class="ico"><use href="#i-mail"/></svg><span><span data-i18n="footer.contact.email">Email:</span> <a href="mailto:sowonglobal.company@gmail.com">sowonglobal.company@gmail.com</a></span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-pin"/></svg><span data-i18n="footer.contact.address">Địa chỉ: Tầng 2, Tòa nhà Saigon Paragon, Số 3 Nguyễn Lương Bằng, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam</span></div>
             </div>
             <div class="footer-section">
                 <h3 data-i18n="footer.hours.title"></h3>
-                <p data-i18n="footer.hours.weekday"></p>
+                <p data-i18n="footer.hours.weekday">Thứ Hai - Chủ nhật: 8:00 - 18:00</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-i18n="footer.copyright"></p>
+            <p data-i18n="footer.copyright">&copy; 2026 Công ty TNHH Sowon Global. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Icon sprite (dùng cho footer) -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    </svg>
 
     <!-- Load JavaScript files -->
     <script src="script.js"></script>
     <script src="i18n.js"></script>
+    <script src="footer-i18n.js"></script>
     <script src="mobile-menu.js"></script>
     <script src="services-table.js"></script>
+    <script src="home-v2.js"></script>
 </body>
 </html>

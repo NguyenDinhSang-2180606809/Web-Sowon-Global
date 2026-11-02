@@ -3,167 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f4f1">
     <title>Tuyển Dụng - Dịch Thuật Chuyên Nghiệp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="language-switcher.css">
-    <style>
-        /* Requirements table (14-language recruitment table) */
-        .requirements-table-wrapper {
-            margin-top: 2.5rem;
-            overflow-x: auto;
-            border-radius: 14px;
-            box-shadow: 0 4px 24px rgba(20, 30, 45, 0.08);
-            border: 1px solid #e7e2d8;
-        }
-        .requirements-table {
-            width: 100%;
-            min-width: 640px;
-            border-collapse: collapse;
-            font-family: 'Nunito Sans', sans-serif;
-            background: #fff;
-        }
-        .requirements-table thead th {
-            background: #c9a24b;
-            color: #2b2f33;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.02em;
-            text-align: left;
-            padding: 1.1rem 1.5rem;
-        }
-        .requirements-table thead th:first-child {
-            border-top-left-radius: 14px;
-        }
-        .requirements-table thead th:last-child {
-            border-top-right-radius: 14px;
-        }
-        .requirements-table tbody td {
-            padding: 1rem 1.5rem;
-            font-size: 0.95rem;
-            color: #2c2c2c;
-            border-bottom: 1px solid #ede8db;
-            vertical-align: top;
-            line-height: 1.5;
-        }
-        .requirements-table tbody tr:nth-child(even) {
-            background: #faf7ef;
-        }
-        .requirements-table tbody tr:hover {
-            background: #f6efdc;
-            transition: background 0.2s ease;
-        }
-        .requirements-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-        .requirements-table tbody td:first-child {
-            font-weight: 700;
-            color: #2b2f33;
-            white-space: nowrap;
-        }
-        .requirements-note {
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: #6b6b6b;
-            font-style: italic;
-            line-height: 1.6;
-        }
-        @media (max-width: 640px) {
-            .requirements-table thead th,
-            .requirements-table tbody td {
-                padding: 0.8rem 1rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Application table (4-row form table) */
-        .application-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        .application-table td {
-            padding: 0.6rem 0;
-            vertical-align: top;
-        }
-        .application-table .app-table-label {
-            width: 190px;
-            font-weight: 600;
-            color: #2b2f33;
-            padding-right: 1.2rem;
-            padding-top: 0.9rem;
-            white-space: nowrap;
-        }
-        .application-table input,
-        .application-table textarea {
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .form-hint {
-            margin-top: 0.9rem;
-            font-size: 0.82rem;
-            color: #6b6b6b;
-            line-height: 1.6;
-        }
-        .form-hint-warning {
-            margin-top: 0.5rem;
-            padding: 0.7rem 0.9rem;
-            background: #fdf3e3;
-            border: 1px solid #eddcb2;
-            border-radius: 8px;
-            color: #7a5b1e;
-        }
-        .cv-note {
-            margin: 0.3rem 0 0;
-            padding: 0.7rem 0.9rem;
-            background: #f4f7f6;
-            border: 1px dashed #c9d3d0;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #3f4a48;
-            line-height: 1.6;
-        }
-        .submit-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            align-items: center;
-        }
-        @media (max-width: 640px) {
-            .submit-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-        @media (max-width: 640px) {
-            .application-table .app-table-label {
-                width: auto;
-                display: block;
-                padding-top: 0;
-                padding-bottom: 0.3rem;
-            }
-            .application-table td {
-                display: block;
-                width: 100%;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="recruitment-mobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="redesign.css">
+    <link rel="stylesheet" href="recruitment-v2.css">
+    <link rel="stylesheet" href="recruitment-mobile-v2.css">
+    <link rel="stylesheet" href="footer-v2.css">
 </head>
 <body>
+    <!-- Icon sprite -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7M3 13h18"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.4c-.4-1-1.4-1.6-2.8-1.6-1.6 0-2.8.8-2.8 2 0 3 5.8 1.3 5.8 4.4 0 1.2-1.2 2-2.9 2-1.5 0-2.5-.7-2.9-1.8M12 6v1.8M12 16.2V18"/></symbol>
+        <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+            <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 10h5a1 1 0 011 1v10M3 21h18M8 8h2M8 12h2M8 16h2"/></symbol>
+            <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+    </svg>
+
     <script src="floating-contact.js"></script>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar site-nav" id="navbar">
         <div class="nav-container">
-            <div class="logo">
+            <a class="logo" href="index.html" aria-label="Sowon Global">
                 <div class="logo-icon">
                     <img src="Images/logo-white.png" alt="Sowon Global">
                 </div>
-            </div>
+            </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link" data-i18n="nav.home">Trang Chủ</a></li>
                 <li><a href="about.html" class="nav-link" data-i18n="nav.about">Về Chúng Tôi</a></li>
@@ -179,139 +52,142 @@
                     <button class="lang-btn" data-lang="zh">中文</button>
                 </li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">☰</button>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
+    <header class="page-header">
+        <div class="wrap">
             <h1 data-i18n="recruitment.header.title">Tuyển Cộng Tác Viên Phiên Dịch - Dịch Thuật</h1>
             <p data-i18n="recruitment.header.subtitle">Đồng hành cùng chúng tôi phục vụ khách hàng trên khắp thế giới</p>
         </div>
-    </section>
+    </header>
 
-    <!-- Intro -->
-    <section class="section-white">
-        <div class="container">
-            <div class="section-header fade-in">
+    <main>
+    <!-- Intro + Requirements -->
+    <section class="section section-white">
+        <div class="wrap">
+            <div class="section-header reveal">
                 <div class="section-tag" data-i18n="recruitment.intro.tag">CƠ HỘI HỢP TÁC</div>
                 <h2 class="section-title" data-i18n="recruitment.intro.title">14 Ngôn Ngữ Đang Tuyển Cộng Tác Viên</h2>
                 <p class="section-description" data-i18n="recruitment.intro.desc">Chúng tôi đang mở rộng mạng lưới cộng tác viên (CTV) phiên dịch, dịch thuật freelance trên toàn quốc và quốc tế. Nếu bạn thành thạo một trong các ngôn ngữ dưới đây, hãy ứng tuyển ngay hôm nay.</p>
             </div>
 
-            <div class="requirements-table-wrapper fade-in">
-                <table class="requirements-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="services.table.language">Ngôn Ngữ</th>
-                            <th data-i18n="recruitment.table.certificate">Bằng Cấp / Chứng Chỉ Ưu Tiên</th>
-                            <th data-i18n="recruitment.table.plus">Điểm Cộng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-i18n="services.languages.korean">Tiếng Hàn</td>
-                            <td data-i18n="recruitment.table.cert.korean">TOPIK 5 - 6</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.english">Tiếng Anh</td>
-                            <td data-i18n="recruitment.table.cert.english">IELTS 6.5+ / TOEIC 800+ (hoặc tương đương)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.chinese">Tiếng Trung</td>
-                            <td data-i18n="recruitment.table.cert.chinese">HSK 5 - 6</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.japanese">Tiếng Nhật</td>
-                            <td data-i18n="recruitment.table.cert.japanese">JLPT N2 - N1</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.german">Tiếng Đức</td>
-                            <td data-i18n="recruitment.table.cert.german">Goethe-Zertifikat B2 - C1</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.french">Tiếng Pháp</td>
-                            <td data-i18n="recruitment.table.cert.french">DELF/DALF B2 - C1</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.russian">Tiếng Nga</td>
-                            <td data-i18n="recruitment.table.cert.russian">TORFL (ТРКИ) cấp II - III</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.persian">Tiếng Ba Tư (Iran)</td>
-                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.arabic">Tiếng Ả Rập</td>
-                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.mongolian">Tiếng Mông Cổ</td>
-                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.thai">Tiếng Thái</td>
-                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.lao">Tiếng Lào</td>
-                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.khmer">Tiếng Campuchia (Khmer)</td>
-                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                        <tr>
-                            <td data-i18n="services.languages.indonesian">Tiếng Indonesia</td>
-                            <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
-                            <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="requirements-note" data-i18n="recruitment.table.note">* Đối với các ngôn ngữ chưa có hệ quy đổi chứng chỉ chuẩn hóa phổ biến, ứng viên vui lòng nộp kèm bằng cấp, chứng chỉ ngôn ngữ hoặc minh chứng kinh nghiệm tương đương để chúng tôi xét duyệt.</p>
+            <div class="req-card reveal">
+                <div class="req-scroll">
+                    <table class="requirements-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="services.table.language">Ngôn Ngữ</th>
+                                <th data-i18n="recruitment.table.certificate">Bằng Cấp / Chứng Chỉ Ưu Tiên</th>
+                                <th data-i18n="recruitment.table.plus">Điểm Cộng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-i18n="services.languages.korean">Tiếng Hàn</td>
+                                <td data-i18n="recruitment.table.cert.korean">TOPIK 5 - 6</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.english">Tiếng Anh</td>
+                                <td data-i18n="recruitment.table.cert.english">IELTS 6.5+ / TOEIC 800+ (hoặc tương đương)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.chinese">Tiếng Trung</td>
+                                <td data-i18n="recruitment.table.cert.chinese">HSK 5 - 6</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.japanese">Tiếng Nhật</td>
+                                <td data-i18n="recruitment.table.cert.japanese">JLPT N2 - N1</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.german">Tiếng Đức</td>
+                                <td data-i18n="recruitment.table.cert.german">Goethe-Zertifikat B2 - C1</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.french">Tiếng Pháp</td>
+                                <td data-i18n="recruitment.table.cert.french">DELF/DALF B2 - C1</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.russian">Tiếng Nga</td>
+                                <td data-i18n="recruitment.table.cert.russian">TORFL (ТРКИ) cấp II - III</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.persian">Tiếng Ba Tư (Iran)</td>
+                                <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.arabic">Tiếng Ả Rập</td>
+                                <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.mongolian">Tiếng Mông Cổ</td>
+                                <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.thai">Tiếng Thái</td>
+                                <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.lao">Tiếng Lào</td>
+                                <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.khmer">Tiếng Campuchia (Khmer)</td>
+                                <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="services.languages.indonesian">Tiếng Indonesia</td>
+                                <td data-i18n="recruitment.table.equivalent">Chứng chỉ trình độ cao cấp (tương đương TOPIK 5-6)</td>
+                                <td data-i18n="recruitment.table.bonus">Kinh nghiệm phiên dịch đa lĩnh vực, bằng đại học</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            <p class="requirements-note" data-i18n="recruitment.table.note">* Đối với các ngôn ngữ chưa có hệ quy đổi chứng chỉ chuẩn hóa phổ biến, ứng viên vui lòng nộp kèm bằng cấp, chứng chỉ ngôn ngữ hoặc minh chứng kinh nghiệm tương đương để chúng tôi xét duyệt.</p>
         </div>
     </section>
 
     <!-- Why Join -->
-    <section class="section-light">
-        <div class="container">
-            <div class="section-header fade-in">
+    <section class="section section-light">
+        <div class="wrap">
+            <div class="section-header is-single reveal">
                 <div class="section-tag" data-i18n="recruitment.why.tag">QUYỀN LỢI</div>
                 <h2 class="section-title" data-i18n="recruitment.why.title">Vì Sao Nên Trở Thành CTV Của Chúng Tôi</h2>
             </div>
             <div class="contact-info-grid">
-                <div class="contact-info-card fade-in">
-                    <div class="contact-icon">💼</div>
+                <div class="contact-info-card reveal">
+                    <div class="contact-icon"><svg class="ico"><use href="#i-briefcase"/></svg></div>
                     <h3 data-i18n="recruitment.why1.title">Dự Án Đa Dạng</h3>
                     <p data-i18n="recruitment.why1.desc">Cơ hội tiếp cận dự án dịch tài liệu, phiên dịch trực tiếp thuộc nhiều lĩnh vực khác nhau.</p>
                 </div>
-                <div class="contact-info-card fade-in">
-                    <div class="contact-icon">⏰</div>
+                <div class="contact-info-card reveal" style="--d:0.08s">
+                    <div class="contact-icon"><svg class="ico"><use href="#i-clock"/></svg></div>
                     <h3 data-i18n="recruitment.why2.title">Thời Gian Linh Hoạt</h3>
                     <p data-i18n="recruitment.why2.desc">Chủ động nhận việc theo lịch trình cá nhân, làm việc từ xa hoặc tại văn phòng.</p>
                 </div>
-                <div class="contact-info-card fade-in">
-                    <div class="contact-icon">💰</div>
+                <div class="contact-info-card reveal" style="--d:0.16s">
+                    <div class="contact-icon"><svg class="ico"><use href="#i-coin"/></svg></div>
                     <h3 data-i18n="recruitment.why3.title">Thu Nhập Cạnh Tranh</h3>
                     <p data-i18n="recruitment.why3.desc">Mức phí cạnh tranh theo dự án, thanh toán đúng hạn và minh bạch.</p>
                 </div>
-                <div class="contact-info-card fade-in">
-                    <div class="contact-icon">📈</div>
+                <div class="contact-info-card reveal" style="--d:0.24s">
+                    <div class="contact-icon"><svg class="ico"><use href="#i-trend"/></svg></div>
                     <h3 data-i18n="recruitment.why4.title">Cơ Hội Phát Triển</h3>
                     <p data-i18n="recruitment.why4.desc">Đồng hành lâu dài, ưu tiên nhận các dự án lớn khi có thành tích tốt.</p>
                 </div>
@@ -319,18 +195,18 @@
         </div>
     </section>
 
-    <!-- Application Form Section -->
-    <section class="section-white">
-        <div class="container">
+    <!-- Application Form -->
+    <section class="section section-white">
+        <div class="wrap">
             <div class="contact-layout">
-                <div class="contact-form-wrapper fade-in">
-                    <div class="section-header">
+                <div class="contact-form-wrapper reveal">
+                    <div class="section-header is-stack">
                         <h2 class="section-title" data-i18n="recruitment.form.title">Nộp Đơn Ứng Tuyển</h2>
                         <p class="section-description" data-i18n="recruitment.form.desc">Điền thông tin bên dưới, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.</p>
                     </div>
                     <form class="contact-form application-form" id="recruitmentForm">
                         <div class="form-group">
-                            <label data-i18n="recruitment.form.language">Ngôn Ngữ Ứng Tuyển *</label>
+                            <label for="languageSelect" data-i18n="recruitment.form.language">Ngôn Ngữ Ứng Tuyển *</label>
                             <select name="language" id="languageSelect" required>
                                 <option value="" data-i18n="form.select">-- Chọn ngôn ngữ --</option>
                                 <option value="Tieng_Han" data-i18n="services.languages.korean">Tiếng Hàn</option>
@@ -394,7 +270,7 @@
                         <p class="form-hint" id="copyStatus" style="display:none; color:#1f7a4d; font-weight:600;"></p>
                     </form>
                 </div>
-                <div class="contact-sidebar fade-in">
+                <div class="contact-sidebar reveal" style="--d:.1s">
                     <div class="sidebar-card">
                         <h3 data-i18n="recruitment.side1.title">Quy Trình Ứng Tuyển</h3>
                         <ul class="quote-steps">
@@ -420,15 +296,18 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container fade-in">
-            <h2 data-i18n="recruitment.cta.title">Sẵn Sàng Trở Thành Một Phần Của Đội Ngũ?</h2>
-            <p data-i18n="recruitment.cta.desc">Gửi hồ sơ ngay hôm nay và bắt đầu hành trình hợp tác cùng chúng tôi</p>
-            <div class="hero-buttons">
-                <a href="#recruitmentForm" class="btn-primary" data-i18n="recruitment.cta.apply">Ứng Tuyển Ngay</a>
-                <a href="contact.html" class="btn-secondary" data-i18n="recruitment.cta.contact">Liên Hệ Tư Vấn</a>
+        <div class="wrap">
+            <div class="cta-panel reveal">
+                <h2 data-i18n="recruitment.cta.title">Sẵn Sàng Trở Thành Một Phần Của Đội Ngũ?</h2>
+                <p data-i18n="recruitment.cta.desc">Gửi hồ sơ ngay hôm nay và bắt đầu hành trình hợp tác cùng chúng tôi</p>
+                <div class="hero-buttons btn-row">
+                    <a href="#recruitmentForm" class="btn-primary" data-i18n="recruitment.cta.apply">Ứng Tuyển Ngay</a>
+                    <a href="contact.html" class="btn-secondary" data-i18n="recruitment.cta.contact">Liên Hệ Tư Vấn</a>
+                </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -447,27 +326,29 @@
             </div>
             <div class="footer-section">
                 <h3 data-i18n="footer.contact.title">Liên Hệ</h3>
-                <p>📞 Hotline: 0986627194</p>
-                <p>✉️ Email: <a href="mailto:sowonglobal.company@gmail.com">sowonglobal.company@gmail.com</a></p>
-                <p>📍 Địa chỉ: Hồ Chí Minh, Việt Nam</p>
+                <div class="fc-row"><svg class="ico"><use href="#i-building"/></svg><span data-i18n="footer.contact.company">CÔNG TY TNHH SOWON GLOBAL</span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-doc"/></svg><span><span data-i18n="footer.contact.tax">MST:</span> 0319334430</span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-phone"/></svg><span><span data-i18n="footer.contact.hotline">Hotline:</span> <a href="tel:0986627194">0986627194</a></span></div>
+                <div class="fc-row fc-email"><svg class="ico"><use href="#i-mail"/></svg><span><span data-i18n="footer.contact.email">Email:</span> <a href="mailto:sowonglobal.company@gmail.com">sowonglobal.company@gmail.com</a></span></div>
+                <div class="fc-row"><svg class="ico"><use href="#i-pin"/></svg><span data-i18n="footer.contact.address">Địa chỉ: Tầng 2, Tòa nhà Saigon Paragon, Số 3 Nguyễn Lương Bằng, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam</span></div>
             </div>
             <div class="footer-section">
                 <h3 data-i18n="footer.hours.title">Giờ Làm Việc</h3>
-                <p data-i18n="footer.hours.weekday">Thứ Hai - Thứ Sáu: 8:00 - 18:00</p>
-                <p data-i18n="footer.hours.saturday">Thứ Bảy: 8:00 - 12:00</p>
-                <p data-i18n="footer.hours.sunday">Chủ Nhật: Nghỉ</p>
+                <p data-i18n="footer.hours.weekday">Thứ Hai - Chủ nhật: 8:00 - 18:00</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-i18n="footer.copyright">&copy; 2026 Dịch Thuật Chuyên Nghiệp. All rights reserved.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 Công ty TNHH Sowon Global. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Load JavaScript files -->
     <script src="script.js"></script>
     <script src="i18n.js"></script>
+    <script src="footer-i18n.js"></script>
     <script src="mobile-menu.js"></script>
     <script src="table-cards.js"></script>
+    <script src="home-v2.js"></script>
     <script>
         function buildApplicationText() {
             const form = document.getElementById('recruitmentForm');

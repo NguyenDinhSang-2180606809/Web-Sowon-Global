@@ -1,0 +1,66 @@
+/* ==========================================================
+   SOWON GLOBAL — Contact mobile v2 (thay thế contact-mobile.css)
+   Nạp SAU redesign.css và contact-v2.css.
+   ========================================================== */
+
+@media (max-width: 968px) {
+
+    /* ---------- Tiêu đề trang ---------- */
+    .page-header { padding: 124px 0 52px; }
+    .page-header h1 { font-size: clamp(2rem, 7.6vw, 2.8rem); line-height: 1.12; }
+    .page-header h1::before { width: 44px; margin-bottom: 20px; }
+    .page-header p { margin-top: 16px; font-size: 1.02rem; line-height: 1.65; }
+
+    /* ---------- Thẻ liên hệ ---------- */
+    .contact-info-grid { gap: 14px; }
+    .contact-info-card { padding: 26px 22px 24px; border-radius: var(--radius-md); }
+    a.contact-link::after { border-radius: var(--radius-md); }
+    .contact-icon { width: 48px; height: 48px; margin-bottom: 20px; border-radius: 14px; }
+    .contact-info-card h3 { font-size: 1.35rem; }
+
+    /* ---------- Cách thức liên hệ ---------- */
+    .company-grid { gap: 14px; }
+    .company-card { padding: 26px 22px; border-radius: var(--radius-md); }
+    .company-card h3 { font-size: 1.5rem; margin-bottom: 14px; }
+    .company-card .card-btn { width: 100%; margin-top: 8px; padding: 16px; }
+    .company-row { font-size: .95rem; }
+}
+
+@media (max-width: 768px) {
+
+    /* ---------- Bản đồ ---------- */
+    .map-container { border-radius: var(--radius-md); }
+    .map-container iframe { height: 340px; }
+
+    /* ---------- FAQ ---------- */
+    /* câu trả lời dài (nhất là tiếng Hàn/Trung/Anh) cần nhiều chỗ hơn khi màn hình hẹp */
+    .faq-item.active .faq-answer { max-height: 900px; }
+    .faq-question { min-height: 56px; }
+    .faq-answer p { font-size: .95rem; line-height: 1.7; }
+}
+
+@media (max-width: 600px) {
+    .faq-question { padding: 16px; gap: 12px; }
+    .faq-answer,
+    .faq-item.active .faq-answer { padding-left: 16px; padding-right: 16px; }
+    .faq-item.active .faq-answer { padding-bottom: 20px; }
+}
+
+@media (max-width: 560px) {
+
+    .contact-info-grid { grid-template-columns: 1fr; }
+    .contact-link { font-size: .98rem; }
+    .contact-info-card p { font-size: .93rem; }
+    .contact-info-card p.contact-hours { font-size: .85rem; }
+
+    /* ---------- FAQ gọn hơn ---------- */
+    .faq-container { gap: 10px; }
+    .faq-question::before { width: 36px; height: 36px; font-size: .95rem; }
+    .faq-question h3 { font-size: 1.15rem; line-height: 1.3; }
+    .faq-toggle { width: 30px; height: 30px; font-size: 1.2rem; }
+}
+
+/* Cảm ứng: không nhấc thẻ khi chạm (hiệu ứng hover chỉ dành cho chuột) */
+@media (hover: none) {
+    .contact-info-card:hover { transform: none; }
+}

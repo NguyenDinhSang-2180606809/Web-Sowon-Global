@@ -1,0 +1,113 @@
+/* ==========================================================
+   SOWON GLOBAL — Services v2 (bổ sung cho redesign.css)
+   Dùng chung biến màu / font / nút / nav / footer của redesign.css.
+   Chỉ chứa phần riêng của trang Dịch Vụ: bảng giá, quy trình, dịch vụ khác.
+   ========================================================== */
+
+/* Polyfill cờ quốc gia cho Windows (Windows không có font emoji cờ,
+   nên 🇬🇧 bị hiển thị thành chữ "GB"). Font này chỉ áp dụng cho ký tự cờ. */
+@font-face {
+    font-family: "Twemoji Country Flags";
+    unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067, U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
+    src: url("https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1/dist/TwemojiCountryFlags.woff2") format("woff2");
+    font-display: swap;
+}
+
+.section-header.is-stack { grid-template-columns: 1fr; margin-bottom: 44px; }
+.section-header.is-stack .section-description { max-width: 40em; }
+
+/* ---------- Bảng ngôn ngữ & giá ---------- */
+.price-card {
+    border-radius: var(--radius-lg); overflow: hidden;
+    background: #fff; border: 1px solid var(--line);
+    box-shadow: 0 30px 50px -38px rgba(91, 100, 112, .6);
+}
+.price-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.lang-price-table { width: 100%; min-width: 680px; border-collapse: collapse; background: #fff; }
+.lang-price-table thead th {
+    text-align: left; padding: 20px 26px;
+    background: linear-gradient(135deg, var(--brass-2), var(--brass));
+    color: var(--ink);
+    font: 700 .74rem/1.3 var(--font-body); letter-spacing: .14em; text-transform: uppercase;
+}
+.lang-price-table tbody td {
+    padding: 16px 26px; border-bottom: 1px solid var(--line);
+    font-size: .95rem; line-height: 1.5; color: var(--steel);
+}
+.lang-price-table tbody tr { transition: background .25s; }
+.lang-price-table tbody tr:nth-child(even) { background: var(--paper); }
+.lang-price-table tbody tr:hover { background: #f8efcf; }
+.lang-price-table tbody tr:last-child td { border-bottom: 0; }
+.lang-name-cell { white-space: nowrap; font-weight: 600; color: var(--ink-2) !important; }
+/* Bảng giá (máy tính): cột giá không ngắt dòng, chia lại độ rộng các cột */
+@media (min-width: 769px) {
+    /* Chia cột cố định: Phiên dịch & Dịch thuật rộng bằng nhau */
+    .lang-price-table { table-layout: fixed; min-width: 980px; }
+    .lang-price-table th:nth-child(1) { width: 20%; }
+    .lang-price-table th:nth-child(2),
+    .lang-price-table th:nth-child(3) { width: 20%; white-space: nowrap; }
+    .lang-price-table th:nth-child(4) { width: 40%; }
+    .lang-price-table tbody td:nth-child(2),
+    .lang-price-table tbody td:nth-child(3) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+}
+
+.lang-flag {
+    display: inline-block;
+    width: 1.6em;                 /* độ rộng cố định -> tên ngôn ngữ luôn thẳng hàng */
+    margin-right: 10px;
+    text-align: center;
+    font-family: "Twemoji Country Flags", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 1.15rem;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* ---------- Quy trình ---------- */
+.process-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+.process-step {
+    position: relative; padding: 36px 30px 34px; border-radius: var(--radius-lg);
+    background: var(--paper); border: 1px solid var(--line);
+    transition: transform .4s var(--ease), border-color .4s, box-shadow .4s, background .4s;
+}
+.process-step:hover { transform: translateY(-5px); border-color: var(--brass); box-shadow: 0 30px 50px -32px rgba(91, 100, 112, .5); background: #fff; }
+.process-number {
+    width: 52px; height: 52px; display: grid; place-items: center; margin-bottom: 28px;
+    border-radius: 50%; background: linear-gradient(135deg, var(--brass-2), var(--brass)); color: var(--ink);
+    font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; line-height: 1;
+}
+/* đường nối giữa các bước */
+.process-step:not(:last-child)::after {
+    content: ""; position: absolute; top: 62px; left: calc(30px + 52px + 12px); right: -20px;
+    height: 1px; background: repeating-linear-gradient(90deg, var(--steel-2) 0 6px, transparent 6px 12px);
+    z-index: 1;
+}
+.process-step h4 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.15; color: var(--ink-2); margin-bottom: 10px; }
+.process-step p { font-size: .95rem; line-height: 1.7; color: var(--steel); }
+
+/* ---------- Dịch vụ khác ---------- */
+.other-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.other-service-item {
+    display: flex; align-items: center; gap: 16px; padding: 18px 22px;
+    border-radius: var(--radius-md); background: var(--paper); border: 1px solid var(--line);
+    transition: transform .35s var(--ease), border-color .35s, background .35s, box-shadow .35s;
+}
+.other-service-item:hover { transform: translateY(-3px); background: #fff; border-color: var(--brass); box-shadow: 0 22px 36px -26px rgba(91, 100, 112, .55); }
+.other-service-icon {
+    flex: none; width: 46px; height: 46px; display: grid; place-items: center;
+    border-radius: 14px; background: linear-gradient(145deg, #f8edc6, #ecd58a); font-size: 1.25rem; line-height: 1;
+}
+.other-service-name { font-size: .95rem; font-weight: 600; line-height: 1.4; color: var(--ink-2); }
+.lang-price-note { margin-top: 28px; text-align: center; font-size: .95rem; font-style: italic; color: var(--steel); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1040px) {
+    .process-timeline { grid-template-columns: repeat(2, 1fr); }
+    .process-step:not(:last-child)::after { display: none; }
+}
+@media (max-width: 640px) {
+    .process-timeline { grid-template-columns: 1fr; }
+    .process-step { padding: 30px 26px; }
+    .lang-price-table thead th, .lang-price-table tbody td { padding: 12px 16px; font-size: .88rem; }
+    .lang-price-table thead th { font-size: .68rem; }
+    .section-header.is-stack { margin-bottom: 32px; }
+}

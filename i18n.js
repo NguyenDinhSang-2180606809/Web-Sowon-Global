@@ -1,4 +1,3 @@
-
 const translations = {
     vi: {
             // ===== Navigation =====
@@ -51,7 +50,7 @@ const translations = {
             'services.table.interpretation': 'Phiên Dịch',
             'services.table.translation': 'Dịch Thuật',
             'services.table.note': 'Ghi Chú',
-            'services.table.priceDefault': 'Liên hện qua Hotline, Zalo, KakaoTalk để được báo giá chi tiết.',
+            'services.table.priceDefault': 'Liên hện qua Hotline, Zalo, KakaoTalk để được báo giá chi tiết.',
             'services.table.English': '345.000 ~ 960.000',
             'services.table.Chinese': '375.000 ~ 1080.000',
             'services.table.Korean': '435.000~ 1.200.000',
@@ -80,7 +79,7 @@ const translations = {
             'services.languages.russian': 'Tiếng Nga',
             'services.languages.hindi': 'Tiếng Hindi (Ấn Độ)',
             'services.languages.khmer': 'Tiếng Campuchia',
-            'services.languages.arap': 'Tiếng Ả Rập',
+            'services.languages.arap': 'Tiếng Ả Rập',
             'services.languages.iran': 'Tiếng Iran',
 
             // ===== Services page: Quy trình làm việc =====
@@ -100,15 +99,15 @@ const translations = {
             'services.other.tag': 'DỊCH VỤ KHÁC',
             'services.other.title': 'Dịch Vụ Khác',
             'services.other.desc': 'Ngoài bảng giá theo ngôn ngữ ở trên, chúng tôi còn cung cấp các dịch vụ sau',
+            'services.other.itemCabin': 'Dịch cabin',
+            'services.other.itemLaw': 'Dịch thuật chuyên ngành luật',
+            'services.other.itemCriminal': 'Dịch án tội phạm cho cơ quan nhà nước',
             'services.other.item1': 'Dịch thuật công chứng',
             'services.other.item2': 'Bản địa hóa website & ứng dụng',
-            'services.other.item3': 'Phụ đề video & phim',
-            'services.other.item4': 'Lồng tiếng (Voice-over)',
             'services.other.item5': 'Biên tập & hiệu đính',
             'services.other.item6': 'Dịch hợp đồng thương mại',
             'services.other.item7': 'Phiên dịch thị sát nhà máy',
             'services.other.item8': 'Phiên dịch y tế',
-            'services.other.item9': 'Dịch hồ sơ du học',
             'services.other.item10': 'Dịch thuật khẩn cấp (Rush)',
 
             // ===== Testimonials =====
@@ -233,7 +232,7 @@ const translations = {
             'about.team.ceo.projects': 'Cộng tác viên cho các trụ sở Công an tại các phường trọng điểm có đông người nước ngoài trên địa bàn TP.HCM; Viện Kiểm sát Nhân dân; Tòa án; Cộng tác viên Đại sứ quán Hàn Quốc tại TP.HCM; Phiên dịch hội thảo y tế cho Hiệp hội Thiết bị Y tế Hàn Quốc; Phiên dịch cho team điều hành dự án Waterbomb 2026',
             'about.team.member2.name': 'Lê Nguyễn Phúc Uyên',
             'about.team.member2.degrees': 'HSK 5, HSKK Cao cấp, IELTS 7.5',
-            'about.team.member2.years': '2 năm, có khả năng phiên dịch cả tiếng Trung và tiếng Anh',
+            'about.team.member2.years': '2 năm, có khả năng phiên dịch cả tiếng Trung và tiếng Anh',
             'about.team.member2.fields': 'Ô tô, bao bì đóng gói, gỗ, Luật',
             'about.team.member2.projects': 'Trung tâm Ngoại ngữ SOFL; Công ty TNHH Anta Sports Việt Nam; SUSTA (Southern United States Trade Association)',
             'about.team.member3.name': 'Võ Ngọc Cẩm Hằng',
@@ -241,7 +240,7 @@ const translations = {
             'about.team.member3.years': 'Du học sinh chuyên ngành tiếng Trung, có nhiều kinh nghiệm phiên dịch, dịch thuật trong quá trình học tập và làm việc tại Trung Quốc',
             'about.team.member3.fields': 'Phiên dịch, dịch thuật, E-commerce và thương mại',
             'about.team.member3.projects': 'Thực tập Trợ lý Tiếng Trung tại lĩnh vực E-commerce; tham gia phiên dịch các cuộc thảo luận và cuộc họp thương mại',
-            'about.team.member4.name': '[Trương Ngọc Yến Như]',
+            'about.team.member4.name': '[Trương Ngọc Yến Như]',
             'about.team.member4.degrees': 'Cử nhân chương trình liên kết 2+2 giữa Đại học Khoa học Xã hội và Nhân văn TP.HCM và Đại học Sư phạm Quảng Tây; HSK 6',
             'about.team.member4.years': '2 năm',
             'about.team.member4.fields': 'Y tế, pháp luật, du lịch, đào tạo (training), triển lãm – hội nghị, phiên dịch nối tiếp, công trình xây dựng, thiết bị, bất động sản',
@@ -411,8 +410,8 @@ const translations = {
         'service.document.desc': 'Professional translation of certified documents, contracts, and reports',
         'service.interpretation.title': 'Interpretation',
         'service.interpretation.desc': 'Interpreters for conferences, events, and business negotiations',
-        'service.localization.title': 'Localization',
-        'service.localization.desc': 'Website, app, and software localization for international markets',
+        'service.localization.title': 'Chinese Language Training (HSK 1-6)',
+        'service.localization.desc': 'Chinese language courses from beginner to advanced levels',
 
         // ===== Services page: Header =====
         'services.header.title': 'Our Services',
@@ -475,15 +474,15 @@ const translations = {
         'services.other.tag': 'OTHER SERVICES',
         'services.other.title': 'Other Services',
         'services.other.desc': 'In addition to the language-based pricing above, we also offer the following services',
+        'services.other.itemCabin': 'Simultaneous interpretation (booth)',
+        'services.other.itemLaw': 'Legal translation',
+        'services.other.itemCriminal': 'Criminal case translation for government agencies',
         'services.other.item1': 'Certified (notarized) translation',
         'services.other.item2': 'Website & app localization',
-        'services.other.item3': 'Video & film subtitling',
-        'services.other.item4': 'Voice-over',
         'services.other.item5': 'Editing & proofreading',
         'services.other.item6': 'Commercial contract translation',
         'services.other.item7': 'Factory site-visit interpretation',
         'services.other.item8': 'Medical interpretation',
-        'services.other.item9': 'Study-abroad document translation',
         'services.other.item10': 'Rush (urgent) translation',
 
         // ===== Testimonials =====
@@ -788,8 +787,8 @@ const translations = {
         'service.document.desc': '공인 문서, 계약서 및 보고서의 전문 번역',
         'service.interpretation.title': '통역',
         'service.interpretation.desc': '회의, 행사 및 비즈니스 협상을 위한 통역사',
-        'service.localization.title': '현지화',
-        'service.localization.desc': '해외 시장을 위한 웹사이트, 앱 및 소프트웨어 현지화',
+        'service.localization.title': 'HSK 1-6 중국어 교육',
+        'service.localization.desc': '기초부터 고급까지 단계별로 진행하는 중국어 교육 과정',
 
         // ===== Services page: Header =====
         'services.header.title': '우리의 서비스',
@@ -852,15 +851,15 @@ const translations = {
         'services.other.tag': '기타 서비스',
         'services.other.title': '기타 서비스',
         'services.other.desc': '위의 언어별 가격표 외에도 다음과 같은 서비스를 제공합니다',
+        'services.other.itemCabin': '동시통역 (부스)',
+        'services.other.itemLaw': '법률 전문 번역',
+        'services.other.itemCriminal': '국가기관 대상 형사 사건 번역',
         'services.other.item1': '공증 번역',
         'services.other.item2': '웹사이트 및 앱 현지화',
-        'services.other.item3': '영상 및 영화 자막',
-        'services.other.item4': '더빙(보이스오버)',
         'services.other.item5': '편집 및 교정',
         'services.other.item6': '상업 계약서 번역',
         'services.other.item7': '공장 시찰 통역',
         'services.other.item8': '의료 통역',
-        'services.other.item9': '유학 서류 번역',
         'services.other.item10': '긴급 번역(Rush)',
 
         // ===== Testimonials =====
@@ -1165,8 +1164,8 @@ const translations = {
         'service.document.desc': '认证文件、合同和报告的专业翻译',
         'service.interpretation.title': '口译',
         'service.interpretation.desc': '为会议、活动和商务谈判提供口译员',
-        'service.localization.title': '本地化',
-        'service.localization.desc': '面向国际市场的网站、应用程序和软件本地化',
+        'service.localization.title': 'HSK 1-6级中文培训',
+        'service.localization.desc': '从基础到高级的汉语培训课程，涵盖各个等级',
 
         // ===== Services page: Header =====
         'services.header.title': '我们的服务',
@@ -1229,15 +1228,15 @@ const translations = {
         'services.other.tag': '其他服务',
         'services.other.title': '其他服务',
         'services.other.desc': '除上述按语言划分的价目表外，我们还提供以下服务',
+        'services.other.itemCabin': '同声传译（同传箱）',
+        'services.other.itemLaw': '法律专业翻译',
+        'services.other.itemCriminal': '为国家机关提供刑事案件翻译',
         'services.other.item1': '公证翻译',
         'services.other.item2': '网站与应用本地化',
-        'services.other.item3': '视频与电影字幕',
-        'services.other.item4': '配音',
         'services.other.item5': '编辑与校对',
         'services.other.item6': '商务合同翻译',
         'services.other.item7': '工厂考察口译',
         'services.other.item8': '医疗口译',
-        'services.other.item9': '留学资料翻译',
         'services.other.item10': '加急翻译（Rush）',
 
         // ===== Testimonials =====
