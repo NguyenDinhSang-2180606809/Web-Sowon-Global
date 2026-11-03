@@ -39,16 +39,18 @@
 .lang-price-table tbody tr:hover { background: #f8efcf; }
 .lang-price-table tbody tr:last-child td { border-bottom: 0; }
 .lang-name-cell { white-space: nowrap; font-weight: 600; color: var(--ink-2) !important; }
-/* Bảng giá (máy tính): cột giá không ngắt dòng, chia lại độ rộng các cột */
+/* Bảng giá (máy tính): chia lại độ rộng các cột; ô giá/ghi chú được phép xuống dòng
+   (trước đây nowrap làm câu "Liên hệ qua Hotline..." tràn đè lên cột bên cạnh) */
 @media (min-width: 769px) {
-    /* Chia cột cố định: Phiên dịch & Dịch thuật rộng bằng nhau */
     .lang-price-table { table-layout: fixed; min-width: 980px; }
-    .lang-price-table th:nth-child(1) { width: 20%; }
+    .lang-price-table th:nth-child(1) { width: 18%; }
     .lang-price-table th:nth-child(2),
-    .lang-price-table th:nth-child(3) { width: 20%; white-space: nowrap; }
-    .lang-price-table th:nth-child(4) { width: 40%; }
+    .lang-price-table th:nth-child(3) { width: 25%; }
+    .lang-price-table th:nth-child(4) { width: 32%; }
+    .lang-price-table thead th:nth-child(2),
+    .lang-price-table thead th:nth-child(3) { white-space: nowrap; }
     .lang-price-table tbody td:nth-child(2),
-    .lang-price-table tbody td:nth-child(3) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .lang-price-table tbody td:nth-child(3) { white-space: normal; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
 }
 
 .lang-flag {

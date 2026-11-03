@@ -1,12 +1,10 @@
 /* services-table.js
-   Trên điện thoại, bảng giá hiển thị dạng thẻ (xem services-mobile.css).
+   Trên điện thoại, bảng giá hiển thị dạng thẻ (xem services-mobile-v2.css / services-courses.css).
    Mỗi ô cần biết tên cột của nó -> sao chép chữ ở tiêu đề cột vào thuộc tính data-label.
+   Áp dụng cho bảng giá dịch thuật (.lang-price-table) và bảng khóa học (.course-price-table).
    Dùng MutationObserver nên tự cập nhật khi đổi ngôn ngữ (i18n.js đổi chữ tiêu đề). */
 (function () {
-    function init() {
-        var table = document.querySelector('.lang-price-table');
-        if (!table) return;
-
+    function setup(table) {
         function applyLabels() {
             var heads = table.querySelectorAll('thead th');
             var labels = [];
@@ -27,6 +25,10 @@
                 childList: true, characterData: true, subtree: true
             });
         }
+    }
+
+    function init() {
+        document.querySelectorAll('.lang-price-table, .course-price-table').forEach(setup);
     }
 
     if (document.readyState === 'loading') {

@@ -1,0 +1,105 @@
+/* ==========================================================
+   SOWON GLOBAL — Bảng giá khóa học HSK / YCT (services.html)
+   Nạp SAU services-v2.css và services-mobile-v2.css.
+   Dùng chung biến màu của redesign.css và khung .price-card / .price-scroll.
+   Cần: services-table.js (gán data-label) + courses-tabs.js (chuyển tab).
+   ========================================================== */
+
+/* ---------- Tab chọn giáo trình (chỉ hiện khi có JS) ---------- */
+.course-tabs { display: none; }
+.course-tabs.js-tabs { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 36px 0 24px; }
+.course-tab {
+    appearance: none; cursor: pointer; min-width: 220px; padding: 14px 24px;
+    display: flex; flex-direction: column; gap: 3px; text-align: left;
+    border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--paper);
+    color: var(--ink-2); font: inherit;
+    transition: transform .3s var(--ease), border-color .3s, background .3s, box-shadow .3s;
+}
+.course-tab b { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; line-height: 1.1; }
+.course-tab span { font-size: .84rem; line-height: 1.35; color: var(--steel); }
+.course-tab:hover { transform: translateY(-2px); border-color: var(--brass); background: #fff; }
+.course-tab[aria-selected="true"] {
+    background: linear-gradient(135deg, var(--brass-2), var(--brass)); border-color: var(--brass);
+    box-shadow: 0 18px 30px -22px rgba(91, 100, 112, .7);
+}
+.course-tab[aria-selected="true"] span { color: var(--ink); }
+.course-tab:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 3px; }
+
+.course-panel[hidden] { display: none; }
+.course-panel + .course-panel { margin-top: 36px; }          /* khi chưa có JS: các bảng xếp dọc */
+.course-tabs.js-tabs ~ .course-panel + .course-panel { margin-top: 0; }
+.course-panel-note { margin: 0 0 18px; text-align: center; font-size: .95rem; line-height: 1.6; color: var(--steel); }
+
+/* ---------- Bảng (máy tính) ---------- */
+.course-price-table { width: 100%; min-width: 860px; border-collapse: collapse; background: #fff; }
+.course-price-table thead th {
+    text-align: left; padding: 20px 22px;
+    background: linear-gradient(135deg, var(--brass-2), var(--brass)); color: var(--ink);
+    font: 700 .74rem/1.3 var(--font-body); letter-spacing: .12em; text-transform: uppercase;
+}
+.course-price-table tbody td {
+    padding: 16px 22px; border-bottom: 1px solid var(--line);
+    font-size: .95rem; line-height: 1.5; color: var(--steel); font-variant-numeric: tabular-nums;
+}
+.course-price-table tbody tr { transition: background .25s; }
+.course-price-table tbody tr:nth-child(even) { background: var(--paper); }
+.course-price-table tbody tr:hover { background: #f8efcf; }
+.course-price-table tbody tr:last-child td { border-bottom: 0; }
+.course-price-table .course-level-cell { white-space: nowrap; font-weight: 700; color: var(--ink-2); }
+.course-price-table .course-price-cell { white-space: nowrap; font-weight: 700; color: var(--ink-2); }
+
+/* ---------- Máy tính bảng (769–968px): vẫn là bảng, cuộn ngang ---------- */
+@media (min-width: 769px) and (max-width: 968px) {
+    .price-card .course-price-table thead th,
+    .price-card .course-price-table tbody td { padding: 14px 16px; font-size: .9rem; }
+}
+
+@media (max-width: 968px) {
+    .course-tab { min-width: 0; flex: 1 1 180px; padding: 12px 18px; }
+    .course-tab b { font-size: 1.3rem; }
+    .course-panel-note { font-size: .9rem; padding: 0 .5rem; }
+}
+
+/* ---------- Điện thoại (≤768px): mỗi cấp độ là một thẻ ---------- */
+@media (max-width: 768px) {
+    .price-card .course-price-table { display: block; width: 100%; min-width: 0; background: transparent; }
+
+    .price-card .course-price-table thead {
+        position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+        overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .price-card .course-price-table tbody {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px;
+    }
+    .price-card .course-price-table tbody tr,
+    .price-card .course-price-table tbody tr:nth-child(even),
+    .price-card .course-price-table tbody tr:hover {
+        display: block; overflow: hidden;
+        background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--brass);
+        border-radius: var(--radius-md); box-shadow: 0 22px 36px -30px rgba(91, 100, 112, .55);
+    }
+    .price-card .course-price-table tbody td {
+        display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;
+        min-width: 0; padding: 12px 18px; border-bottom: 1px dashed var(--line);
+        font-size: .94rem; line-height: 1.45; text-align: right; color: var(--steel); background: transparent;
+    }
+    .price-card .course-price-table tbody td::before {
+        content: attr(data-label); flex: 0 0 42%; padding-top: 2px; text-align: left;
+        font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brass-deep);
+    }
+    /* Ô đầu = cấp độ → tiêu đề thẻ */
+    .price-card .course-price-table tbody td:first-child {
+        justify-content: flex-start; align-items: center; gap: 0;
+        padding: 16px 18px; background: var(--paper); border-bottom: 1px solid var(--line);
+        font-family: var(--font-display); font-size: 1.45rem; line-height: 1.1; text-align: left; color: var(--ink-2);
+    }
+    .price-card .course-price-table tbody td:first-child::before { display: none; }
+    /* Hai ô học phí: nổi bật, ô cuối không có đường kẻ */
+    .price-card .course-price-table tbody td.course-price-cell { font-size: 1.02rem; color: var(--ink-2); }
+    .price-card .course-price-table tbody td:last-child { border-bottom: 0; }
+}
+
+@media (max-width: 480px) {
+    .price-card .course-price-table tbody { grid-template-columns: 1fr; }
+    .course-tab { flex-basis: 100%; }
+}

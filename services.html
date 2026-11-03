@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="redesign.css">
     <link rel="stylesheet" href="services-v2.css">
     <link rel="stylesheet" href="services-mobile-v2.css">
+    <link rel="stylesheet" href="services-courses.css">
     <link rel="stylesheet" href="footer-v2.css">
 </head>
 <body>
@@ -170,8 +171,235 @@
         </div>
     </section>
 
+    <!-- Courses: HSK / YCT -->
+    <section class="section section-white" id="courses">
+        <div class="wrap">
+            <div class="section-header reveal">
+                <div class="section-tag" data-i18n="services.courses.tag">Khóa học</div>
+                <h2 class="section-title" data-i18n="services.courses.title">Khóa học tiếng Trung HSK &amp; YCT</h2>
+                <p class="section-description" data-i18n="services.courses.desc">Lộ trình rõ ràng từ HSK 1 đến HSK 6, cùng chương trình YCT dành cho thiếu nhi. Học phí tính theo trọn khóa.</p>
+            </div>
+
+            <div class="course-tabs reveal" role="tablist" data-course-tabs>
+                <button type="button" class="course-tab" role="tab" id="tab-hsk2" aria-controls="panel-hsk2" aria-selected="true" tabindex="0">
+                    <b>HSK 2.0</b><span data-i18n="services.courses.tab.hsk2">Giáo trình chuẩn cũ · Người lớn</span>
+                </button>
+                <button type="button" class="course-tab" role="tab" id="tab-hsk3" aria-controls="panel-hsk3" aria-selected="false" tabindex="-1">
+                    <b>HSK 3.0</b><span data-i18n="services.courses.tab.hsk3">Giáo trình chuẩn mới · Người lớn</span>
+                </button>
+                <button type="button" class="course-tab" role="tab" id="tab-yct" aria-controls="panel-yct" aria-selected="false" tabindex="-1">
+                    <b>YCT</b><span data-i18n="services.courses.tab.yct">Thiếu nhi · Từ lớp 5 trở xuống</span>
+                </button>
+            </div>
+
+            <div class="course-panel reveal" role="tabpanel" id="panel-hsk2" aria-labelledby="tab-hsk2">
+                <p class="course-panel-note" data-i18n="services.courses.note.hsk2">Giáo trình tiếng Trung tiêu chuẩn cũ (HSK 2.0) dành cho người lớn, gồm 6 cấp độ.</p>
+                <div class="price-card">
+                    <div class="price-scroll">
+                        <table class="course-price-table">
+                            <thead>
+                            <tr>
+                                <th data-i18n="services.courses.th.level">Cấp độ</th>
+                                <th data-i18n="services.courses.th.sessions">Số buổi</th>
+                                <th data-i18n="services.courses.th.course">Thời gian khóa học</th>
+                                <th data-i18n="services.courses.th.length">Thời lượng</th>
+                                <th data-i18n="services.courses.th.size">Sĩ số</th>
+                                <th data-i18n="services.courses.th.price1">Học phí online</th>
+                                <th data-i18n="services.courses.th.price2">Học phí offline</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="course-level-cell">HSK 1</td>
+                                <td>18</td>
+                                <td><span>2 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">2.500.000đ</td>
+                                <td class="course-price-cell">2.700.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">HSK 2</td>
+                                <td>24</td>
+                                <td><span>3 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">2.700.000đ</td>
+                                <td class="course-price-cell">3.600.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">HSK 3</td>
+                                <td>27</td>
+                                <td><span>3,5 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">2.900.000đ</td>
+                                <td class="course-price-cell">4.100.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">HSK 4</td>
+                                <td>35</td>
+                                <td><span>4,5 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">3.800.000đ</td>
+                                <td class="course-price-cell">5.300.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">HSK 5</td>
+                                <td>60</td>
+                                <td><span>7,5 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">6.500.000đ</td>
+                                <td class="course-price-cell">9.000.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">HSK 6</td>
+                                <td>80</td>
+                                <td><span>10 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">8.700.000đ</td>
+                                <td class="course-price-cell">12.000.000đ</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="course-panel reveal" role="tabpanel" id="panel-hsk3" aria-labelledby="tab-hsk3">
+                <p class="course-panel-note" data-i18n="services.courses.note.hsk3">Giáo trình tiếng Trung tiêu chuẩn mới (HSK 3.0) dành cho người lớn, gồm các cấp độ 1–3.</p>
+                <div class="price-card">
+                    <div class="price-scroll">
+                        <table class="course-price-table">
+                            <thead>
+                            <tr>
+                                <th data-i18n="services.courses.th.level">Cấp độ</th>
+                                <th data-i18n="services.courses.th.sessions">Số buổi</th>
+                                <th data-i18n="services.courses.th.course">Thời gian khóa học</th>
+                                <th data-i18n="services.courses.th.length">Thời lượng</th>
+                                <th data-i18n="services.courses.th.size">Sĩ số</th>
+                                <th data-i18n="services.courses.th.price1">Học phí online</th>
+                                <th data-i18n="services.courses.th.price2">Học phí offline</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="course-level-cell">HSK 1</td>
+                                <td>24</td>
+                                <td><span>3 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">3.400.000đ</td>
+                                <td class="course-price-cell">3.600.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">HSK 2</td>
+                                <td>25</td>
+                                <td><span>3 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">3.500.000đ</td>
+                                <td class="course-price-cell">3.800.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">HSK 3</td>
+                                <td>32</td>
+                                <td><span>4 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>90 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-4 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">4.000.000đ</td>
+                                <td class="course-price-cell">4.800.000đ</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="course-panel reveal" role="tabpanel" id="panel-yct" aria-labelledby="tab-yct">
+                <p class="course-panel-note" data-i18n="services.courses.note.yct">Chương trình YCT dành cho trẻ em từ lớp 5 tiểu học trở xuống, gồm 6 cấp độ.</p>
+                <div class="price-card">
+                    <div class="price-scroll">
+                        <table class="course-price-table">
+                            <thead>
+                            <tr>
+                                <th data-i18n="services.courses.th.level">Cấp độ</th>
+                                <th data-i18n="services.courses.th.sessions">Số buổi</th>
+                                <th data-i18n="services.courses.th.course">Thời gian khóa học</th>
+                                <th data-i18n="services.courses.th.length">Thời lượng</th>
+                                <th data-i18n="services.courses.th.size">Sĩ số</th>
+                                <th data-i18n="services.courses.th.price1">Học phí online</th>
+                                <th data-i18n="services.courses.th.price2">Học phí offline</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="course-level-cell">YCT 1</td>
+                                <td>15</td>
+                                <td><span>2 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>60 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>5 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">1.500.000đ</td>
+                                <td class="course-price-cell">1.800.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">YCT 2</td>
+                                <td>15</td>
+                                <td><span>2 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>60 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>5 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">1.500.000đ</td>
+                                <td class="course-price-cell">1.800.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">YCT 3</td>
+                                <td>18</td>
+                                <td><span>2,5 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>60 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-5 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">1.800.000đ</td>
+                                <td class="course-price-cell">2.100.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">YCT 4</td>
+                                <td>20</td>
+                                <td><span>2,5 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>60 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-5 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">2.200.000đ</td>
+                                <td class="course-price-cell">2.600.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">YCT 5</td>
+                                <td>30</td>
+                                <td><span>4 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>60 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-5 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">3.300.000đ</td>
+                                <td class="course-price-cell">3.900.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="course-level-cell">YCT 6</td>
+                                <td>30</td>
+                                <td><span>4 <span data-i18n="services.courses.u.months">tháng</span></span></td>
+                                <td><span>60 <span data-i18n="services.courses.u.min">phút/buổi</span></span></td>
+                                <td><span>3-5 <span data-i18n="services.courses.u.students">học viên</span></span></td>
+                                <td class="course-price-cell">3.600.000đ</td>
+                                <td class="course-price-cell">4.200.000đ</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <p class="lang-price-note reveal" data-i18n="services.courses.schedule">Lịch học 2 buổi/tuần. Học phí tính theo trọn khóa. Liên hệ để được tư vấn lộ trình phù hợp.</p>
+        </div>
+    </section>
+
     <!-- Process -->
-    <section class="section section-white">
+    <section class="section section-light">
         <div class="wrap">
             <div class="section-header reveal">
                 <div class="section-tag" data-i18n="services.process.tag"></div>
@@ -204,7 +432,7 @@
     </section>
 
     <!-- Other Services -->
-    <section class="section section-light">
+    <section class="section section-white">
         <div class="wrap">
             <div class="section-header reveal">
                 <div class="section-tag" data-i18n="services.other.tag"></div>
@@ -322,6 +550,7 @@
     <script src="footer-i18n.js"></script>
     <script src="mobile-menu.js"></script>
     <script src="services-table.js"></script>
+    <script src="courses-tabs.js"></script>
     <script src="home-v2.js"></script>
 </body>
 </html>
