@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Chấm công nhân viên - Sowon Global</title>
+<link rel="stylesheet" href="/chamcong/chamcong.css">
+</head>
+<body>
+<div class="wrap" id="loginWrap">
+  <header class="top">
+    <img src="/logo.png" alt="Sowon Global" onerror="this.style.display='none'">
+    <h1>Chấm công nhân viên</h1>
+    <p>Sowon Global</p>
+  </header>
+  <div class="card" id="loginCard">
+    <h2>Đăng nhập</h2>
+    <label for="user">Tên đăng nhập</label>
+    <input id="user" autocomplete="username" autocapitalize="none">
+    <label for="pass">Mật khẩu</label>
+    <input id="pass" type="password" autocomplete="current-password">
+    <button class="gold" id="btnLogin" style="margin-top:16px;width:100%">Đăng nhập</button>
+    <div class="msg" id="loginMsg"></div>
+    <p class="muted" style="margin-top:14px">Tài khoản do quản lý cấp. Nếu quên mật khẩu, vui lòng liên hệ quản lý.</p>
+  </div>
+</div>
+
+<div class="wrap wide hidden" id="app">
+  <div class="bar">
+    <div><strong style="font-size:1.2rem" id="hello"></strong><div class="muted">Chấm công nhân viên — Sowon Global</div></div>
+    <button class="ghost small" id="btnLogout">Đăng xuất</button>
+  </div>
+
+  <div class="card" style="max-width:520px">
+    <h2>Chấm công</h2>
+    <label for="wDate">Ngày tháng</label>
+    <input id="wDate" type="date">
+    <div class="row">
+      <div><label for="wStart">Giờ bắt đầu</label><input id="wStart" type="time"></div>
+      <div><label for="wEnd">Giờ kết thúc</label><input id="wEnd" type="time"></div>
+    </div>
+    <p class="muted" style="margin:4px 0 0">Nếu làm qua nửa đêm, giờ kết thúc nhỏ hơn giờ bắt đầu (vd: 20:00 → 01:00).</p>
+    <label for="wCust">Tên khách hàng</label>
+    <input id="wCust" autocomplete="off">
+    <label for="wLang">Ngôn ngữ</label>
+    <input id="wLang" list="langs" autocomplete="off" placeholder="Chọn hoặc nhập ngôn ngữ">
+    <datalist id="langs">
+      <option value="Tiếng Anh"><option value="Tiếng Trung"><option value="Tiếng Nhật"><option value="Tiếng Hàn">
+      <option value="Tiếng Indonesia"><option value="Tiếng Lào"><option value="Tiếng Thái"><option value="Tiếng Đức">
+      <option value="Tiếng Pháp"><option value="Tiếng Ý"><option value="Tiếng Nga"><option value="Tiếng Hindi"><option value="Tiếng Campuchia">
+    </datalist>
+    <label for="wName">Tên phiên dịch viên</label>
+    <input id="wName">
+    <button class="gold" id="btnSend" style="margin-top:18px;width:100%;padding:14px">Chấm công</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="card">
+    <div class="bar">
+      <h2 style="margin:0">Lịch sử chấm công của tôi</h2>
+      <input type="month" id="month" style="width:auto">
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Ngày tháng</th><th>Giờ bắt đầu</th><th>Giờ kết thúc</th><th>Tên khách hàng</th><th>Ngôn ngữ</th><th>Tên phiên dịch viên</th><th>Số giờ</th></tr></thead>
+        <tbody id="rows"></tbody>
+        <tfoot><tr class="total"><td colspan="6">Tổng giờ trong tháng</td><td id="sum">0g 00p</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="muted">Nếu nhập sai, vui lòng báo quản lý để chỉnh sửa.</p>
+  </div>
+</div>
+
+<script src="/chamcong/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/chamcong/common.js"></script>
+<script src="/chamcong/timepicker.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+let me = null;
+
+function setMsg(el, text, kind) { el.className = 'msg ' + kind; el.textContent = text; }
+
+async function boot() {
+  $('month').value = currentMonth();
+  $('wDate').value = todayLocal();
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) await enter(session.user);
+}
+
+async function enter(user) {
+  const { data, error } = await sb.from('profiles').select('full_name').eq('id', user.id).single();
+  if (error || !data) {
+    await sb.auth.signOut();
+    return setMsg($('loginMsg'), 'Tài khoản chưa được thiết lập, vui lòng liên hệ quản lý', 'err');
+  }
+  me = { id: user.id, name: data.full_name };
+  $('hello').textContent = 'Xin chào, ' + me.name;
+  if (!$('wName').value) $('wName').value = me.name;
+  $('loginWrap').classList.add('hidden');
+  $('app').classList.remove('hidden');
+  await refresh();
+}
+
+$('btnLogin').onclick = async () => {
+  const u = $('user').value, p = $('pass').value;
+  if (!u || !p) return setMsg($('loginMsg'), 'Vui lòng nhập đầy đủ thông tin', 'err');
+  $('btnLogin').disabled = true;
+  const { data, error } = await sb.auth.signInWithPassword({ email: usernameToEmail(u), password: p });
+  $('btnLogin').disabled = false;
+  if (error) return setMsg($('loginMsg'), 'Sai tên đăng nhập hoặc mật khẩu', 'err');
+  $('pass').value = '';
+  $('loginMsg').className = 'msg';
+  await enter(data.user);
+};
+$('pass').addEventListener('keydown', e => { if (e.key === 'Enter') $('btnLogin').click(); });
+$('btnLogout').onclick = async () => { await sb.auth.signOut(); location.reload(); };
+$('month').onchange = () => refresh();
+
+async function refresh() {
+  const [start, end] = monthRange($('month').value || currentMonth());
+  const { data } = await sb.from('attendance').select('*').eq('user_id', me.id).is('deleted_at', null)
+    .gte('start_at', start).lt('start_at', end).order('start_at', { ascending: false });
+  const rows = data || [];
+  let total = 0;
+  $('rows').innerHTML = rows.length ? rows.map(r => {
+    const h = hoursBetween(r.start_at, r.end_at); total += h;
+    return `<tr><td>${fmtDate(r.start_at)}</td><td>${fmtTime(r.start_at)}</td><td>${esc(fmtEnd(r.start_at, r.end_at))}</td>
+      <td>${esc(r.customer_name)}</td><td>${esc(r.language)}</td><td>${esc(r.interpreter_name)}</td><td>${fmtHours(h)}</td></tr>`;
+  }).join('') : '<tr><td colspan="7" class="muted">Chưa có dữ liệu trong tháng này</td></tr>';
+  $('sum').textContent = fmtHours(total);
+}
+
+$('btnSend').onclick = async () => {
+  $('msg').className = 'msg';
+  const customer = $('wCust').value.trim(), language = $('wLang').value.trim(), interp = $('wName').value.trim();
+  if (!$('wDate').value || !$('wStart').value || !$('wEnd').value || !customer || !language || !interp) {
+    return setMsg($('msg'), 'Vui lòng điền đầy đủ tất cả các mục', 'err');
+  }
+  const t = buildTimes($('wDate').value, $('wStart').value, $('wEnd').value);
+  if (!t) return setMsg($('msg'), 'Giờ kết thúc phải khác giờ bắt đầu', 'err');
+  $('btnSend').disabled = true;
+  const { error } = await sb.rpc('staff_add_shift', {
+    p_start: t[0], p_end: t[1], p_customer: customer, p_language: language, p_interpreter: interp
+  });
+  $('btnSend').disabled = false;
+  if (error) return setMsg($('msg'), error.message, 'err');
+  setMsg($('msg'), 'Đã chấm công thành công', 'ok');
+  ['wStart', 'wEnd', 'wCust', 'wLang'].forEach(i => $(i).value = '');
+  await refresh();
+};
+
+boot();
+</script>
+</body>
+</html>

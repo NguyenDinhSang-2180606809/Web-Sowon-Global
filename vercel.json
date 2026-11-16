@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    { "source": "/CTV", "destination": "/ctv.html" },
+    { "source": "/ctv", "destination": "/ctv.html" },
+    { "source": "/NV", "destination": "/nv.html" },
+    { "source": "/nv", "destination": "/nv.html" },
+    { "source": "/ADMIN", "destination": "/admin.html" },
+    { "source": "/admin", "destination": "/admin.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(CTV|ctv|NV|nv|ADMIN|admin|ctv.html|nv.html|admin.html)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    }
+  ]
+}

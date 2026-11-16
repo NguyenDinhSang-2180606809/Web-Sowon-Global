@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Quản lý chấm công - Sowon Global</title>
+<link rel="stylesheet" href="/chamcong/chamcong.css">
+</head>
+<body>
+<div class="wrap" id="loginWrap">
+  <header class="top">
+    <img src="/logo.png" alt="Sowon Global" onerror="this.style.display='none'">
+    <h1>Quản lý chấm công</h1>
+    <p>Dành cho quản trị viên</p>
+  </header>
+  <div class="card">
+    <h2>Đăng nhập</h2>
+    <label for="user">Tên đăng nhập</label>
+    <input id="user" autocomplete="username" autocapitalize="none">
+    <label for="pass">Mật khẩu</label>
+    <input id="pass" type="password" autocomplete="current-password">
+    <button class="gold" id="btnLogin" style="margin-top:16px;width:100%">Đăng nhập</button>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+</div>
+
+<div class="wrap wide hidden" id="app">
+  <div class="bar">
+    <div><strong style="font-size:1.2rem">Quản lý chấm công — Sowon Global</strong><div class="muted" id="who"></div></div>
+    <button class="ghost small" id="btnLogout">Đăng xuất</button>
+  </div>
+
+  <div class="tabs">
+    <button data-tab="staff" class="active">Nhân viên</button>
+    <button data-tab="att">Chấm công NV</button>
+    <button data-tab="ctv">Chấm công CTV</button>
+    <button data-tab="pay">Tính lương</button>
+    <button data-tab="cfg">Cài đặt lương</button>
+    <button data-tab="trash">Thùng rác<span id="trashCount"></span></button>
+  </div>
+
+  <div class="card hidden" id="monthBar">
+    <div class="bar" style="margin:0">
+      <label style="margin:0">Tháng xem dữ liệu</label>
+      <input type="month" id="month" style="width:auto">
+    </div>
+  </div>
+
+  <!-- Tab nhân viên -->
+  <div id="tab-staff">
+    <div class="card">
+      <h2>Thêm tài khoản nhân viên</h2>
+      <div class="row">
+        <div><label>Họ và tên</label><input id="nFull"></div>
+        <div><label>Tên đăng nhập</label><input id="nUser" autocapitalize="none" placeholder="vd: nguyenvana"></div>
+      </div>
+      <div class="row">
+        <div><label>Mật khẩu (tối thiểu 8 ký tự)</label><input id="nPass" type="text" autocomplete="off"></div>
+        <div><label>Lương theo giờ (₫)</label><input id="nRate" type="number" min="0" step="1000" value="0"></div>
+      </div>
+      <button class="gold" id="btnAdd" style="margin-top:16px">Thêm tài khoản</button>
+      <div class="msg" id="addMsg"></div>
+    </div>
+    <div class="card">
+      <h2>Danh sách nhân viên</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Họ tên</th><th>Tên đăng nhập</th><th>Lương/giờ</th><th>Thao tác</th></tr></thead>
+          <tbody id="staffRows"></tbody>
+        </table>
+      </div>
+      <div class="msg" id="staffMsg"></div>
+      <p class="muted">Đổi tên đăng nhập, đổi mật khẩu hoặc xóa tài khoản đều không làm mất lịch sử chấm công. Tài khoản bị xóa sẽ vào Thùng rác và có thể khôi phục.</p>
+    </div>
+  </div>
+
+  <!-- Tab chấm công nhân viên -->
+  <div id="tab-att" class="hidden">
+    <div class="card">
+      <div class="bar">
+        <h2 style="margin:0">Lịch sử chấm công nhân viên</h2>
+        <select id="fStaff" style="width:auto"></select>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Ngày tháng</th><th>Giờ bắt đầu</th><th>Giờ kết thúc</th><th>Tên khách hàng</th><th>Ngôn ngữ</th><th>Tên phiên dịch viên</th><th>Tài khoản NV</th><th>Số giờ</th><th></th></tr></thead>
+          <tbody id="attRows"></tbody>
+        </table>
+      </div>
+      <div class="msg" id="attMsg"></div>
+    </div>
+  </div>
+
+  <!-- Tab cộng tác viên -->
+  <div id="tab-ctv" class="hidden">
+    <div class="card">
+      <h2>Chấm công cộng tác viên</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Ngày tháng</th><th>Giờ bắt đầu</th><th>Giờ kết thúc</th><th>Tên khách hàng</th><th>Ngôn ngữ</th><th>Tên phiên dịch viên</th><th>SĐT</th><th>Số giờ</th><th></th></tr></thead>
+          <tbody id="ctvRows"></tbody>
+        </table>
+      </div>
+      <div class="msg" id="ctvMsg"></div>
+      <p class="muted">Cộng tác viên tự nhập họ tên và số điện thoại nên cần đối chiếu với khách hàng khi tính thù lao.</p>
+    </div>
+  </div>
+
+  <!-- Tab tính lương -->
+  <div id="tab-pay" class="hidden">
+    <div class="card">
+      <div class="bar" style="margin:0;flex-wrap:wrap;gap:8px">
+        <h2 style="margin:0">Xuất bảng lương</h2>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <select id="expScope" style="width:auto">
+            <option value="ctv">Cộng tác viên (theo tuần)</option>
+            <option value="staff">Nhân viên (theo tháng)</option>
+            <option value="both">Cả hai</option>
+          </select>
+          <button class="gold small" id="btnImg">Xuất ảnh</button>
+          <button class="gold small" id="btnPdf">Xuất PDF</button>
+          <button class="gold small" id="btnWord">Xuất Word</button>
+          <button class="ghost small" id="btnCsv">Xuất Excel (CSV)</button>
+        </div>
+      </div>
+      <div class="msg" id="expMsg"></div>
+    </div>
+
+    <div class="card">
+      <h2>Nhân viên — tháng <span id="payMonth"></span></h2>
+
+      <h3 style="margin:16px 0 8px">Chưa thanh toán</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Nhân viên</th><th>Lương/giờ</th><th>Tổng giờ</th><th>Giờ thường</th><th>Giờ vượt</th><th>Giờ sau 22h</th><th>Tiền giờ thường</th><th>Tiền giờ vượt</th><th>Phụ cấp sau 22h</th><th>Tổng</th><th>Thao tác</th></tr></thead>
+          <tbody id="payStaffRows"></tbody>
+          <tfoot><tr class="total"><td colspan="9">Tổng chưa thanh toán</td><td id="payStaffTotal">0 ₫</td><td></td></tr></tfoot>
+        </table>
+      </div>
+
+      <h3 style="margin:24px 0 8px">Đã thanh toán</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Nhân viên</th><th>Tổng giờ</th><th>Số tiền</th><th>Trạng thái</th><th>Thời điểm</th><th></th></tr></thead>
+          <tbody id="payStaffPaidRows"></tbody>
+          <tfoot><tr class="total"><td colspan="2">Tổng đã thanh toán</td><td id="payStaffPaidTotal">0 ₫</td><td colspan="3"></td></tr></tfoot>
+        </table>
+      </div>
+      <div class="msg" id="staffPayMsg"></div>
+      <p class="muted" id="payOrphan"></p>
+    </div>
+
+    <div class="card">
+      <div class="bar" style="flex-wrap:wrap;gap:8px">
+        <h2 style="margin:0">Cộng tác viên — tuần <span id="weekLabel"></span></h2>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button class="ghost small" id="wPrev">‹ Tuần trước</button>
+          <input type="date" id="wPick" style="width:auto">
+          <button class="ghost small" id="wNext">Tuần sau ›</button>
+        </div>
+      </div>
+
+      <h3 style="margin:16px 0 8px">Chưa thanh toán</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Cộng tác viên</th><th>SĐT</th><th>Số lần chấm công</th><th>Tổng giờ</th><th>Tổng tiền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+          <tbody id="payCtvRows"></tbody>
+          <tfoot><tr class="total"><td colspan="4">Tổng chưa thanh toán</td><td id="payCtvTotal">0 ₫</td><td colspan="2"></td></tr></tfoot>
+        </table>
+      </div>
+
+      <h3 style="margin:24px 0 8px">Đã thanh toán</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Cộng tác viên</th><th>SĐT</th><th>Tổng giờ</th><th>Số tiền</th><th>Trạng thái</th><th>Thời điểm</th><th></th></tr></thead>
+          <tbody id="payCtvPaidRows"></tbody>
+          <tfoot><tr class="total"><td colspan="3">Tổng đã thanh toán</td><td id="payCtvPaidTotal">0 ₫</td><td colspan="3"></td></tr></tfoot>
+        </table>
+      </div>
+      <div class="msg" id="payMsg"></div>
+    </div>
+
+    <p class="muted">Nhân viên: cộng giờ cả tháng; phần vượt số giờ chuẩn tháng tính theo đơn giá giờ vượt; mỗi giờ làm trong khung 22:00 – 06:00 được cộng phụ cấp.
+      Cộng tác viên: tính theo tuần (thứ 2 – chủ nhật), mỗi lần chấm công có mức lương riêng (theo giờ, theo ngày hoặc nhập tay) — bấm "Tính lương / Chi tiết" để chọn.
+      Bản ghi trong Thùng rác không được tính.</p>
+  </div>
+
+  <!-- Tab cài đặt -->
+  <div id="tab-cfg" class="hidden">
+    <div class="card" style="max-width:520px">
+      <h2>Cài đặt cách tính lương</h2>
+      <h3 style="margin:8px 0 0">Nhân viên (theo tháng)</h3>
+      <label>Số giờ chuẩn mỗi tháng</label><input id="cMonth" type="number" min="1" step="1">
+      <label>Tiền mỗi giờ vượt giờ chuẩn (₫/giờ)</label><input id="cStaffOt" type="number" min="0" step="1000">
+      <label>Phụ cấp mỗi giờ làm sau 22:00 (₫/giờ)</label><input id="cStaffNight" type="number" min="0" step="1000">
+      <h3 style="margin:16px 0 0">Cộng tác viên</h3>
+      <label>Số giờ chuẩn mỗi ngày (dùng cho cách tính "theo ngày")</label><input id="cStd" type="number" min="1" max="24" step="0.5">
+      <label>Lương/giờ mặc định của cộng tác viên (₫)</label><input id="cCtv" type="number" min="0" step="1000">
+      <button class="gold" id="btnCfg" style="margin-top:16px">Lưu cài đặt</button>
+      <div class="msg" id="cfgMsg"></div>
+      <p class="muted">Mỗi lần chấm công của cộng tác viên có mức lương riêng, chọn ở nút "Tính lương / Chi tiết" trong tab "Tính lương".</p>
+    </div>
+  </div>
+
+  <!-- Tab thùng rác -->
+  <div id="tab-trash" class="hidden">
+    <div class="msg" id="trashMsg"></div>
+    <div class="card">
+      <h2>Tài khoản nhân viên đã xóa</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Họ tên</th><th>Tên đăng nhập</th><th>Ngày xóa</th><th></th></tr></thead>
+          <tbody id="trashAcc"></tbody>
+        </table>
+      </div>
+      <p class="muted">Tài khoản trong thùng rác không đăng nhập được. Lịch sử chấm công của họ vẫn được giữ. Xóa vĩnh viễn sẽ xóa hẳn tài khoản (lịch sử vẫn còn nhưng không tính lương nữa).</p>
+    </div>
+    <div class="card">
+      <h2>Chấm công nhân viên đã xóa</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Ngày tháng</th><th>Giờ bắt đầu</th><th>Giờ kết thúc</th><th>Tên khách hàng</th><th>Ngôn ngữ</th><th>Tên phiên dịch viên</th><th>Tài khoản NV</th><th>Ngày xóa</th><th></th></tr></thead>
+          <tbody id="trashAtt"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Chấm công cộng tác viên đã xóa</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Ngày tháng</th><th>Giờ bắt đầu</th><th>Giờ kết thúc</th><th>Tên khách hàng</th><th>Ngôn ngữ</th><th>Tên phiên dịch viên</th><th>SĐT</th><th>Ngày xóa</th><th></th></tr></thead>
+          <tbody id="trashCtv"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sửa bản ghi chấm công -->
+<dialog id="dlg">
+  <h2>Sửa bản ghi chấm công</h2>
+  <label for="eDate">Ngày tháng</label><input id="eDate" type="date">
+  <div class="row">
+    <div><label for="eStart">Giờ bắt đầu</label><input id="eStart" type="time"></div>
+    <div><label for="eEnd">Giờ kết thúc</label><input id="eEnd" type="time"></div>
+  </div>
+  <label for="eCust">Tên khách hàng</label><input id="eCust">
+  <label for="eLang">Ngôn ngữ</label><input id="eLang">
+  <label for="eInterp">Tên phiên dịch viên</label><input id="eInterp">
+  <div id="ePhoneWrap"><label for="ePhone">Số điện thoại</label><input id="ePhone"></div>
+  <div class="msg" id="eMsg"></div>
+  <div class="row" style="margin-top:16px">
+    <button type="button" class="ghost" id="eCancel">Hủy</button>
+    <button type="button" class="gold" id="eSave">Lưu</button>
+  </div>
+</dialog>
+
+<!-- Chi tiết từng lần chấm công (CTV và nhân viên) -->
+<dialog id="dlgDetail" style="width:min(1100px,96vw);max-width:96vw">
+  <h2 id="dTitle">Chi tiết chấm công</h2>
+  <p id="dSub" class="muted" style="margin:0 0 10px"></p>
+  <div class="table-scroll" id="dBody"></div>
+  <div class="msg" id="dMsg"></div>
+  <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+    <button type="button" class="ghost" id="dClose">Đóng</button>
+    <button type="button" class="gold" id="dSave">Lưu</button>
+    <button type="button" class="gold" id="dSavePay">Lưu và thanh toán</button>
+  </div>
+</dialog>
+
+<!-- Sửa lương cộng tác viên -->
+<dialog id="dlgRate">
+  <h2 id="rTitle">Sửa lương cộng tác viên</h2>
+  <label for="rHourly">Lương theo giờ mặc định (₫)</label><input id="rHourly" type="number" min="0" step="1000">
+  <p class="muted" style="margin:8px 0 0">Đây là lương/giờ gợi ý cho các lần chấm công chưa chọn mức riêng. Mỗi lần chấm công có thể chọn mức lương khác trong nút "Tính lương / Chi tiết".</p>
+  <div class="msg" id="rMsg"></div>
+  <div class="row" style="margin-top:16px">
+    <button type="button" class="ghost" id="rCancel">Hủy</button>
+    <button type="button" class="gold" id="rSave">Lưu</button>
+  </div>
+</dialog>
+
+<!-- Thanh toán: hiện mã QR -->
+<dialog id="dlgPay">
+  <h2 id="pTitle">Thanh toán</h2>
+  <p id="pInfo" style="margin:0 0 8px"></p>
+  <div style="text-align:center">
+    <div id="pAmount" style="font-size:1.6rem;font-weight:700;margin:8px 0"></div>
+    <img id="pQr" alt="Mã QR thanh toán" class="hidden" style="max-width:320px;width:100%;border:1px solid #ccc;border-radius:8px;background:#fff">
+    <p id="pNoQr" class="muted hidden">Cộng tác viên này chưa cung cấp ảnh mã QR.</p>
+  </div>
+  <p class="muted" style="margin:8px 0 0">Quét mã bằng app ngân hàng, chuyển đúng số tiền rồi bấm "Đã thanh toán".</p>
+  <div class="msg" id="pMsg"></div>
+  <div class="row" style="margin-top:16px">
+    <button type="button" class="ghost" id="pCancel">Đóng</button>
+    <button type="button" class="gold" id="pDone">Đã thanh toán</button>
+  </div>
+</dialog>
+
+<script src="/chamcong/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="/chamcong/common.js"></script>
+<script src="/chamcong/timepicker.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+let profiles = [], attendance = [], ctv = [], trashAtt = [], trashCtv = [], ctvRates = {},
+    cfg = { ...DEFAULT_CFG, staff_month_hours: 208, staff_ot_rate: 100000, staff_night_rate: 100000 };
+let ctvWeek = [], payouts = [], weekMonday = '';
+let staffPayouts = [], staffPayoutErr = null;
+
+// Không tải cột qr_image trong danh sách (ảnh nặng) — chỉ tải khi bấm Thanh toán
+const CTV_COLS = 'id,interpreter_name,phone,start_at,end_at,customer_name,language,ip,deleted_at,created_at,pay_mode,pay_rate,pay_amount';
+
+function setMsg(el, text, kind) { el.className = 'msg ' + kind; el.textContent = text; }
+
+/* ---------- Tiện ích ngày (giờ Việt Nam) ---------- */
+const todayVN = () => new Date(Date.now() + 7 * 36e5).toISOString().slice(0, 10);
+const vnDay = iso => new Date(new Date(iso).getTime() + 7 * 36e5).toISOString().slice(0, 10);
+function addDays(ds, n) { const d = new Date(ds + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+function mondayOf(ds) { const d = new Date(ds + 'T00:00:00Z'); return addDays(ds, -((d.getUTCDay() + 6) % 7)); }
+const dmy = ds => ds.split('-').reverse().join('/');
+const weekText = m => dmy(m) + ' – ' + dmy(addDays(m, 6));
+
+async function api(method, body) {
+  const { data: { session } } = await sb.auth.getSession();
+  const r = await fetch('/api/admin-users', {
+    method,
+    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.access_token },
+    body: JSON.stringify(body)
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || 'Có lỗi xảy ra');
+  return j;
+}
+
+/* ---------- Đăng nhập ---------- */
+async function boot() {
+  $('month').value = currentMonth();
+  weekMonday = mondayOf(todayVN());
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) await enter(session.user);
+}
+async function enter(user) {
+  const { data } = await sb.from('profiles').select('full_name, role').eq('id', user.id).single();
+  if (!data || data.role !== 'admin') {
+    await sb.auth.signOut();
+    return setMsg($('loginMsg'), 'Tài khoản này không có quyền quản trị', 'err');
+  }
+  $('who').textContent = 'Đăng nhập: ' + data.full_name;
+  $('loginWrap').classList.add('hidden');
+  $('app').classList.remove('hidden');
+  await loadAll();
+}
+$('btnLogin').onclick = async () => {
+  const u = $('user').value, p = $('pass').value;
+  if (!u || !p) return setMsg($('loginMsg'), 'Vui lòng nhập đầy đủ thông tin', 'err');
+  $('btnLogin').disabled = true;
+  const { data, error } = await sb.auth.signInWithPassword({ email: usernameToEmail(u), password: p });
+  $('btnLogin').disabled = false;
+  if (error) return setMsg($('loginMsg'), 'Sai tên đăng nhập hoặc mật khẩu', 'err');
+  $('pass').value = '';
+  $('loginMsg').className = 'msg';
+  await enter(data.user);
+};
+$('pass').addEventListener('keydown', e => { if (e.key === 'Enter') $('btnLogin').click(); });
+$('btnLogout').onclick = async () => { await sb.auth.signOut(); location.reload(); };
+
+/* ---------- Tabs ---------- */
+const TABS = ['staff', 'att', 'ctv', 'pay', 'cfg', 'trash'];
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('active', x === b));
+  TABS.forEach(t => $('tab-' + t).classList.toggle('hidden', t !== b.dataset.tab));
+  $('monthBar').classList.toggle('hidden', !['att', 'ctv', 'pay'].includes(b.dataset.tab));
+});
+$('month').onchange = loadAll;
+$('fStaff').onchange = renderAtt;
+
+/* ---------- Tải dữ liệu ---------- */
+async function loadAll() {
+  const [start, end] = monthRange($('month').value || currentMonth());
+  const [p, a, c, s, rt, ta, tc, sp] = await Promise.all([
+    sb.from('profiles').select('*').order('full_name'),
+    sb.from('attendance').select('*').is('deleted_at', null).gte('start_at', start).lt('start_at', end).order('start_at', { ascending: false }).limit(5000),
+    sb.from('ctv_attendance').select(CTV_COLS).is('deleted_at', null).gte('start_at', start).lt('start_at', end).order('start_at', { ascending: false }).limit(5000),
+    sb.from('settings').select('*').eq('id', 1).maybeSingle(),
+    sb.from('ctv_rates').select('*'),
+    sb.from('attendance').select('*').not('deleted_at', 'is', null).order('deleted_at', { ascending: false }).limit(2000),
+    sb.from('ctv_attendance').select(CTV_COLS).not('deleted_at', 'is', null).order('deleted_at', { ascending: false }).limit(2000),
+    sb.from('staff_payouts').select('*').eq('month', $('month').value || currentMonth())
+  ]);
+  profiles = p.data || []; attendance = a.data || []; ctv = c.data || [];
+  trashAtt = ta.data || []; trashCtv = tc.data || [];
+  staffPayouts = sp.data || []; staffPayoutErr = sp.error ? sp.error.message : null;
+  if (s.data) cfg = {
+    standard_hours: Number(s.data.standard_hours), ot_multiplier: Number(s.data.ot_multiplier),
+    night_allowance: Number(s.data.night_allowance), default_ctv_rate: Number(s.data.default_ctv_rate),
+    staff_month_hours: Number(s.data.staff_month_hours ?? 208),
+    staff_ot_rate: Number(s.data.staff_ot_rate ?? 100000),
+    staff_night_rate: Number(s.data.staff_night_rate ?? 100000)
+  };
+  ctvRates = {};
+  (rt.data || []).forEach(r => ctvRates[r.phone] = {
+    hourly: Number(r.hourly_rate),
+    full: r.full_day_rate == null ? null : Number(r.full_day_rate),
+    ot: r.ot_rate == null ? null : Number(r.ot_rate)
+  });
+  renderStaff(); renderFilter(); renderAtt(); renderCtv(); renderPay(); renderCfg(); renderTrash();
+  if (staffPayoutErr) setMsg($('staffPayMsg'), 'Chưa dùng được thanh toán nhân viên: ' + staffPayoutErr + ' (hãy chạy file SQL tao-bang-staff-payouts.sql)', 'err');
+  await loadWeek();
+}
+async function loadWeek() {
+  const start = new Date(weekMonday + 'T00:00:00+07:00').toISOString();
+  const end = new Date(addDays(weekMonday, 7) + 'T00:00:00+07:00').toISOString();
+  const [w, po] = await Promise.all([
+    sb.from('ctv_attendance').select(CTV_COLS).is('deleted_at', null).gte('start_at', start).lt('start_at', end).order('start_at').limit(5000),
+    sb.from('ctv_payouts').select('*').eq('week_start', weekMonday)
+  ]);
+  ctvWeek = w.data || [];
+  payouts = po.data || [];
+  if (po.error) setMsg($('payMsg'), 'Chưa dùng được chức năng thanh toán: ' + po.error.message + ' (hãy chạy file SQL cap-nhat-luong-ctv.sql)', 'err');
+  renderPayCtv();
+}
+const allStaff = () => profiles.filter(p => p.role === 'staff');
+const activeStaff = () => allStaff().filter(p => !p.deleted_at);
+const deletedStaff = () => allStaff().filter(p => p.deleted_at);
+function ownerName(r) {
+  const p = profiles.find(x => x.id === r.user_id);
+  if (p) return p.full_name + (p.deleted_at ? ' (đã xóa)' : '');
+  return (r.staff_name || 'Không rõ') + ' (đã xóa vĩnh viễn)';
+}
+const delStamp = iso => fmtDate(iso) + ' ' + fmtTime(iso);
+
+/* ---------- Nhân viên ---------- */
+function renderStaff() {
+  const list = activeStaff();
+  $('staffRows').innerHTML = list.length ? list.map(p => `
+    <tr>
+      <td>${esc(p.full_name)}</td><td>${esc(p.username)}</td><td>${money(p.hourly_rate)}</td>
+      <td style="white-space:nowrap">
+        <button class="small ghost" data-act="info" data-id="${p.id}">Sửa thông tin</button>
+        <button class="small ghost" data-act="rate" data-id="${p.id}">Sửa lương</button>
+        <button class="small ghost" data-act="pw" data-id="${p.id}">Đổi mật khẩu</button>
+        <button class="small danger" data-act="del" data-id="${p.id}">Xóa</button>
+      </td>
+    </tr>`).join('') : '<tr><td colspan="4" class="muted">Chưa có nhân viên nào</td></tr>';
+}
+$('staffRows').onclick = async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const id = b.dataset.id, p = profiles.find(x => x.id === id);
+  const msg = $('staffMsg');
+  try {
+    if (b.dataset.act === 'info') {
+      const name = prompt('Họ và tên:', p.full_name);
+      if (name === null) return;
+      const user = prompt('Tên đăng nhập (nhân viên dùng tên này để đăng nhập):', p.username);
+      if (user === null) return;
+      const body = { id };
+      if (name.trim() !== p.full_name) body.full_name = name;
+      if (user.trim().toLowerCase() !== p.username) body.username = user;
+      if (!body.full_name && !body.username) return;
+      await api('PATCH', body);
+      setMsg(msg, 'Đã cập nhật thông tin. Lịch sử chấm công vẫn được giữ nguyên.' +
+        (body.username ? ' Hãy báo nhân viên tên đăng nhập mới.' : ''), 'ok');
+    } else if (b.dataset.act === 'rate') {
+      const v = prompt('Lương theo giờ mới cho ' + p.full_name + ' (₫):', p.hourly_rate);
+      if (v === null) return;
+      const n = Number(v);
+      if (!(n >= 0)) return setMsg(msg, 'Số tiền không hợp lệ', 'err');
+      const { error } = await sb.from('profiles').update({ hourly_rate: n }).eq('id', id);
+      if (error) throw error;
+      setMsg(msg, 'Đã cập nhật lương theo giờ', 'ok');
+    } else if (b.dataset.act === 'pw') {
+      const v = prompt('Mật khẩu mới cho ' + p.full_name + ' (tối thiểu 8 ký tự):');
+      if (v === null) return;
+      await api('PATCH', { id, password: v });
+      setMsg(msg, 'Đã đặt lại mật khẩu. Lịch sử chấm công vẫn được giữ nguyên.', 'ok');
+    } else if (b.dataset.act === 'del') {
+      if (!confirm('Chuyển tài khoản "' + p.full_name + '" vào thùng rác?\n\nNgười này sẽ không đăng nhập được nữa, nhưng lịch sử chấm công vẫn được giữ nguyên. Bạn có thể khôi phục trong Thùng rác.')) return;
+      await api('DELETE', { id });
+      setMsg(msg, 'Đã chuyển tài khoản vào thùng rác', 'ok');
+    }
+    await loadAll();
+  } catch (err) { setMsg(msg, err.message || 'Có lỗi xảy ra', 'err'); }
+};
+$('btnAdd').onclick = async () => {
+  const body = {
+    full_name: $('nFull').value, username: $('nUser').value,
+    password: $('nPass').value, hourly_rate: $('nRate').value
+  };
+  $('btnAdd').disabled = true;
+  try {
+    await api('POST', body);
+    setMsg($('addMsg'), 'Đã tạo tài khoản. Hãy gửi tên đăng nhập và mật khẩu cho nhân viên.', 'ok');
+    ['nFull', 'nUser', 'nPass'].forEach(i => $(i).value = ''); $('nRate').value = 0;
+    await loadAll();
+  } catch (e) { setMsg($('addMsg'), e.message, 'err'); }
+  $('btnAdd').disabled = false;
+};
+
+/* ---------- Chấm công nhân viên ---------- */
+function renderFilter() {
+  const cur = $('fStaff').value;
+  $('fStaff').innerHTML = '<option value="">Tất cả nhân viên</option>' +
+    allStaff().map(p => `<option value="${p.id}">${esc(p.full_name)}${p.deleted_at ? ' (đã xóa)' : ''}</option>`).join('') +
+    '<option value="__orphan__">Tài khoản đã xóa vĩnh viễn</option>';
+  $('fStaff').value = cur;
+}
+const editBtns = (kind, id) => `<td style="white-space:nowrap">
+  <button class="small ghost" data-kind="${kind}" data-act="edit" data-id="${id}">Sửa</button>
+  <button class="small danger" data-kind="${kind}" data-act="del" data-id="${id}">Xóa</button></td>`;
+
+function renderAtt() {
+  const f = $('fStaff').value;
+  const rows = attendance.filter(r => !f || (f === '__orphan__' ? !r.user_id : r.user_id === f));
+  $('attRows').innerHTML = rows.length ? rows.map(r => `
+    <tr><td>${fmtDate(r.start_at)}</td><td>${fmtTime(r.start_at)}</td><td>${esc(fmtEnd(r.start_at, r.end_at))}</td>
+    <td>${esc(r.customer_name)}</td><td>${esc(r.language)}</td><td>${esc(r.interpreter_name)}</td>
+    <td>${esc(ownerName(r))}</td><td>${fmtHours(hoursBetween(r.start_at, r.end_at))}</td>${editBtns('att', r.id)}</tr>`).join('')
+    : '<tr><td colspan="9" class="muted">Chưa có dữ liệu trong tháng này</td></tr>';
+}
+
+/* ---------- Cộng tác viên ---------- */
+function renderCtv() {
+  $('ctvRows').innerHTML = ctv.length ? ctv.map(r => `
+    <tr><td>${fmtDate(r.start_at)}</td><td>${fmtTime(r.start_at)}</td><td>${esc(fmtEnd(r.start_at, r.end_at))}</td>
+    <td>${esc(r.customer_name)}</td><td>${esc(r.language)}</td><td>${esc(r.interpreter_name)}</td>
+    <td>${esc(r.phone)}</td><td>${fmtHours(hoursBetween(r.start_at, r.end_at))}</td>${editBtns('ctv', r.id)}</tr>`).join('')
+    : '<tr><td colspan="9" class="muted">Chưa có dữ liệu trong tháng này</td></tr>';
+}
+
+/* ---------- Sửa / xóa (vào thùng rác) bản ghi ---------- */
+let editing = null;
+async function recordClick(e, msgEl) {
+  const b = e.target.closest('button'); if (!b) return;
+  const kind = b.dataset.kind, list = kind === 'att' ? attendance : ctv;
+  const rec = list.find(r => String(r.id) === b.dataset.id); if (!rec) return;
+  if (b.dataset.act === 'del') {
+    if (!confirm('Chuyển bản ghi chấm công ngày ' + fmtDate(rec.start_at) + ' của "' + rec.interpreter_name + '" vào thùng rác?\n(Bạn có thể khôi phục trong Thùng rác.)')) return;
+    const { error } = await sb.from(kind === 'att' ? 'attendance' : 'ctv_attendance')
+      .update({ deleted_at: new Date().toISOString() }).eq('id', rec.id);
+    if (error) return setMsg(msgEl, 'Không xóa được: ' + error.message, 'err');
+    setMsg(msgEl, 'Đã chuyển bản ghi vào thùng rác', 'ok');
+    return loadAll();
+  }
+  editing = { kind, id: rec.id };
+  const s = toLocalParts(rec.start_at), en = toLocalParts(rec.end_at);
+  $('eDate').value = s.date; $('eStart').value = s.time; $('eEnd').value = en.time;
+  $('eCust').value = rec.customer_name; $('eLang').value = rec.language; $('eInterp').value = rec.interpreter_name;
+  $('ePhoneWrap').classList.toggle('hidden', kind !== 'ctv');
+  $('ePhone').value = rec.phone || '';
+  $('eMsg').className = 'msg';
+  $('dlg').showModal();
+}
+$('attRows').onclick = e => recordClick(e, $('attMsg'));
+$('ctvRows').onclick = e => recordClick(e, $('ctvMsg'));
+$('eCancel').onclick = () => $('dlg').close();
+$('eSave').onclick = async () => {
+  const t = buildTimes($('eDate').value, $('eStart').value, $('eEnd').value);
+  if (!t) return setMsg($('eMsg'), 'Ngày giờ không hợp lệ (giờ kết thúc phải khác giờ bắt đầu)', 'err');
+  if (new Date(t[1]) - new Date(t[0]) > 16 * HOUR) return setMsg($('eMsg'), 'Một lượt làm việc không được quá 16 giờ', 'err');
+  const patch = {
+    start_at: t[0], end_at: t[1], customer_name: $('eCust').value.trim(),
+    language: $('eLang').value.trim(), interpreter_name: $('eInterp').value.trim()
+  };
+  if (!patch.customer_name || !patch.language || !patch.interpreter_name) return setMsg($('eMsg'), 'Vui lòng điền đầy đủ các mục', 'err');
+  if (editing.kind === 'ctv') patch.phone = $('ePhone').value.replace(/[\s.\-]/g, '');
+  const { error } = await sb.from(editing.kind === 'att' ? 'attendance' : 'ctv_attendance').update(patch).eq('id', editing.id);
+  if (error) return setMsg($('eMsg'), 'Không lưu được: ' + error.message, 'err');
+  $('dlg').close();
+  await loadAll();
+};
+
+/* ---------- Thùng rác ---------- */
+function trashBtns(t, id) {
+  return `<td style="white-space:nowrap">
+    <button class="small gold" data-t="${t}" data-act="restore" data-id="${id}">Khôi phục</button>
+    <button class="small danger" data-t="${t}" data-act="purge" data-id="${id}">Xóa vĩnh viễn</button></td>`;
+}
+function renderTrash() {
+  const accs = deletedStaff();
+  $('trashAcc').innerHTML = accs.length ? accs.map(p => `
+    <tr><td>${esc(p.full_name)}</td><td>${esc(p.username)}</td><td>${esc(delStamp(p.deleted_at))}</td>${trashBtns('acc', p.id)}</tr>`).join('')
+    : '<tr><td colspan="4" class="muted">Không có tài khoản nào trong thùng rác</td></tr>';
+  $('trashAtt').innerHTML = trashAtt.length ? trashAtt.map(r => `
+    <tr><td>${fmtDate(r.start_at)}</td><td>${fmtTime(r.start_at)}</td><td>${esc(fmtEnd(r.start_at, r.end_at))}</td>
+    <td>${esc(r.customer_name)}</td><td>${esc(r.language)}</td><td>${esc(r.interpreter_name)}</td>
+    <td>${esc(ownerName(r))}</td><td>${esc(delStamp(r.deleted_at))}</td>${trashBtns('att', r.id)}</tr>`).join('')
+    : '<tr><td colspan="9" class="muted">Không có bản ghi nào trong thùng rác</td></tr>';
+  $('trashCtv').innerHTML = trashCtv.length ? trashCtv.map(r => `
+    <tr><td>${fmtDate(r.start_at)}</td><td>${fmtTime(r.start_at)}</td><td>${esc(fmtEnd(r.start_at, r.end_at))}</td>
+    <td>${esc(r.customer_name)}</td><td>${esc(r.language)}</td><td>${esc(r.interpreter_name)}</td>
+    <td>${esc(r.phone)}</td><td>${esc(delStamp(r.deleted_at))}</td>${trashBtns('ctv', r.id)}</tr>`).join('')
+    : '<tr><td colspan="9" class="muted">Không có bản ghi nào trong thùng rác</td></tr>';
+  const n = accs.length + trashAtt.length + trashCtv.length;
+  $('trashCount').textContent = n ? ' (' + n + ')' : '';
+}
+$('tab-trash').onclick = async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const { t, act, id } = b.dataset, msg = $('trashMsg');
+  try {
+    if (t === 'acc') {
+      const p = profiles.find(x => x.id === id);
+      if (act === 'restore') {
+        await api('PATCH', { id, action: 'restore' });
+        setMsg(msg, 'Đã khôi phục tài khoản "' + p.full_name + '". Nhân viên đăng nhập lại được bằng mật khẩu cũ.', 'ok');
+      } else {
+        if (!confirm('Xóa vĩnh viễn tài khoản "' + p.full_name + '"?\n\nTài khoản sẽ mất hẳn và không thể khôi phục. Lịch sử chấm công của người này vẫn được giữ lại (hiển thị là "đã xóa vĩnh viễn") nhưng sẽ không còn được tính lương.')) return;
+        await api('DELETE', { id, permanent: true });
+        setMsg(msg, 'Đã xóa vĩnh viễn tài khoản', 'ok');
+      }
+    } else {
+      const table = t === 'att' ? 'attendance' : 'ctv_attendance';
+      if (act === 'restore') {
+        const { error } = await sb.from(table).update({ deleted_at: null }).eq('id', id);
+        if (error) throw error;
+        setMsg(msg, 'Đã khôi phục bản ghi chấm công', 'ok');
+      } else {
+        if (!confirm('Xóa vĩnh viễn bản ghi chấm công này?\nKhông thể khôi phục sau khi xóa.')) return;
+        const { error } = await sb.from(table).delete().eq('id', id);
+        if (error) throw error;
+        setMsg(msg, 'Đã xóa vĩnh viễn bản ghi', 'ok');
+      }
+    }
+    await loadAll();
+  } catch (err) { setMsg(msg, err.message || 'Có lỗi xảy ra', 'err'); }
+};
+
+/* ---------- Tính lương nhân viên (theo tháng) ---------- */
+const MS_H = 36e5;
+// Số giờ nằm trong khung 22:00 – 06:00 (giờ VN)
+function nightHours(startIso, endIso) {
+  const s = new Date(startIso).getTime() + 7 * MS_H, e = new Date(endIso).getTime() + 7 * MS_H;
+  const day0 = Math.floor(s / (24 * MS_H)) * 24 * MS_H - 24 * MS_H;
+  let t = 0;
+  for (let d = day0; d < e; d += 24 * MS_H) {
+    const a = Math.max(s, d + 22 * MS_H), b = Math.min(e, d + 30 * MS_H);
+    if (b > a) t += b - a;
+  }
+  return t / MS_H;
+}
+// Giờ thường = tối đa staff_month_hours (208h) theo thứ tự thời gian, phần dư là giờ vượt
+function staffCalc(recs, rate) {
+  const std = cfg.staff_month_hours, otR = cfg.staff_ot_rate, nR = cfg.staff_night_rate;
+  let cum = 0;
+  const lines = recs.slice().sort((a, b) => new Date(a.start_at) - new Date(b.start_at)).map(r => {
+    const h = hoursBetween(r.start_at, r.end_at);
+    const reg = Math.min(h, Math.max(0, std - cum)), ot = h - reg;
+    cum += h;
+    const night = nightHours(r.start_at, r.end_at);
+    const regPay = Math.round(reg * rate), otPay = Math.round(ot * otR), nightPay = Math.round(night * nR);
+    return { rec: r, h, reg, ot, night, regPay, otPay, nightPay, amount: regPay + otPay + nightPay };
+  });
+  const sum = k => lines.reduce((s, l) => s + l[k], 0);
+  return { lines, count: lines.length, hours: sum('h'), reg: sum('reg'), ot: sum('ot'), night: sum('night'),
+           regPay: sum('regPay'), otPay: sum('otPay'), nightPay: sum('nightPay'), amount: sum('amount') };
+}
+function staffDetailHtml(s) {
+  const th = 'border:1px solid #888;padding:5px 7px;background:#f3ead0;text-align:left;font-size:13px';
+  const td = 'border:1px solid #888;padding:5px 7px;font-size:13px';
+  const tdr = td + ';text-align:right';
+  const sub = td + ';background:#faf6e8;font-weight:700';
+  let h = '<table style="border-collapse:collapse;width:100%"><thead><tr>' +
+    ['Lần', 'Ngày', 'Bắt đầu', 'Kết thúc', 'Khách hàng', 'Ngôn ngữ', 'Số giờ', 'Giờ thường', 'Giờ vượt', 'Giờ sau 22h', 'Thành tiền']
+      .map(x => `<th style="${th}">${x}</th>`).join('') + '</tr></thead><tbody>';
+  s.lines.forEach((l, i) => {
+    const r = l.rec;
+    h += `<tr><td style="${td}">${i + 1}</td><td style="${td}">${fmtDate(r.start_at)}</td><td style="${td}">${fmtTime(r.start_at)}</td>` +
+      `<td style="${td}">${esc(fmtEnd(r.start_at, r.end_at))}</td><td style="${td}">${esc(r.customer_name)}</td><td style="${td}">${esc(r.language)}</td>` +
+      `<td style="${tdr}">${fmtHours(l.h)}</td><td style="${tdr}">${fmtHours(l.reg)}</td><td style="${tdr}">${fmtHours(l.ot)}</td><td style="${tdr}">${fmtHours(l.night)}</td>` +
+      `<td style="${tdr}">${money(l.amount)}</td></tr>`;
+  });
+  h += `<tr><td style="${sub}" colspan="6">Tổng</td><td style="${sub};text-align:right">${fmtHours(s.hours)}</td>` +
+    `<td style="${sub};text-align:right">${fmtHours(s.reg)}</td><td style="${sub};text-align:right">${fmtHours(s.ot)}</td>` +
+    `<td style="${sub};text-align:right">${fmtHours(s.night)}</td><td style="${sub};text-align:right">${money(s.amount)}</td></tr>` +
+    `<tr><td style="${td}" colspan="10">Tiền giờ thường (${fmtHours(s.reg)} × ${money(s.rate)})</td><td style="${tdr}">${money(s.regPay)}</td></tr>` +
+    `<tr><td style="${td}" colspan="10">Tiền giờ vượt (${fmtHours(s.ot)} × ${money(cfg.staff_ot_rate)})</td><td style="${tdr}">${money(s.otPay)}</td></tr>` +
+    `<tr><td style="${td}" colspan="10">Phụ cấp sau 22h (${fmtHours(s.night)} × ${money(cfg.staff_night_rate)})</td><td style="${tdr}">${money(s.nightPay)}</td></tr>` +
+    '</tbody></table>';
+  return h;
+}
+let payStaff = [], payStaffUnpaid = [], payStaffPaid = [];
+const staffAmt = r => r.paid ? r.payAmt : r.amount;
+function renderPay() {
+  $('payMonth').textContent = $('month').value;
+  const withRecs = new Set(attendance.map(r => r.user_id));
+  const poMap = {};
+  staffPayouts.forEach(p => { if (p.paid_at) poMap[p.user_id] = p; });
+  const list = allStaff().filter(p => !p.deleted_at || withRecs.has(p.id) || poMap[p.id]);
+  payStaff = list.map(p => {
+    const rate = Number(p.hourly_rate);
+    const calc = staffCalc(attendance.filter(r => r.user_id === p.id), rate);
+    const po = poMap[p.id];
+    return { id: p.id, name: p.full_name + (p.deleted_at ? ' (đã xóa)' : ''), rate, ...calc,
+      paid: !!po, paid_at: po ? po.paid_at : null,
+      payAmt: po ? Number(po.amount || 0) : calc.amount,
+      payHours: po ? Number(po.hours || 0) : calc.hours,
+      changed: po ? (Math.abs(calc.hours - Number(po.hours || 0)) > 0.01 || Math.abs(calc.amount - Number(po.amount || 0)) > 1) : false };
+  });
+  // Đã thanh toán nhưng tài khoản đã bị xóa vĩnh viễn
+  staffPayouts.filter(p => p.paid_at && !list.some(x => x.id === p.user_id)).forEach(p => payStaff.push({
+    id: p.user_id || ('po' + p.id), name: (p.staff_name || 'Không rõ') + ' (đã xóa vĩnh viễn)', rate: 0, lines: [], count: 0,
+    hours: 0, reg: 0, ot: 0, night: 0, regPay: 0, otPay: 0, nightPay: 0, amount: 0,
+    paid: true, paid_at: p.paid_at, payAmt: Number(p.amount || 0), payHours: Number(p.hours || 0), changed: false, payoutId: p.id }));
+  payStaff.forEach(r => { const po = poMap[r.id]; if (po) r.payoutId = po.id; });
+  payStaffUnpaid = payStaff.filter(r => !r.paid && r.count > 0);
+  payStaffPaid = payStaff.filter(r => r.paid);
+
+  $('payStaffRows').innerHTML = payStaffUnpaid.length ? payStaffUnpaid.map(r => `
+    <tr><td>${esc(r.name)}</td><td>${money(r.rate)}</td><td>${fmtHours(r.hours)}</td><td>${fmtHours(r.reg)}</td><td>${fmtHours(r.ot)}</td><td>${fmtHours(r.night)}</td>
+    <td>${money(r.regPay)}</td><td>${money(r.otPay)}</td><td>${money(r.nightPay)}</td><td><strong>${money(r.amount)}</strong></td>
+    <td style="white-space:nowrap">
+      <button class="small gold" data-act="detail" data-id="${r.id}">Chi tiết</button>
+      <button class="small gold" data-act="pay" data-id="${r.id}">Thanh toán</button></td></tr>`).join('')
+    : '<tr><td colspan="11" class="muted">Không có nhân viên nào cần thanh toán trong tháng này</td></tr>';
+  $('payStaffTotal').textContent = money(payStaffUnpaid.reduce((s, r) => s + r.amount, 0));
+
+  $('payStaffPaidRows').innerHTML = payStaffPaid.length ? payStaffPaid.map(r => `
+    <tr><td>${esc(r.name)}</td><td>${fmtHours(r.payHours)}</td><td><strong>${money(r.payAmt)}</strong></td>
+    <td>Đã thanh toán${r.changed ? ' <span class="muted">⚠ chấm công đã thay đổi sau khi thanh toán</span>' : ''}</td>
+    <td>${esc(delStamp(r.paid_at))}</td>
+    <td style="white-space:nowrap">
+      <button class="small ghost" data-act="detail" data-id="${r.id}">Chi tiết</button>
+      <button class="small ghost" data-act="undo" data-pid="${r.payoutId}">Hoàn tác</button></td></tr>`).join('')
+    : '<tr><td colspan="6" class="muted">Chưa có ai được thanh toán trong tháng này</td></tr>';
+  $('payStaffPaidTotal').textContent = money(payStaffPaid.reduce((s, r) => s + r.payAmt, 0));
+
+  const orphans = attendance.filter(r => !r.user_id).length;
+  $('payOrphan').textContent = orphans
+    ? 'Có ' + orphans + ' bản ghi của tài khoản đã xóa vĩnh viễn trong tháng này — không được tính lương (xem ở tab Chấm công NV).' : '';
+}
+function showStaffDetail(s) {
+  det = { editable: false, lines: [] };
+  $('dTitle').textContent = 'Chi tiết: ' + s.name;
+  $('dSub').textContent = 'Tháng ' + $('month').value + ' · Giờ chuẩn ' + cfg.staff_month_hours + 'h · Giờ vượt ' +
+    money(cfg.staff_ot_rate) + '/giờ · Sau 22h +' + money(cfg.staff_night_rate) + '/giờ' +
+    (s.paid ? ' · Đã thanh toán ' + money(s.payAmt) + ' (muốn sửa hãy bấm Hoàn tác)' : '');
+  $('dSave').classList.add('hidden'); $('dSavePay').classList.add('hidden');
+  $('dMsg').className = 'msg';
+  $('dBody').innerHTML = staffDetailHtml(s);
+  $('dlgDetail').showModal();
+}
+$('payStaffRows').onclick = e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const s = payStaff.find(x => x.id === b.dataset.id); if (!s) return;
+  if (b.dataset.act === 'detail') return showStaffDetail(s);
+  if (b.dataset.act === 'pay') return openPayStaff(s);
+};
+$('payStaffPaidRows').onclick = async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.act === 'detail') {
+    const s = payStaff.find(x => x.id === b.dataset.id); if (!s) return;
+    if (!s.count) return setMsg($('staffPayMsg'), 'Không còn bản ghi chấm công nào của người này trong tháng', 'err');
+    return showStaffDetail(s);
+  }
+  if (b.dataset.act !== 'undo') return;
+  const s = payStaffPaid.find(x => String(x.payoutId) === b.dataset.pid); if (!s) return;
+  if (!confirm('Hoàn tác thanh toán lương của "' + s.name + '"?\nNhân viên sẽ quay lại bảng "Chưa thanh toán".')) return;
+  const { error } = await sb.from('staff_payouts').update({ paid_at: null, amount: null, hours: null }).eq('id', s.payoutId);
+  if (error) return setMsg($('staffPayMsg'), 'Không hoàn tác được: ' + error.message, 'err');
+  setMsg($('staffPayMsg'), 'Đã hoàn tác thanh toán', 'ok');
+  await loadAll();
+};
+
+/* ---------- Tính lương cộng tác viên (theo tuần thứ 2 – chủ nhật) ---------- */
+let payCtv = [], payCtvPaid = [], payCtvAll = [], ctvGroups = {};
+
+function getRates(phone) {
+  const r = ctvRates[phone];
+  return { hourly: r ? r.hourly : cfg.default_ctv_rate, custom: !!r };
+}
+// Mỗi lần chấm công có cách tính riêng: theo giờ / theo ngày (đủ số giờ chuẩn) / nhập tay
+function lineAmount(mode, rate, h, manual) {
+  if (mode === 'manual') return Math.round(Number(manual) || 0);
+  if (mode === 'day') return Math.round((Number(rate) || 0) * h / cfg.standard_hours);
+  return Math.round((Number(rate) || 0) * h);
+}
+function lineOf(r, rt) {
+  const mode = r.pay_mode || 'hour';
+  const h = hoursBetween(r.start_at, r.end_at);
+  const rate = r.pay_rate != null ? Number(r.pay_rate) : (mode === 'hour' ? rt.hourly : 0);
+  const manual = r.pay_amount != null ? Number(r.pay_amount) : 0;
+  return { id: r.id, rec: r, mode, rate, manual, h, amount: lineAmount(mode, rate, h, manual) };
+}
+function ctvCalc(recs, rt) {
+  const lines = recs.slice().sort((a, b) => new Date(a.start_at) - new Date(b.start_at)).map(r => lineOf(r, rt));
+  return { lines, count: lines.length, hours: lines.reduce((s, l) => s + l.h, 0), auto: lines.reduce((s, l) => s + l.amount, 0) };
+}
+function lineDesc(l) {
+  if (l.mode === 'manual') return 'Nhập tay';
+  if (l.mode === 'day') return fmtHours(l.h) + ' giờ × ' + money(l.rate) + '/' + cfg.standard_hours + ' giờ';
+  return fmtHours(l.h) + ' giờ × ' + money(l.rate) + '/giờ';
+}
+// Bảng chi tiết (chỉ xem): dùng cho xuất file và cho tuần đã thanh toán
+function detailHtml(calc) {
+  const th = 'border:1px solid #888;padding:5px 7px;background:#f3ead0;text-align:left;font-size:13px';
+  const td = 'border:1px solid #888;padding:5px 7px;font-size:13px';
+  const tdr = td + ';text-align:right';
+  const sub = td + ';background:#faf6e8;font-weight:700';
+  let h = '<table style="border-collapse:collapse;width:100%"><thead><tr>' +
+    ['Lần', 'Ngày', 'Bắt đầu', 'Kết thúc', 'Khách hàng', 'Ngôn ngữ', 'Số giờ', 'Cách tính', 'Thành tiền'].map(x => `<th style="${th}">${x}</th>`).join('') +
+    '</tr></thead><tbody>';
+  calc.lines.forEach((l, i) => {
+    const r = l.rec;
+    h += `<tr><td style="${td}">${i + 1}</td><td style="${td}">${fmtDate(r.start_at)}</td><td style="${td}">${fmtTime(r.start_at)}</td>` +
+      `<td style="${td}">${esc(fmtEnd(r.start_at, r.end_at))}</td><td style="${td}">${esc(r.customer_name)}</td><td style="${td}">${esc(r.language)}</td>` +
+      `<td style="${tdr}">${fmtHours(l.h)}</td><td style="${td}">${esc(lineDesc(l))}</td><td style="${tdr}">${money(l.amount)}</td></tr>`;
+  });
+  h += `<tr><td style="${sub}" colspan="6">Tổng</td><td style="${sub};text-align:right">${fmtHours(calc.hours)}</td><td style="${sub}"></td><td style="${sub};text-align:right">${money(calc.auto)}</td></tr></tbody></table>`;
+  return h;
+}
+
+function renderPayCtv() {
+  $('weekLabel').textContent = weekText(weekMonday);
+  $('wPick').value = weekMonday;
+
+  const paidMap = {};
+  payouts.forEach(p => { if (p.paid_at) paidMap[p.phone] = p; });
+  const groups = {};
+  ctvWeek.forEach(r => { (groups[r.phone] = groups[r.phone] || []).push(r); });
+  ctvGroups = groups;
+
+  payCtv = []; payCtvPaid = [];
+  Object.keys(groups).forEach(phone => {
+    if (paidMap[phone]) return;
+    const recs = groups[phone], c = ctvCalc(recs, getRates(phone));
+    payCtv.push({ phone, name: recs[0].interpreter_name, ...c, manual: null, amount: c.auto });
+  });
+  payCtv.sort((a, b) => a.name.localeCompare(b.name, 'vi'));
+
+  payouts.filter(p => p.paid_at).forEach(p => {
+    const recs = groups[p.phone] || [];
+    const nowHours = recs.reduce((s, r) => s + hoursBetween(r.start_at, r.end_at), 0);
+    payCtvPaid.push({
+      id: p.id, phone: p.phone, name: p.interpreter_name, hours: Number(p.hours || 0),
+      amount: Number(p.amount || 0), paid_at: p.paid_at,
+      changed: Math.abs(nowHours - Number(p.hours || 0)) > 0.01,
+      calc: recs.length ? ctvCalc(recs, getRates(p.phone)) : null
+    });
+  });
+  payCtvPaid.sort((a, b) => a.name.localeCompare(b.name, 'vi'));
+
+  payCtvAll = [
+    ...payCtv.map(r => ({ name: r.name, phone: r.phone, count: r.count, hours: r.hours, amount: r.amount, paid: false, calc: r })),
+    ...payCtvPaid.map(r => ({ name: r.name, phone: r.phone, count: r.calc ? r.calc.count : '', hours: r.hours, amount: r.amount, paid: true, paid_at: r.paid_at, calc: r.calc }))
+  ];
+
+  $('payCtvRows').innerHTML = payCtv.length ? payCtv.map(r => `
+    <tr><td>${esc(r.name)}</td><td>${esc(r.phone)}</td><td>${r.count}</td><td>${fmtHours(r.hours)}</td>
+    <td><strong>${money(r.amount)}</strong></td>
+    <td>Chưa thanh toán</td>
+    <td style="white-space:nowrap">
+      <button class="small gold" data-act="detail" data-phone="${esc(r.phone)}">Tính lương / Chi tiết</button>
+      <button class="small ghost" data-act="rate" data-phone="${esc(r.phone)}">Lương/giờ mặc định</button>
+      <button class="small gold" data-act="pay" data-phone="${esc(r.phone)}">Thanh toán</button>
+    </td></tr>`).join('')
+    : '<tr><td colspan="7" class="muted">Không có cộng tác viên nào cần thanh toán trong tuần này</td></tr>';
+  $('payCtvTotal').textContent = money(payCtv.reduce((s, r) => s + r.amount, 0));
+
+  $('payCtvPaidRows').innerHTML = payCtvPaid.length ? payCtvPaid.map(r => `
+    <tr><td>${esc(r.name)}</td><td>${esc(r.phone)}</td><td>${fmtHours(r.hours)}</td>
+    <td><strong>${money(r.amount)}</strong></td>
+    <td>Đã thanh toán${r.changed ? ' <span class="muted">⚠ giờ làm đã thay đổi sau khi thanh toán</span>' : ''}</td>
+    <td>${esc(delStamp(r.paid_at))}</td>
+    <td style="white-space:nowrap">
+      <button class="small ghost" data-act="detail" data-phone="${esc(r.phone)}">Chi tiết</button>
+      <button class="small ghost" data-act="undo" data-id="${r.id}">Hoàn tác</button></td></tr>`).join('')
+    : '<tr><td colspan="7" class="muted">Chưa có ai được thanh toán trong tuần này</td></tr>';
+  $('payCtvPaidTotal').textContent = money(payCtvPaid.reduce((s, r) => s + r.amount, 0));
+}
+
+$('wPrev').onclick = () => { weekMonday = addDays(weekMonday, -7); loadWeek(); };
+$('wNext').onclick = () => { weekMonday = addDays(weekMonday, 7); loadWeek(); };
+$('wPick').onchange = () => { if ($('wPick').value) { weekMonday = mondayOf($('wPick').value); loadWeek(); } };
+
+/* --- Tính lương / chi tiết từng lần chấm công --- */
+let det = null;
+function openDetail(name, phone, calc, editable, paidAmount) {
+  det = { name, phone, editable, lines: calc.lines.map(l => ({ ...l })) };
+  $('dTitle').textContent = (editable ? 'Tính lương: ' : 'Chi tiết: ') + name + ' (' + phone + ')';
+  $('dSub').textContent = 'Tuần ' + weekText(weekMonday) + (editable
+    ? ' · Mỗi lần chấm công chọn cách tính riêng: theo giờ, theo ngày (' + cfg.standard_hours + ' giờ) hoặc nhập tay'
+    : ' · Đã thanh toán ' + money(paidAmount) + ' (muốn sửa hãy bấm Hoàn tác ở bảng Đã thanh toán)');
+  $('dSave').classList.toggle('hidden', !editable);
+  $('dSavePay').classList.toggle('hidden', !editable);
+  $('dMsg').className = 'msg';
+  renderDetail();
+  $('dlgDetail').showModal();
+}
+function renderDetail() {
+  if (!det.editable) {
+    $('dBody').innerHTML = detailHtml({ lines: det.lines, hours: det.lines.reduce((s, l) => s + l.h, 0), auto: det.lines.reduce((s, l) => s + l.amount, 0) });
+    return;
+  }
+  const rows = det.lines.map((l, i) => {
+    const r = l.rec, isM = l.mode === 'manual';
+    const opt = (v, t) => `<option value="${v}"${l.mode === v ? ' selected' : ''}>${t}</option>`;
+    return `<tr><td>${i + 1}</td><td>${fmtDate(r.start_at)}</td><td>${fmtTime(r.start_at)} – ${esc(fmtEnd(r.start_at, r.end_at))}</td>
+      <td>${esc(r.customer_name)}</td><td>${esc(r.language)}</td><td style="text-align:right">${fmtHours(l.h)}</td>
+      <td><select data-i="${i}" data-f="mode" style="width:auto">${opt('hour', 'Theo giờ')}${opt('day', 'Theo ngày ' + cfg.standard_hours + 'h')}${opt('manual', 'Nhập tay')}</select></td>
+      <td><input type="number" min="0" step="1000" data-i="${i}" data-f="rate" value="${isM ? '' : l.rate}" ${isM ? 'disabled' : ''}
+           placeholder="${l.mode === 'day' ? '₫ / ' + cfg.standard_hours + ' giờ' : '₫ / giờ'}" style="width:130px"></td>
+      <td><input type="number" min="0" step="1000" data-i="${i}" data-f="manual" value="${isM ? l.manual : l.amount}" ${isM ? '' : 'readonly'} style="width:130px"></td></tr>`;
+  }).join('');
+  $('dBody').innerHTML = `<table><thead><tr><th>Lần</th><th>Ngày</th><th>Giờ</th><th>Khách hàng</th><th>Ngôn ngữ</th><th>Số giờ</th>
+    <th>Cách tính</th><th>Đơn giá</th><th>Thành tiền (₫)</th></tr></thead><tbody>${rows}</tbody>
+    <tfoot><tr class="total"><td colspan="8">Tổng (${det.lines.length} lần · ${fmtHours(det.lines.reduce((s, l) => s + l.h, 0))} giờ)</td><td id="dTotal"></td></tr></tfoot></table>`;
+  updateDetTotal();
+}
+function updateDetTotal() {
+  const el = $('dTotal'); if (el) el.textContent = money(det.lines.reduce((s, l) => s + l.amount, 0));
+}
+$('dBody').addEventListener('input', e => {
+  const t = e.target, i = t.dataset.i;
+  if (!det || !det.editable || i == null || t.dataset.f === 'mode') return;
+  const l = det.lines[i];
+  if (t.dataset.f === 'rate') l.rate = Math.max(0, Number(t.value) || 0);
+  if (t.dataset.f === 'manual') l.manual = Math.max(0, Number(t.value) || 0);
+  l.amount = lineAmount(l.mode, l.rate, l.h, l.manual);
+  if (l.mode !== 'manual') {
+    const a = $('dBody').querySelector('input[data-f="manual"][data-i="' + i + '"]');
+    if (a) a.value = l.amount;
+  }
+  updateDetTotal();
+});
+$('dBody').addEventListener('change', e => {
+  const t = e.target;
+  if (!det || !det.editable || t.dataset.f !== 'mode') return;
+  const l = det.lines[t.dataset.i];
+  const old = l.amount;
+  l.mode = t.value;
+  if (l.mode === 'manual') l.manual = old;
+  else if (l.mode === 'hour' && !l.rate) l.rate = getRates(det.phone).hourly;
+  l.amount = lineAmount(l.mode, l.rate, l.h, l.manual);
+  renderDetail();
+});
+async function saveDetail() {
+  const res = await Promise.all(det.lines.map(l => sb.from('ctv_attendance').update({
+    pay_mode: l.mode,
+    pay_rate: l.mode === 'manual' ? null : l.rate,
+    pay_amount: l.mode === 'manual' ? l.manual : null
+  }).eq('id', l.id)));
+  const bad = res.find(r => r.error);
+  if (bad) throw new Error(bad.error.message);
+}
+$('dSave').onclick = async () => {
+  $('dSave').disabled = $('dSavePay').disabled = true;
+  try {
+    await saveDetail();
+    $('dlgDetail').close();
+    setMsg($('payMsg'), 'Đã lưu cách tính lương cho ' + det.name, 'ok');
+    await loadWeek();
+  } catch (e) { setMsg($('dMsg'), 'Không lưu được: ' + e.message + ' (đã chạy file SQL cap-nhat-luong-ctv.sql chưa?)', 'err'); }
+  $('dSave').disabled = $('dSavePay').disabled = false;
+};
+$('dSavePay').onclick = async () => {
+  $('dSave').disabled = $('dSavePay').disabled = true;
+  try {
+    const phone = det.phone;
+    await saveDetail();
+    $('dlgDetail').close();
+    await loadWeek();
+    const row = payCtv.find(r => r.phone === phone);
+    if (row) await openPay(row);
+  } catch (e) { setMsg($('dMsg'), 'Không lưu được: ' + e.message, 'err'); }
+  $('dSave').disabled = $('dSavePay').disabled = false;
+};
+$('dClose').onclick = () => $('dlgDetail').close();
+
+/* --- Sửa lương cộng tác viên --- */
+let ratePhone = null;
+function openRate(phone, name) {
+  ratePhone = phone;
+  const rt = getRates(phone);
+  $('rTitle').textContent = 'Sửa lương: ' + name + ' (' + phone + ')';
+  $('rHourly').value = rt.hourly;
+  $('rMsg').className = 'msg';
+  $('dlgRate').showModal();
+}
+$('rCancel').onclick = () => $('dlgRate').close();
+$('rSave').onclick = async () => {
+  const v = $('rHourly').value.trim();
+  const hourly = v === '' ? cfg.default_ctv_rate : Number(v);
+  if (!(hourly >= 0)) return setMsg($('rMsg'), 'Số tiền không hợp lệ', 'err');
+  const { error } = await sb.from('ctv_rates').upsert({ phone: ratePhone, hourly_rate: hourly });
+  if (error) return setMsg($('rMsg'), 'Không lưu được: ' + error.message, 'err');
+  $('dlgRate').close();
+  setMsg($('payMsg'), 'Đã cập nhật lương cộng tác viên', 'ok');
+  await loadAll();
+};
+
+/* --- Thanh toán --- */
+let payingPhone = null, payingKind = 'ctv', payingStaffId = null;
+async function openPay(row) {
+  payingKind = 'ctv';
+  payingPhone = row.phone;
+  $('pTitle').textContent = 'Thanh toán cộng tác viên';
+  $('pInfo').textContent = row.name + ' · ' + row.phone + ' · Tuần ' + weekText(weekMonday);
+  $('pAmount').textContent = money(row.amount);
+  $('pQr').classList.add('hidden'); $('pNoQr').classList.add('hidden');
+  $('pMsg').className = 'msg';
+  $('pDone').disabled = false;
+  $('dlgPay').showModal();
+  // Lấy ảnh QR mới nhất mà cộng tác viên đã cung cấp
+  const { data, error } = await sb.from('ctv_attendance').select('qr_image,start_at')
+    .eq('phone', row.phone).not('qr_image', 'is', null).is('deleted_at', null)
+    .order('start_at', { ascending: false }).limit(1);
+  if (!error && data && data.length && /^data:image\//.test(data[0].qr_image)) {
+    $('pQr').src = data[0].qr_image;
+    $('pQr').classList.remove('hidden');
+  } else {
+    $('pNoQr').classList.remove('hidden');
+  }
+}
+function openPayStaff(r) {
+  payingKind = 'staff'; payingStaffId = r.id;
+  $('pTitle').textContent = 'Thanh toán lương nhân viên';
+  $('pInfo').textContent = r.name + ' · Tháng ' + $('month').value;
+  $('pAmount').textContent = money(r.amount);
+  $('pQr').classList.add('hidden'); $('pNoQr').classList.add('hidden');
+  $('pMsg').className = 'msg';
+  $('pDone').disabled = false;
+  $('dlgPay').showModal();
+}
+async function doPayStaff() {
+  const r = payStaff.find(x => x.id === payingStaffId); if (!r) return;
+  $('pDone').disabled = true;
+  const { error } = await sb.from('staff_payouts').upsert({
+    user_id: r.id, staff_name: r.name.replace(/ \(đã xóa\)$/, ''), month: $('month').value,
+    amount: r.amount, hours: Number(r.hours.toFixed(2)), paid_at: new Date().toISOString()
+  }, { onConflict: 'user_id,month' });
+  if (error) { $('pDone').disabled = false; return setMsg($('pMsg'), 'Không lưu được: ' + error.message, 'err'); }
+  $('dlgPay').close();
+  setMsg($('staffPayMsg'), 'Đã ghi nhận thanh toán lương cho ' + r.name + ' — chuyển sang bảng "Đã thanh toán"', 'ok');
+  await loadAll();
+}
+$('pCancel').onclick = () => $('dlgPay').close();
+$('pDone').onclick = async () => {
+  if (payingKind === 'staff') return doPayStaff();
+  const row = payCtv.find(r => r.phone === payingPhone); if (!row) return;
+  $('pDone').disabled = true;
+  const { error } = await sb.from('ctv_payouts').upsert({
+    phone: row.phone, interpreter_name: row.name, week_start: weekMonday,
+    manual_amount: row.manual, amount: row.amount, hours: Number(row.hours.toFixed(2)),
+    paid_at: new Date().toISOString()
+  }, { onConflict: 'phone,week_start' });
+  if (error) { $('pDone').disabled = false; return setMsg($('pMsg'), 'Không lưu được: ' + error.message, 'err'); }
+  $('dlgPay').close();
+  setMsg($('payMsg'), 'Đã ghi nhận thanh toán cho ' + row.name + ' — chuyển sang bảng "Đã thanh toán"', 'ok');
+  await loadWeek();
+};
+
+/* --- Thao tác trong bảng CTV --- */
+$('payCtvRows').onclick = async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const row = payCtv.find(r => r.phone === b.dataset.phone); if (!row) return;
+  if (b.dataset.act === 'detail') return openDetail(row.name, row.phone, row, true);
+  if (b.dataset.act === 'rate') return openRate(row.phone, row.name);
+  if (b.dataset.act === 'pay') return openPay(row);
+};
+$('payCtvPaidRows').onclick = async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.act === 'detail') {
+    const p = payCtvPaid.find(r => r.phone === b.dataset.phone); if (!p) return;
+    if (!p.calc) return setMsg($('payMsg'), 'Không còn bản ghi chấm công nào của người này trong tuần', 'err');
+    return openDetail(p.name, p.phone, p.calc, false, p.amount);
+  }
+  if (b.dataset.act !== 'undo') return;
+  const row = payCtvPaid.find(r => String(r.id) === b.dataset.id); if (!row) return;
+  if (!confirm('Hoàn tác thanh toán của "' + row.name + '"?\nCộng tác viên sẽ quay lại bảng "Chưa thanh toán".')) return;
+  const { error } = await sb.from('ctv_payouts').update({ paid_at: null, amount: null, hours: null }).eq('id', row.id);
+  if (error) return setMsg($('payMsg'), 'Không hoàn tác được: ' + error.message, 'err');
+  setMsg($('payMsg'), 'Đã hoàn tác thanh toán', 'ok');
+  await loadWeek();
+};
+
+/* ---------- Xuất bảng lương: ảnh / PDF / Word / CSV ---------- */
+function reportHtml(scope) {
+  const th = 'border:1px solid #888;padding:6px 8px;background:#f3ead0;text-align:left;font-size:13px';
+  const td = 'border:1px solid #888;padding:6px 8px;font-size:13px';
+  const tdr = td + ';text-align:right';
+  let h = '<div style="font-family:Arial,Helvetica,sans-serif;color:#000;background:#fff;padding:24px">' +
+    '<div style="font-size:20px;font-weight:700">SOWON GLOBAL — BẢNG LƯƠNG</div>';
+  const wantCtv = scope === 'ctv' || scope === 'both', wantStaff = scope === 'staff' || scope === 'both';
+  if (wantCtv) {
+    const total = payCtvAll.reduce((s, r) => s + r.amount, 0);
+    const unpaid = payCtvAll.filter(r => !r.paid).reduce((s, r) => s + r.amount, 0);
+    h += '<div style="margin:12px 0 6px;font-size:15px;font-weight:700">Cộng tác viên — tuần ' + weekText(weekMonday) + '</div>' +
+      '<table style="border-collapse:collapse;width:100%"><thead><tr>' +
+      ['STT', 'Cộng tác viên', 'SĐT', 'Số lần', 'Tổng giờ', 'Số tiền', 'Trạng thái'].map(x => `<th style="${th}">${x}</th>`).join('') +
+      '</tr></thead><tbody>' +
+      (payCtvAll.length ? payCtvAll.map((r, i) => `<tr><td style="${td}">${i + 1}</td><td style="${td}">${esc(r.name)}</td><td style="${td}">${esc(r.phone)}</td>` +
+        `<td style="${tdr}">${r.count}</td><td style="${tdr}">${fmtHours(r.hours)}</td><td style="${tdr}">${money(r.amount)}</td>` +
+        `<td style="${td}">${r.paid ? 'Đã thanh toán (' + esc(delStamp(r.paid_at)) + ')' : 'Chưa thanh toán'}</td></tr>`).join('')
+        : `<tr><td style="${td}" colspan="7">Không có dữ liệu</td></tr>`) +
+      `<tr><td style="${td};font-weight:700" colspan="5">Tổng cộng</td><td style="${tdr};font-weight:700">${money(total)}</td><td style="${td}">Chưa thanh toán: ${money(unpaid)}</td></tr>` +
+      '</tbody></table>';
+    {
+      payCtvAll.filter(r => r.calc).forEach(r => {
+        h += `<div style="margin:16px 0 6px;font-size:14px;font-weight:700">Chi tiết: ${esc(r.name)} (${esc(r.phone)}) — ${r.paid ? 'Đã thanh toán ' + money(r.amount) : money(r.amount)}</div>` +
+          detailHtml(r.calc);
+      });
+    }
+  }
+  if (wantStaff) {
+    const sRows = payStaff.filter(r => r.count || r.paid);
+    const sTotal = sRows.reduce((s, r) => s + staffAmt(r), 0);
+    const sUnpaid = sRows.filter(r => !r.paid).reduce((s, r) => s + r.amount, 0);
+    h += '<div style="margin:18px 0 6px;font-size:15px;font-weight:700">Nhân viên — tháng ' + esc($('month').value) +
+      ' (giờ chuẩn ' + cfg.staff_month_hours + 'h; giờ vượt ' + money(cfg.staff_ot_rate) + '/giờ; sau 22h +' + money(cfg.staff_night_rate) + '/giờ)</div>' +
+      '<table style="border-collapse:collapse;width:100%"><thead><tr>' +
+      ['Nhân viên', 'Lương/giờ', 'Tổng giờ', 'Giờ thường', 'Giờ vượt', 'Giờ sau 22h', 'Tiền giờ thường', 'Tiền giờ vượt', 'Phụ cấp sau 22h', 'Tổng', 'Trạng thái']
+        .map(x => `<th style="${th}">${x}</th>`).join('') +
+      '</tr></thead><tbody>' +
+      (sRows.length ? sRows.map(r => `<tr><td style="${td}">${esc(r.name)}</td><td style="${tdr}">${money(r.rate)}</td><td style="${tdr}">${fmtHours(r.hours)}</td>` +
+        `<td style="${tdr}">${fmtHours(r.reg)}</td><td style="${tdr}">${fmtHours(r.ot)}</td><td style="${tdr}">${fmtHours(r.night)}</td>` +
+        `<td style="${tdr}">${money(r.regPay)}</td><td style="${tdr}">${money(r.otPay)}</td><td style="${tdr}">${money(r.nightPay)}</td>` +
+        `<td style="${tdr};font-weight:700">${money(staffAmt(r))}</td>` +
+        `<td style="${td}">${r.paid ? 'Đã thanh toán (' + esc(delStamp(r.paid_at)) + ')' : 'Chưa thanh toán'}</td></tr>`).join('')
+        : `<tr><td style="${td}" colspan="11">Không có dữ liệu</td></tr>`) +
+      `<tr><td style="${td};font-weight:700" colspan="9">Tổng nhân viên</td><td style="${tdr};font-weight:700">${money(sTotal)}</td><td style="${td}">Chưa thanh toán: ${money(sUnpaid)}</td></tr>` +
+      '</tbody></table>';
+    sRows.filter(r => r.count).forEach(r => {
+      h += `<div style="margin:16px 0 6px;font-size:14px;font-weight:700">Chi tiết: ${esc(r.name)} — ${r.paid ? 'Đã thanh toán ' + money(r.payAmt) : money(r.amount)}</div>` + staffDetailHtml(r);
+    });
+  }
+  h += '<div style="margin-top:14px;font-size:12px;color:#555">Xuất lúc ' + new Date().toLocaleString('vi-VN') + '</div></div>';
+  return h;
+}
+function downloadBlob(blob, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+const expName = ext => 'bang-luong-' + ($('expScope').value === 'staff' ? $('month').value : weekMonday) + '.' + ext;
+
+async function reportCanvas() {
+  if (typeof html2canvas === 'undefined') throw new Error('Chưa tải được thư viện xuất ảnh, vui lòng kiểm tra mạng và tải lại trang');
+  const box = document.createElement('div');
+  box.style.cssText = 'position:fixed;left:-10000px;top:0;width:1000px;background:#fff';
+  box.innerHTML = reportHtml($('expScope').value);
+  document.body.appendChild(box);
+  try { return await html2canvas(box, { scale: 2, backgroundColor: '#ffffff' }); }
+  finally { box.remove(); }
+}
+async function runExport(btn, fn) {
+  const msg = $('expMsg'); btn.disabled = true; msg.className = 'msg';
+  try { await fn(); setMsg(msg, 'Đã xuất file', 'ok'); }
+  catch (e) { setMsg(msg, e.message || 'Không xuất được file', 'err'); }
+  btn.disabled = false;
+}
+$('btnImg').onclick = () => runExport($('btnImg'), async () => {
+  const c = await reportCanvas();
+  const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+  downloadBlob(blob, expName('png'));
+});
+$('btnPdf').onclick = () => runExport($('btnPdf'), async () => {
+  if (!window.jspdf) throw new Error('Chưa tải được thư viện PDF, vui lòng kiểm tra mạng và tải lại trang');
+  const c = await reportCanvas();
+  const pdf = new window.jspdf.jsPDF({ orientation: 'l', unit: 'pt', format: 'a4' });
+  const pw = pdf.internal.pageSize.getWidth(), ph = pdf.internal.pageSize.getHeight(), m = 20;
+  const iw = pw - 2 * m, ih = c.height * iw / c.width, img = c.toDataURL('image/jpeg', 0.95);
+  let y = m, left = ih;
+  pdf.addImage(img, 'JPEG', m, y, iw, ih);
+  left -= (ph - 2 * m);
+  while (left > 0) {
+    pdf.addPage();
+    y -= (ph - 2 * m);
+    pdf.addImage(img, 'JPEG', m, y, iw, ih);
+    left -= (ph - 2 * m);
+  }
+  pdf.save(expName('pdf'));
+});
+$('btnWord').onclick = () => runExport($('btnWord'), async () => {
+  const doc = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="utf-8"><title>Bảng lương</title></head><body>' + reportHtml($('expScope').value) + '</body></html>';
+  downloadBlob(new Blob(['\ufeff', doc], { type: 'application/msword' }), expName('doc'));
+});
+$('btnCsv').onclick = () => {
+  const sRows = payStaff.filter(r => r.count || r.paid);
+  const L = [['NHÂN VIÊN — THÁNG ' + $('month').value],
+    ['Nhân viên', 'Lương/giờ', 'Tổng giờ', 'Giờ thường', 'Giờ vượt', 'Giờ sau 22h', 'Tiền giờ thường', 'Tiền giờ vượt', 'Phụ cấp sau 22h', 'Tổng', 'Trạng thái']];
+  sRows.forEach(r => L.push([r.name, r.rate, r.hours.toFixed(2), r.reg.toFixed(2), r.ot.toFixed(2), r.night.toFixed(2),
+    r.regPay, r.otPay, r.nightPay, staffAmt(r), r.paid ? 'Đã thanh toán' : 'Chưa thanh toán']));
+  L.push(['Tổng nhân viên', '', '', '', '', '', '', '', '', Math.round(sRows.reduce((s, r) => s + staffAmt(r), 0)), ''], [],
+    ['CHI TIẾT NHÂN VIÊN'],
+    ['Nhân viên', 'Ngày', 'Bắt đầu', 'Kết thúc', 'Khách hàng', 'Ngôn ngữ', 'Số giờ', 'Giờ thường', 'Giờ vượt', 'Giờ sau 22h', 'Thành tiền']);
+  sRows.forEach(r => r.lines.forEach(l => L.push([r.name, fmtDate(l.rec.start_at), fmtTime(l.rec.start_at), fmtEnd(l.rec.start_at, l.rec.end_at),
+    l.rec.customer_name, l.rec.language, l.h.toFixed(2), l.reg.toFixed(2), l.ot.toFixed(2), l.night.toFixed(2), l.amount])));
+  L.push([], ['CỘNG TÁC VIÊN — TUẦN ' + weekText(weekMonday)], ['Cộng tác viên', 'SĐT', 'Số lần', 'Tổng giờ', 'Số tiền', 'Trạng thái']);
+  payCtvAll.forEach(r => L.push([r.name, "'" + r.phone, r.count, Number(r.hours).toFixed(2), Math.round(r.amount), r.paid ? 'Đã thanh toán' : 'Chưa thanh toán']));
+  L.push(['Tổng cộng tác viên', '', '', '', Math.round(payCtvAll.reduce((s, r) => s + r.amount, 0)), '']);
+  L.push([], ['CHI TIẾT CỘNG TÁC VIÊN'],
+    ['Cộng tác viên', 'SĐT', 'Ngày', 'Bắt đầu', 'Kết thúc', 'Khách hàng', 'Ngôn ngữ', 'Số giờ', 'Cách tính', 'Thành tiền']);
+  payCtvAll.forEach(r => { if (r.calc) r.calc.lines.forEach(l => L.push([r.name, "'" + r.phone, fmtDate(l.rec.start_at), fmtTime(l.rec.start_at),
+    fmtEnd(l.rec.start_at, l.rec.end_at), l.rec.customer_name, l.rec.language, l.h.toFixed(2), lineDesc(l), l.amount])); });
+  const csv = '\ufeff' + L.map(l => l.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\r\n');
+  downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), 'bang-luong-' + $('month').value + '.csv');
+};
+
+/* ---------- Cài đặt lương ---------- */
+function renderCfg() {
+  $('cMonth').value = cfg.staff_month_hours; $('cStaffOt').value = cfg.staff_ot_rate;
+  $('cStaffNight').value = cfg.staff_night_rate;
+  $('cStd').value = cfg.standard_hours; $('cCtv').value = cfg.default_ctv_rate;
+}
+$('btnCfg').onclick = async () => {
+  const v = {
+    staff_month_hours: Number($('cMonth').value), staff_ot_rate: Number($('cStaffOt').value),
+    staff_night_rate: Number($('cStaffNight').value),
+    standard_hours: Number($('cStd').value), default_ctv_rate: Number($('cCtv').value)
+  };
+  if (!(v.staff_month_hours > 0) || !(v.staff_ot_rate >= 0) || !(v.staff_night_rate >= 0) ||
+      !(v.standard_hours > 0 && v.standard_hours <= 24) || !(v.default_ctv_rate >= 0)) {
+    return setMsg($('cfgMsg'), 'Giá trị không hợp lệ', 'err');
+  }
+  const { error } = await sb.from('settings').update(v).eq('id', 1);
+  if (error) return setMsg($('cfgMsg'), 'Không lưu được: ' + error.message + ' (đã chạy SQL thêm cột chưa?)', 'err');
+  setMsg($('cfgMsg'), 'Đã lưu cài đặt. Bảng lương được tính lại theo cài đặt mới.', 'ok');
+  await loadAll();
+};
+
+boot();
+</script>
+</body>
+</html>

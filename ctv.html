@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Chấm công cộng tác viên - Sowon Global</title>
+<link rel="stylesheet" href="/chamcong/chamcong.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="/logo.png" alt="Sowon Global" onerror="this.style.display='none'">
+    <h1>Chấm công cộng tác viên</h1>
+    <p>Sowon Global</p>
+  </header>
+
+  <div class="card" id="formCard">
+    <label for="wDate">Ngày tháng</label>
+    <input id="wDate" type="date">
+    <div class="row">
+      <div><label for="wStart">Giờ bắt đầu</label><input id="wStart" type="time"></div>
+      <div><label for="wEnd">Giờ kết thúc</label><input id="wEnd" type="time"></div>
+    </div>
+    <p class="muted" style="margin:4px 0 0">Nếu làm qua nửa đêm, giờ kết thúc nhỏ hơn giờ bắt đầu (vd: 20:00 → 01:00).</p>
+    <label for="wCust">Tên khách hàng</label>
+    <input id="wCust" autocomplete="off">
+    <label for="wLang">Ngôn ngữ</label>
+    <input id="wLang" list="langs" autocomplete="off" placeholder="Chọn hoặc nhập ngôn ngữ">
+    <datalist id="langs">
+      <option value="Tiếng Anh"><option value="Tiếng Trung"><option value="Tiếng Nhật"><option value="Tiếng Hàn">
+      <option value="Tiếng Indonesia"><option value="Tiếng Lào"><option value="Tiếng Thái"><option value="Tiếng Đức">
+      <option value="Tiếng Pháp"><option value="Tiếng Ý"><option value="Tiếng Nga"><option value="Tiếng Hindi"><option value="Tiếng Campuchia">
+    </datalist>
+    <label for="wName">Tên phiên dịch viên</label>
+    <input id="wName" autocomplete="name" placeholder="Họ và tên của bạn">
+    <label for="wPhone">Số điện thoại</label>
+    <input id="wPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xxxxxxxx">
+
+    <label for="wQr">Ảnh mã QR nhận thanh toán</label>
+    <input id="wQr" type="file" accept="image/*" style="display:none">
+    <div id="qrBox" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <img id="qrPreview" alt="Mã QR thanh toán" class="hidden"
+           style="width:120px;height:120px;object-fit:contain;border:1px solid #ccc;border-radius:8px;background:#fff">
+      <button type="button" class="ghost" id="btnQr">Chọn ảnh mã QR</button>
+    </div>
+    <p class="muted" style="margin:4px 0 0">Ảnh QR ngân hàng/ví của bạn. Lần sau hệ thống sẽ nhớ, không cần chọn lại.</p>
+
+    <button class="gold" id="btnSend" style="margin-top:18px;width:100%;padding:16px;font-size:1.1rem">Chấm công</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="card hidden" id="doneCard">
+    <div class="success-box">
+      <div class="tick">✓</div>
+      <h2>Đã chấm công thành công</h2>
+      <p id="doneInfo" class="muted"></p>
+      <button class="ghost" id="btnBack" style="margin-top:12px">Chấm công lượt khác</button>
+    </div>
+  </div>
+</div>
+<script src="/chamcong/timepicker.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const ONE_DAY = 864e5;
+let qrData = '';
+
+function todayVN() { return new Date(Date.now() + 7 * 36e5).toISOString().slice(0, 10); }
+$('wDate').value = todayVN();
+try {
+  $('wName').value = localStorage.getItem('ctv_name') || '';
+  $('wPhone').value = localStorage.getItem('ctv_phone') || '';
+  qrData = localStorage.getItem('ctv_qr') || '';
+} catch (e) {}
+
+function showErr(t) { const m = $('msg'); m.className = 'msg err'; m.textContent = t; }
+
+function renderQr() {
+  if (qrData) {
+    $('qrPreview').src = qrData;
+    $('qrPreview').classList.remove('hidden');
+    $('btnQr').textContent = 'Đổi ảnh mã QR';
+  } else {
+    $('qrPreview').classList.add('hidden');
+    $('btnQr').textContent = 'Chọn ảnh mã QR';
+  }
+}
+renderQr();
+
+// Thu nhỏ ảnh (tối đa 900px, JPEG) để gửi nhanh và nhẹ database
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const max = 900;
+      const k = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * k);
+      c.height = Math.round(img.height * k);
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL('image/jpeg', 0.85));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Không đọc được ảnh, vui lòng chọn ảnh khác')); };
+    img.src = url;
+  });
+}
+
+$('btnQr').onclick = () => $('wQr').click();
+$('wQr').onchange = async () => {
+  const f = $('wQr').files[0];
+  if (!f) return;
+  $('msg').className = 'msg';
+  if (!f.type.startsWith('image/')) return showErr('Vui lòng chọn một tệp ảnh');
+  try {
+    qrData = await compressImage(f);
+    renderQr();
+  } catch (e) { showErr(e.message); }
+  $('wQr').value = '';
+};
+
+$('btnSend').onclick = async () => {
+  $('msg').className = 'msg';
+  const body = {
+    work_date: $('wDate').value, start_time: $('wStart').value, end_time: $('wEnd').value,
+    customer_name: $('wCust').value.trim(), language: $('wLang').value.trim(),
+    interpreter_name: $('wName').value.trim(), phone: $('wPhone').value.trim(),
+    qr_image: qrData
+  };
+  if (!body.work_date || !body.start_time || !body.end_time || !body.customer_name ||
+      !body.language || !body.interpreter_name || !body.phone) {
+    return showErr('Vui lòng điền đầy đủ tất cả các mục');
+  }
+  if (!body.qr_image) return showErr('Vui lòng chọn ảnh mã QR để nhận thanh toán');
+  $('btnSend').disabled = true;
+  try {
+    const r = await fetch('/api/ctv-checkin', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || 'Có lỗi xảy ra, vui lòng thử lại');
+    try {
+      localStorage.setItem('ctv_name', body.interpreter_name);
+      localStorage.setItem('ctv_phone', body.phone);
+      localStorage.setItem('ctv_qr', body.qr_image);
+    } catch (e) {}
+    const [y, m, d] = body.work_date.split('-');
+    $('doneInfo').textContent = `${d}/${m}/${y}, ${body.start_time} – ${body.end_time} · ${body.customer_name} · ${body.language}`;
+    $('formCard').classList.add('hidden');
+    $('doneCard').classList.remove('hidden');
+  } catch (e) {
+    showErr(e.message);
+  } finally {
+    $('btnSend').disabled = false;
+  }
+};
+$('btnBack').onclick = () => {
+  ['wStart', 'wEnd', 'wCust', 'wLang'].forEach(i => $(i).value = '');
+  $('wDate').value = todayVN();
+  $('doneCard').classList.add('hidden');
+  $('formCard').classList.remove('hidden');
+};
+</script>
+</body>
+</html>
